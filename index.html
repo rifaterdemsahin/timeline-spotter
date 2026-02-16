@@ -817,7 +817,9 @@
 
         // Search Function
         function searchArtifacts() {
-            const query = document.getElementById('searchQuery').value.toLowerCase();
+            const input = document.getElementById('searchQuery');
+            const query = input.value.trim().toLowerCase();
+            input.value = input.value.trim(); // Update the input to show trimmed value
             if (!query) {
                 showMessage('Please enter a search query.', 'error');
                 return;
