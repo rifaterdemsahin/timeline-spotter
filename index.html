@@ -446,9 +446,6 @@
             <button onclick="saveScript()">💾 Save Script</button>
             <button onclick="loadScript()" class="secondary">📂 Load Script</button>
             <button onclick="clearScript()" class="danger">🗑️ Clear Script</button>
-            <br><br>
-            <label for="scriptFile">Upload Script File (.txt, .md):</label>
-            <input type="file" id="scriptFile" accept=".txt,.md" onchange="handleScriptUpload(event)">
         </div>
 
         <!-- File Uploads -->
@@ -590,25 +587,7 @@
             showMessage('Script cleared successfully!', 'success');
         }
 
-        function handleScriptUpload(event) {
-            const file = event.target.files[0];
-            if (!file) return;
 
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const content = e.target.result;
-                document.getElementById('scriptInput').value = content;
-                setStorageItem('timeline_script', content);
-                // Estimate timeline length from uploaded script
-                const estimatedLength = estimateTimelineLength(content);
-                timelineData.length = estimatedLength;
-                setTimelineDropdowns(estimatedLength);
-                setStorageItem('timeline_length', estimatedLength.toString());
-                showMessage(`Script file uploaded and saved: ${file.name}`, 'success');
-                renderScriptTimeline();
-            };
-            reader.readAsText(file);
-        }
 
         // Timeline Management
         let timelineData = {
