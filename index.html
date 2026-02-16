@@ -1401,16 +1401,29 @@ end`;
         }
 
         function getColoredContext(text, query) {
+            // Limit to 100 words
+            const words = text.split(/\s+/);
+            const limitedText = words.slice(0, 100).join(' ');
+            const isTruncated = words.length > 100;
+
             const queryLower = query.toLowerCase();
-            const queryIndex = text.toLowerCase().indexOf(queryLower);
+            const queryIndex = limitedText.toLowerCase().indexOf(queryLower);
 
-            if (queryIndex === -1) return text;
+            let highlightedText;
+            if (queryIndex === -1) {
+                highlightedText = limitedText;
+            } else {
+                const before = limitedText.substring(0, queryIndex);
+                const found = limitedText.substring(queryIndex, queryIndex + query.length);
+                const after = limitedText.substring(queryIndex + query.length);
+                highlightedText = `${before}<span style="background-color: yellow; font-weight: bold;">${found}</span>${after}`;
+            }
 
-            const before = text.substring(0, queryIndex);
-            const found = text.substring(queryIndex, queryIndex + query.length);
-            const after = text.substring(queryIndex + query.length);
+            if (isTruncated) {
+                highlightedText += '...';
+            }
 
-            return `${before}<span style="background-color: yellow; font-weight: bold;">${found}</span>${after}`;
+            return `<div style="max-width: 400px; overflow-x: auto; white-space: nowrap; border: 1px solid #ddd; padding: 4px; border-radius: 4px; background: #f9f9f9;">${highlightedText}</div>`;
         }
 
         let keywords = [];
