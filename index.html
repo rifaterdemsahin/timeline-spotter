@@ -498,14 +498,18 @@
             <input type="file" id="subtitleFile" accept=".srt,.vtt,.txt" onchange="handleSubtitleUpload(event)">
             <button onclick="loadSampleSRT()">📥 Load Sample SRT</button>
 
+            <hr style="margin: 15px 0; border: none; border-top: 1px solid #dee2e6;">
 
+            <label for="artifactFile">📦 Upload Artifacts File (.csv):</label>
+            <input type="file" id="artifactFile" accept=".csv,.txt" onchange="handleArtifactUpload(event)">
+            <button onclick="loadSampleArtifacts()">📥 Load Sample Artifacts</button>
 
         </div>
 
         <!-- Search Function -->
         <div class="section">
-            <h2>🔍 Search Artifacts</h2>
-            <label for="searchQuery">Search for artifact locations:</label>
+            <h2>🔍 Search Artifacts and Subtitle</h2>
+            <label for="searchQuery">Search for artifact locations and subtitle matches:</label>
             <input type="text" id="searchQuery" placeholder="e.g., intro, transition, logo, music cue" autocomplete="off" list="keywordsList">
             <datalist id="keywordsList"></datalist>
             <button onclick="searchArtifacts()">🔍 Find Locations</button>
@@ -803,7 +807,7 @@
             
             // Search in artifact list
             artifactList.forEach((artifact, index) => {
-                if (artifact.name?.toLowerCase().includes(query) || 
+                if (artifact.name?.toLowerCase().includes(query) ||
                     artifact.keywords?.toLowerCase().includes(query)) {
                     const estimatedPosition = estimateArtifactPosition(artifact);
                     results.push({
@@ -812,6 +816,32 @@
                         position: estimatedPosition,
                         name: artifact.name,
                         confidence: 'Medium'
+                    });
+                }
+            });
+
+            // Search in artifact CSV data
+            artifactCsvData.forEach((row) => {
+                const searchableFields = [
+                    row['File_Path'] || '',
+                    row['File_Type'] || '',
+                    row['Bin_Category'] || '',
+                    row['Purpose_Rationale'] || ''
+                ].join(' ').toLowerCase();
+
+                if (searchableFields.includes(query)) {
+                    const fileName = (row['File_Path'] || '').split('/').pop();
+                    results.push({
+                        source: 'Artifacts CSV',
+                        query: query,
+                        position: 0,
+                        name: fileName,
+                        text: `${row['Bin_Category'] || ''} — ${row['Purpose_Rationale'] || ''}`,
+                        filePath: row['File_Path'] || '',
+                        fileType: row['File_Type'] || '',
+                        format: row['Format'] || '',
+                        priority: row['Priority_Score'] || '',
+                        confidence: 'High'
                     });
                 }
             });
@@ -878,25 +908,38 @@
                     const isScriptResult = result.source === 'Script';
                     const isSubtitleResult = result.source === 'Subtitle';
 
+                    const isArtifactCsvResult = result.source === 'Artifacts CSV';
                     let contextHtml = '';
                     if (result.text) {
                         if (isSubtitleResult) {
                             contextHtml = `<br>Context: ${getColoredContextWithSlider(result.text, result.query)}`;
+                        } else if (isArtifactCsvResult) {
+                            contextHtml = `<br><small>${result.text}</small>`;
                         } else {
                             contextHtml = `<br><small>Context: "${result.text.substring(0, 100)}..."</small>`;
                         }
                     }
 
-                    div.innerHTML = `
-                        <strong>${result.query}</strong> found in <em>${result.source}</em><br>
-                        Estimated position: <strong>${result.position.toFixed(2)}%</strong>
-                        ${result.time ? `(${result.time})` : ''}<br>
-                        Confidence: ${result.confidence}
-                        ${contextHtml}
-                        <br><button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
-                        ${isScriptResult ? `<button onclick="findInEstimatedTimeline('${result.query}')">🔍 Estimated</button>` : ''}
-                        ${isSubtitleResult ? `<button onclick="findInActualTimeline('${result.query}')">🎬 Actual</button><button onclick="copyLuaScript('${timeCode}')">🐍 Lua</button>` : ''}
-                    `;
+                    if (isArtifactCsvResult) {
+                        div.innerHTML = `
+                            <strong>${result.name}</strong> <em>(${result.fileType}${result.format ? ' ' + result.format : ''})</em><br>
+                            <small style="color: #888;">📂 ${result.filePath}</small><br>
+                            ${result.priority ? `Priority: <strong>${result.priority}</strong> | ` : ''}Confidence: ${result.confidence}
+                            ${contextHtml}
+                            <br><button onclick="copyToClipboard('${result.filePath.replace(/'/g, "\\'")}')">📋 Copy Path</button>
+                        `;
+                    } else {
+                        div.innerHTML = `
+                            <strong>${result.query}</strong> found in <em>${result.source}</em><br>
+                            Estimated position: <strong>${result.position.toFixed(2)}%</strong>
+                            ${result.time ? `(${result.time})` : ''}<br>
+                            Confidence: ${result.confidence}
+                            ${contextHtml}
+                            <br><button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
+                            ${isScriptResult ? `<button onclick="findInEstimatedTimeline('${result.query}')">🔍 Estimated</button>` : ''}
+                            ${isSubtitleResult ? `<button onclick="findInActualTimeline('${result.query}')">🎬 Actual</button><button onclick="copyLuaScript('${timeCode}')">🐍 Lua</button>` : ''}
+                        `;
+                    }
                     sourceDiv.appendChild(div);
                 });
 
@@ -1009,6 +1052,11 @@
             const artifacts = getStorageItem('timeline_artifacts');
             if (artifacts) {
                 artifactList = JSON.parse(artifacts);
+            }
+
+            const savedArtifactCsv = getStorageItem('timeline_artifact_csv');
+            if (savedArtifactCsv) {
+                artifactCsvData = JSON.parse(savedArtifactCsv);
             }
         }
 
@@ -1366,6 +1414,73 @@ end`;
                 })
                 .catch(error => {
                     showMessage('Error loading sample SRT: ' + error.message, 'error');
+                });
+        }
+
+        // Artifact CSV Management
+        let artifactCsvData = [];
+
+        function handleArtifactUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                artifactCsvData = parseCSV(content);
+                setStorageItem('timeline_artifact_csv', JSON.stringify(artifactCsvData));
+                showMessage(`Artifacts file uploaded: ${artifactCsvData.length} entries parsed.`, 'success');
+            };
+            reader.readAsText(file);
+        }
+
+        function parseCSV(content) {
+            const lines = content.split('\n');
+            if (lines.length < 2) return [];
+
+            const headers = lines[0].split(',').map(h => h.trim());
+            const data = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+
+                // Handle CSV fields with commas inside quotes
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+                for (let c = 0; c < line.length; c++) {
+                    if (line[c] === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (line[c] === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += line[c];
+                    }
+                }
+                values.push(current.trim());
+
+                const row = {};
+                headers.forEach((header, idx) => {
+                    row[header] = values[idx] || '';
+                });
+                data.push(row);
+            }
+
+            return data;
+        }
+
+        function loadSampleArtifacts() {
+            fetch('sample-artifacts.csv')
+                .then(response => response.text())
+                .then(content => {
+                    artifactCsvData = parseCSV(content);
+                    setStorageItem('timeline_artifact_csv', JSON.stringify(artifactCsvData));
+                    showMessage(`Sample artifacts loaded: ${artifactCsvData.length} entries parsed.`, 'success');
+                })
+                .catch(error => {
+                    showMessage('Error loading sample artifacts: ' + error.message, 'error');
                 });
         }
 
