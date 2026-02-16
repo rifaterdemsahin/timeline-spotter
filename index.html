@@ -703,10 +703,20 @@
             }
             
             const results = [];
-            const script = document.getElementById('scriptInput').value.toLowerCase();
-            
+            const savedScript = getStorageItem('timeline_script');
+            const script = savedScript ? savedScript.toLowerCase() : '';
 
-            
+            // Search in script
+            if (script && script.includes(query)) {
+                const position = (script.indexOf(query) / script.length) * 100;
+                results.push({
+                    source: 'Script',
+                    query: query,
+                    position: position,
+                    confidence: 'High'
+                });
+            }
+
             // Search in subtitles
             subtitleData.forEach((sub, index) => {
                 if (sub.text.toLowerCase().includes(query)) {
