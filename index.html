@@ -360,6 +360,27 @@
             font-size: 1.2em;
         }
 
+        .keywords-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .keyword-tag {
+            background: #667eea;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+
+        .keyword-tag:hover {
+            background: #5a67d8;
+        }
+
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -436,8 +457,8 @@
             <label for="subtitleFile">🎬 Upload Subtitle File (.srt, .vtt):</label>
             <input type="file" id="subtitleFile" accept=".srt,.vtt,.txt" onchange="handleSubtitleUpload(event)">
 
-            <label for="artifactFile">📋 Upload Artifact List (.txt, .json, .csv):</label>
-            <input type="file" id="artifactFile" accept=".txt,.json,.csv" onchange="handleArtifactUpload(event)">
+
+
         </div>
 
         <!-- Search Function -->
@@ -454,9 +475,8 @@
         <!-- Keywords -->
         <div class="section" id="keywordsSection" style="display: none;">
             <h2>📝 Keywords from Subtitles</h2>
-            <label for="keywordsTextarea">Editable keyword list (one per line):</label>
-            <textarea id="keywordsTextarea" placeholder="Keywords will be extracted from subtitles..." rows="10"></textarea>
-            <button onclick="updateKeywords()">💾 Save Keywords</button>
+            <p>Click keywords to add them to your search query:</p>
+            <div id="keywordsContainer" class="keywords-container"></div>
             <button onclick="regenerateKeywords()">🔄 Regenerate from Subtitles</button>
         </div>
 
@@ -739,49 +759,7 @@
         // Artifact Management
         let artifactList = [];
 
-        function handleArtifactUpload(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const content = e.target.result;
-                
-                if (file.name.endsWith('.json')) {
-                    artifactList = JSON.parse(content);
-                } else if (file.name.endsWith('.csv')) {
-                    artifactList = parseCSV(content);
-                } else {
-                    // Plain text - one artifact per line
-                    artifactList = content.split('\n')
-                        .filter(line => line.trim())
-                        .map(line => ({ name: line.trim() }));
-                }
-                
-                setStorageItem('timeline_artifacts', JSON.stringify(artifactList));
-                showMessage(`Artifact list uploaded: ${artifactList.length} artifacts loaded.`, 'success');
-            };
-            reader.readAsText(file);
-        }
 
-        function parseCSV(content) {
-            const lines = content.split('\n');
-            const result = [];
-            
-            for (let i = 1; i < lines.length; i++) { // Skip header
-                const line = lines[i].trim();
-                if (line) {
-                    const parts = line.split(',');
-                    result.push({
-                        name: parts[0]?.trim(),
-                        type: parts[1]?.trim(),
-                        keywords: parts[2]?.trim()
-                    });
-                }
-            }
-            
-            return result;
-        }
 
         // Search Function
         function searchArtifacts() {
@@ -1480,8 +1458,16 @@ end`;
         }
 
         function displayKeywords() {
-            const textarea = document.getElementById('keywordsTextarea');
-            textarea.value = keywords.join('\n');
+            const container = document.getElementById('keywordsContainer');
+            container.innerHTML = '';
+
+            keywords.forEach(keyword => {
+                const tag = document.createElement('span');
+                tag.className = 'keyword-tag';
+                tag.textContent = keyword;
+                tag.onclick = () => addKeywordToSearch(keyword);
+                container.appendChild(tag);
+            });
 
             // Update datalist for autocomplete
             const datalist = document.getElementById('keywordsList');
@@ -1493,12 +1479,18 @@ end`;
             });
         }
 
-        function updateKeywords() {
-            const textarea = document.getElementById('keywordsTextarea');
-            keywords = textarea.value.split('\n').map(k => k.trim()).filter(k => k);
-            setStorageItem('custom_keywords', JSON.stringify(keywords));
-            showMessage('Keywords updated successfully!', 'success');
+        function addKeywordToSearch(keyword) {
+            const searchInput = document.getElementById('searchQuery');
+            const currentValue = searchInput.value.trim();
+            if (currentValue) {
+                searchInput.value = currentValue + ' ' + keyword;
+            } else {
+                searchInput.value = keyword;
+            }
+            searchInput.focus();
         }
+
+
 
         function regenerateKeywords() {
             if (subtitleData.length === 0) {
