@@ -238,6 +238,44 @@
             margin: 0;
         }
 
+        .script-timeline {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            background: #f8f9fa;
+        }
+
+        .script-segment {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .script-time {
+            font-weight: bold;
+            color: #667eea;
+            min-width: 120px;
+        }
+
+        .script-text {
+            flex: 1;
+            margin: 0 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .script-copy-btn {
+            padding: 5px 10px;
+            font-size: 0.8em;
+        }
+
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -292,16 +330,20 @@
         <div id="errorMessage" class="error-message"></div>
 
         <div class="info-box">
-            <strong>ℹ️ How to use:</strong> Configure your timeline length, upload subtitles and artifacts, then use the search function to find optimal locations for your artifacts. All data is saved in cookies for persistence.
+            <strong>ℹ️ How to use:</strong> Configure your timeline length, upload subtitles and artifacts, then use the search function to find optimal locations for your artifacts. All data is saved locally for persistence.
         </div>
 
         <!-- Script Input Section -->
         <div class="section">
             <h2>Script & Notes</h2>
-            <label for="scriptInput">Enter your script or notes (saved in cookies):</label>
+            <label for="scriptInput">Enter your script or notes (saved locally):</label>
             <textarea id="scriptInput" placeholder="Enter your video script, notes, or keywords here..."></textarea>
             <button onclick="saveScript()">💾 Save Script</button>
             <button onclick="loadScript()" class="secondary">📂 Load Script</button>
+            <button onclick="clearScript()" class="danger">🗑️ Clear Script</button>
+            <br><br>
+            <label for="scriptFile">Upload Script File (.txt, .md):</label>
+            <input type="file" id="scriptFile" accept=".txt,.md" onchange="handleScriptUpload(event)">
         </div>
 
         <!-- Timeline Configuration -->
@@ -309,8 +351,28 @@
             <h2>Timeline Configuration</h2>
             <div class="grid-2">
                 <div>
-                    <label for="timelineLength">Timeline Length (seconds):</label>
-                    <input type="number" id="timelineLength" value="300" min="1" placeholder="e.g., 300">
+                    <label>Timeline Length:</label>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <select id="timelineMinutes">
+                            <option value="0">0 min</option>
+                            <option value="1">1 min</option>
+                            <option value="2">2 min</option>
+                            <option value="3">3 min</option>
+                            <option value="4">4 min</option>
+                            <option value="5">5 min</option>
+                            <option value="6">6 min</option>
+                            <option value="7">7 min</option>
+                            <option value="8">8 min</option>
+                            <option value="9">9 min</option>
+                            <option value="10">10 min</option>
+                        </select>
+                        <select id="timelineSeconds">
+                            <option value="0">0 sec</option>
+                            <option value="15">15 sec</option>
+                            <option value="30">30 sec</option>
+                            <option value="45">45 sec</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <label for="timelineUnit">Time Unit:</label>
@@ -340,29 +402,24 @@
             <label for="searchQuery">Search for artifact locations:</label>
             <input type="text" id="searchQuery" placeholder="e.g., intro, transition, logo, music cue">
             <button onclick="searchArtifacts()">🔍 Find Locations</button>
-            <button onclick="placeAllArtifacts()" class="secondary">📍 Place All on Timeline</button>
             
             <div id="searchResults" class="results"></div>
         </div>
 
-        <!-- Timeline Visualization -->
-        <div class="section">
-            <h2>Timeline Preview</h2>
-            <div class="timeline-container">
-                <div id="timelineInfo" style="margin-bottom: 10px; color: #666;"></div>
-                <div id="timeline" class="timeline"></div>
-                <div id="artifactList" style="margin-top: 15px;"></div>
-            </div>
+        <!-- Script Timeline -->
+        <div class="section" id="scriptTimelineSection" style="display: none;">
+            <h2>Script Timeline (Estimated)</h2>
+            <div id="scriptTimeline" class="script-timeline"></div>
         </div>
 
-        <!-- Cookie Management -->
+        <!-- Data Management -->
         <div class="section">
-            <h2>Cookie Management</h2>
-            <button onclick="viewCookies()">👁️ View All Cookies</button>
-            <button onclick="clearAllCookies()" class="danger">🗑️ Clear All Cookies</button>
+            <h2>Data Management</h2>
+            <button onclick="viewStorageItems()">👁️ View All Stored Data</button>
+            <button onclick="clearAllStorageItems()" class="danger">🗑️ Clear All Stored Data</button>
             <button onclick="exportData()" class="secondary">💾 Export Data</button>
             <button onclick="importData()" class="secondary">📂 Import Data</button>
-            
+
             <div id="cookieList" class="cookie-list" style="display: none;"></div>
         </div>
     </div>
@@ -376,65 +433,83 @@
         const OUTRO_POSITION = 95;
         const MIDDLE_POSITION = 50;
 
-        // Cookie Management Functions
-        function setCookie(name, value, days = 365) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            const expires = "expires=" + date.toUTCString();
-            document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+        // Local Storage Management Functions
+        function setStorageItem(name, value) {
+            localStorage.setItem(name, value);
         }
 
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) {
-                    return decodeURIComponent(c.substring(nameEQ.length, c.length));
-                }
+        function getStorageItem(name) {
+            return localStorage.getItem(name);
+        }
+
+        function removeStorageItem(name) {
+            localStorage.removeItem(name);
+        }
+
+        function getAllStorageItems() {
+            const items = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                items[key] = localStorage.getItem(key);
             }
-            return null;
-        }
-
-        function deleteCookie(name) {
-            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        }
-
-        function getAllCookies() {
-            const cookies = {};
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i].trim();
-                const eqPos = c.indexOf('=');
-                if (eqPos > 0) {
-                    const name = c.substring(0, eqPos);
-                    const value = decodeURIComponent(c.substring(eqPos + 1));
-                    cookies[name] = value;
-                }
-            }
-            return cookies;
+            return items;
         }
 
         // Script Management
         function saveScript() {
             const script = document.getElementById('scriptInput').value;
             if (script.trim()) {
-                setCookie('timeline_script', script);
+                setStorageItem('timeline_script', script);
                 showMessage('Script saved successfully!', 'success');
+                renderScriptTimeline();
             } else {
                 showMessage('Please enter some text before saving.', 'error');
             }
         }
 
         function loadScript() {
-            const script = getCookie('timeline_script');
+            const script = getStorageItem('timeline_script');
             if (script) {
                 document.getElementById('scriptInput').value = script;
                 showMessage('Script loaded successfully!', 'success');
+                // Estimate timeline length from script if not already set
+                const savedLength = getStorageItem('timeline_length');
+                if (!savedLength) {
+                    const estimatedLength = estimateTimelineLength(script);
+                    timelineData.length = estimatedLength;
+                    setTimelineDropdowns(estimatedLength);
+                    setStorageItem('timeline_length', estimatedLength.toString());
+                }
+                renderScriptTimeline();
             } else {
                 showMessage('No saved script found.', 'error');
             }
+        }
+
+        function clearScript() {
+            document.getElementById('scriptInput').value = '';
+            removeStorageItem('timeline_script');
+            showMessage('Script cleared successfully!', 'success');
+        }
+
+        function handleScriptUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                document.getElementById('scriptInput').value = content;
+                setStorageItem('timeline_script', content);
+                // Estimate timeline length from uploaded script
+                const estimatedLength = estimateTimelineLength(content);
+                timelineData.length = estimatedLength;
+                setTimelineDropdowns(estimatedLength);
+                setStorageItem('timeline_length', estimatedLength.toString());
+                showMessage(`Script file uploaded and saved: ${file.name}`, 'success');
+                renderScriptTimeline();
+            };
+            reader.readAsText(file);
         }
 
         // Timeline Management
@@ -444,17 +519,35 @@
             artifacts: []
         };
 
+        function estimateTimelineLength(script) {
+            if (!script) return 300; // default 5 minutes
+            const words = script.trim().split(/\s+/).length;
+            // Average speaking rate: 150 words per minute
+            const estimatedSeconds = (words / 150) * 60;
+            // Round to nearest 15 seconds, minimum 1 minute
+            return Math.max(60, Math.round(estimatedSeconds / 15) * 15);
+        }
+
+        function setTimelineDropdowns(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            document.getElementById('timelineMinutes').value = minutes;
+            document.getElementById('timelineSeconds').value = secs;
+        }
+
         function updateTimeline() {
-            const length = parseInt(document.getElementById('timelineLength').value);
+            const minutes = parseInt(document.getElementById('timelineMinutes').value);
+            const seconds = parseInt(document.getElementById('timelineSeconds').value);
+            const length = minutes * 60 + seconds;
             const unit = document.getElementById('timelineUnit').value;
-            
+
             timelineData.length = length;
             timelineData.unit = unit;
-            
-            setCookie('timeline_length', length);
-            setCookie('timeline_unit', unit);
-            
-            renderTimeline();
+
+            setStorageItem('timeline_length', length.toString());
+            setStorageItem('timeline_unit', unit);
+
+            renderScriptTimeline();
             showMessage('Timeline updated successfully!', 'success');
         }
 
@@ -513,8 +606,9 @@
             reader.onload = function(e) {
                 const content = e.target.result;
                 subtitleData = parseSubtitles(content);
-                setCookie('timeline_subtitles', JSON.stringify(subtitleData));
+                setStorageItem('timeline_subtitles', JSON.stringify(subtitleData));
                 showMessage(`Subtitle file uploaded: ${subtitleData.length} entries parsed.`, 'success');
+                renderScriptTimeline();
             };
             reader.readAsText(file);
         }
@@ -582,7 +676,7 @@
                         .map(line => ({ name: line.trim() }));
                 }
                 
-                setCookie('timeline_artifacts', JSON.stringify(artifactList));
+                setStorageItem('timeline_artifacts', JSON.stringify(artifactList));
                 showMessage(`Artifact list uploaded: ${artifactList.length} artifacts loaded.`, 'success');
             };
             reader.readAsText(file);
@@ -692,22 +786,24 @@
         function displaySearchResults(results) {
             const container = document.getElementById('searchResults');
             container.innerHTML = '';
-            
+
             if (results.length === 0) {
                 container.innerHTML = '<p style="color: #666;">No results found.</p>';
                 return;
             }
-            
+
             results.forEach((result, index) => {
                 const div = document.createElement('div');
                 div.className = 'result-item';
+                const timeCode = result.time || formatTime((result.position / 100) * timelineData.length);
                 div.innerHTML = `
                     <strong>${result.query}</strong> found in <em>${result.source}</em><br>
-                    Estimated position: <strong>${result.position.toFixed(2)}%</strong> 
+                    Estimated position: <strong>${result.position.toFixed(2)}%</strong>
                     ${result.time ? `(${result.time})` : ''}<br>
                     Confidence: ${result.confidence}
                     ${result.text ? `<br><small>Context: "${result.text.substring(0, 100)}..."</small>` : ''}
                     <br><button onclick="addToTimeline('${result.query}', ${result.position}, '${result.time || ''}')">Add to Timeline</button>
+                    <button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
                 `;
                 container.appendChild(div);
             });
@@ -723,7 +819,6 @@
             
             timelineData.artifacts.push(artifact);
             saveTimelineData();
-            renderTimeline();
             showMessage(`"${name}" added to timeline at ${position.toFixed(2)}%`, 'success');
         }
 
@@ -748,7 +843,6 @@
             });
             
             saveTimelineData();
-            renderTimeline();
             showMessage(`Placed ${artifactList.length} artifacts on timeline.`, 'success');
         }
 
@@ -782,95 +876,93 @@
         function removeArtifact(index) {
             timelineData.artifacts.splice(index, 1);
             saveTimelineData();
-            renderTimeline();
             showMessage('Artifact removed from timeline.', 'success');
         }
 
         function saveTimelineData() {
-            setCookie('timeline_data', JSON.stringify(timelineData));
+            setStorageItem('timeline_data', JSON.stringify(timelineData));
         }
 
         function loadTimelineData() {
-            const data = getCookie('timeline_data');
+            const data = getStorageItem('timeline_data');
             if (data) {
                 timelineData = JSON.parse(data);
             }
-            
-            const length = getCookie('timeline_length');
-            const unit = getCookie('timeline_unit');
-            
+
+            const length = getStorageItem('timeline_length');
+            const unit = getStorageItem('timeline_unit');
+
             if (length) {
                 timelineData.length = parseInt(length);
-                document.getElementById('timelineLength').value = length;
+                setTimelineDropdowns(parseInt(length));
             }
-            
+
             if (unit) {
                 timelineData.unit = unit;
                 document.getElementById('timelineUnit').value = unit;
             }
-            
-            const subtitles = getCookie('timeline_subtitles');
+
+            const subtitles = getStorageItem('timeline_subtitles');
             if (subtitles) {
                 subtitleData = JSON.parse(subtitles);
             }
-            
-            const artifacts = getCookie('timeline_artifacts');
+
+            const artifacts = getStorageItem('timeline_artifacts');
             if (artifacts) {
                 artifactList = JSON.parse(artifacts);
             }
         }
 
         // Cookie Management UI
-        function viewCookies() {
+        function viewStorageItems() {
             const container = document.getElementById('cookieList');
-            const cookies = getAllCookies();
-            
-            if (Object.keys(cookies).length === 0) {
-                container.innerHTML = '<p style="color: #666;">No cookies found.</p>';
+            const items = getAllStorageItems();
+
+            if (Object.keys(items).length === 0) {
+                container.innerHTML = '<p style="color: #666;">No stored data found.</p>';
             } else {
-                let html = '<h3>Stored Cookies:</h3>';
-                for (let [name, value] of Object.entries(cookies)) {
+                let html = '<h3>Stored Data:</h3>';
+                for (let [name, value] of Object.entries(items)) {
                     const displayValue = value.length > 50 ? value.substring(0, 50) + '...' : value;
                     html += `
                         <div class="cookie-item">
                             <span><strong>${name}:</strong> ${displayValue}</span>
-                            <button onclick="clearCookie('${name}')" class="danger">Delete</button>
+                            <button onclick="clearStorageItem('${name}')" class="danger">Delete</button>
                         </div>
                     `;
                 }
                 container.innerHTML = html;
             }
-            
+
             container.style.display = 'block';
         }
 
-        function clearCookie(name) {
-            deleteCookie(name);
-            showMessage(`Cookie "${name}" deleted successfully.`, 'success');
-            viewCookies();
+        function clearStorageItem(name) {
+            removeStorageItem(name);
+            showMessage(`Data "${name}" deleted successfully.`, 'success');
+            viewStorageItems();
         }
 
-        function clearAllCookies() {
-            if (!confirm('Are you sure you want to delete all cookies? This will remove all saved data.')) {
+        function clearAllStorageItems() {
+            if (!confirm('Are you sure you want to delete all stored data? This will remove all saved data.')) {
                 return;
             }
-            
-            const cookies = getAllCookies();
-            for (let name in cookies) {
-                deleteCookie(name);
+
+            const items = getAllStorageItems();
+            for (let name in items) {
+                removeStorageItem(name);
             }
-            
+
             document.getElementById('cookieList').style.display = 'none';
             document.getElementById('scriptInput').value = '';
             timelineData.artifacts = [];
-            renderTimeline();
-            
-            showMessage('All cookies cleared successfully.', 'success');
+
+            showMessage('All stored data cleared successfully.', 'success');
         }
 
         function exportData() {
             const data = {
-                script: getCookie('timeline_script'),
+                script: getStorageItem('timeline_script'),
                 timeline: timelineData,
                 subtitles: subtitleData,
                 artifacts: artifactList
@@ -901,26 +993,25 @@
                         const data = JSON.parse(event.target.result);
                         
                         if (data.script) {
-                            setCookie('timeline_script', data.script);
+                            setStorageItem('timeline_script', data.script);
                             document.getElementById('scriptInput').value = data.script;
                         }
-                        
+
                         if (data.timeline) {
                             timelineData = data.timeline;
                             saveTimelineData();
                         }
-                        
+
                         if (data.subtitles) {
                             subtitleData = data.subtitles;
-                            setCookie('timeline_subtitles', JSON.stringify(subtitleData));
+                            setStorageItem('timeline_subtitles', JSON.stringify(subtitleData));
                         }
-                        
+
                         if (data.artifacts) {
                             artifactList = data.artifacts;
-                            setCookie('timeline_artifacts', JSON.stringify(artifactList));
+                            setStorageItem('timeline_artifacts', JSON.stringify(artifactList));
                         }
-                        
-                        renderTimeline();
+
                         showMessage('Data imported successfully!', 'success');
                     } catch (error) {
                         showMessage('Error importing data: ' + error.message, 'error');
@@ -933,13 +1024,91 @@
             input.click();
         }
 
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showMessage(`'${text}' copied to clipboard!`, 'success');
+            }).catch(err => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showMessage(`'${text}' copied to clipboard!`, 'success');
+            });
+        }
+
+        function parseScriptIntoSegments(script) {
+            if (!script) return [];
+
+            // Split by double line breaks (paragraphs) or sentences
+            const paragraphs = script.split(/\n\s*\n/).filter(p => p.trim());
+            const segments = [];
+
+            paragraphs.forEach((paragraph, index) => {
+                // Split paragraph into sentences if it's long
+                const sentences = paragraph.split(/[.!?]+/).filter(s => s.trim());
+                sentences.forEach(sentence => {
+                    if (sentence.trim()) {
+                        segments.push({
+                            text: sentence.trim(),
+                            type: 'sentence'
+                        });
+                    }
+                });
+            });
+
+            return segments;
+        }
+
+        function renderScriptTimeline() {
+            const script = document.getElementById('scriptInput').value;
+            const section = document.getElementById('scriptTimelineSection');
+            const container = document.getElementById('scriptTimeline');
+
+            if (!script || subtitleData.length > 0) {
+                section.style.display = 'none';
+                return;
+            }
+
+            const segments = parseScriptIntoSegments(script);
+            if (segments.length === 0) {
+                section.style.display = 'none';
+                return;
+            }
+
+            section.style.display = 'block';
+            container.innerHTML = '';
+
+            const totalLength = timelineData.length;
+            const segmentDuration = totalLength / segments.length;
+
+            segments.forEach((segment, index) => {
+                const startTime = index * segmentDuration;
+                const endTime = (index + 1) * segmentDuration;
+                const startFormatted = formatTime(startTime);
+                const endFormatted = formatTime(endTime);
+
+                const div = document.createElement('div');
+                div.className = 'script-segment';
+                div.innerHTML = `
+                    <div class="script-time">${startFormatted} - ${endFormatted}</div>
+                    <div class="script-text">${segment.text}</div>
+                    <button class="script-copy-btn" onclick="copyToClipboard('${startFormatted}'); addToTimeline('${segment.text.substring(0, 20)}...', ${(startTime / totalLength) * 100}, '${startFormatted}')">📋 Copy Start</button>
+                    <button class="script-copy-btn" onclick="copyToClipboard('${endFormatted}'); addToTimeline('${segment.text.substring(0, 20)}...', ${(endTime / totalLength) * 100}, '${endFormatted}')">📋 Copy End</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
         function showMessage(message, type) {
             const successDiv = document.getElementById('successMessage');
             const errorDiv = document.getElementById('errorMessage');
-            
+
             successDiv.style.display = 'none';
             errorDiv.style.display = 'none';
-            
+
             if (type === 'success') {
                 successDiv.textContent = message;
                 successDiv.style.display = 'block';
@@ -954,8 +1123,8 @@
         // Initialize on page load
         window.onload = function() {
             loadTimelineData();
-            renderTimeline();
             loadScript();
+            renderScriptTimeline();
         };
     </script>
 </body>
