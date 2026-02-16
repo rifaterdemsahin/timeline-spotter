@@ -276,6 +276,12 @@
             font-size: 0.8em;
         }
 
+        .script-segment.highlighted {
+            background: #fff3cd;
+            border-color: #ffc107;
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+        }
+
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -365,6 +371,11 @@
                             <option value="8">8 min</option>
                             <option value="9">9 min</option>
                             <option value="10">10 min</option>
+                            <option value="15">15 min</option>
+                            <option value="20">20 min</option>
+                            <option value="30">30 min</option>
+                            <option value="45">45 min</option>
+                            <option value="60">60 min</option>
                         </select>
                         <select id="timelineSeconds">
                             <option value="0">0 sec</option>
@@ -721,6 +732,8 @@
                     position: position,
                     confidence: 'High'
                 });
+                // Highlight matching segment in script timeline
+                highlightMatchingSegment(query);
             }
             
             // Search in subtitles
@@ -777,10 +790,11 @@
         }
 
         function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
+            const hours = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
             const secs = Math.floor(seconds % 60);
-            const ms = Math.floor((seconds % 1) * 1000);
-            return `${mins}:${secs.toString().padStart(2, '0')}.${ms.toString().padStart(3, '0')}`;
+            const frames = Math.floor((seconds % 1) * 30); // 30 fps
+            return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}:${frames.toString().padStart(2, '0')}`;
         }
 
         function displaySearchResults(results) {
@@ -802,8 +816,7 @@
                     ${result.time ? `(${result.time})` : ''}<br>
                     Confidence: ${result.confidence}
                     ${result.text ? `<br><small>Context: "${result.text.substring(0, 100)}..."</small>` : ''}
-                    <br><button onclick="addToTimeline('${result.query}', ${result.position}, '${result.time || ''}')">Add to Timeline</button>
-                    <button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
+                    <br><button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
                 `;
                 container.appendChild(div);
             });
@@ -1062,7 +1075,7 @@
             return segments;
         }
 
-        function renderScriptTimeline() {
+        function renderScriptTimeline(highlightQuery = null) {
             const script = document.getElementById('scriptInput').value;
             const section = document.getElementById('scriptTimelineSection');
             const container = document.getElementById('scriptTimeline');
@@ -1092,6 +1105,9 @@
 
                 const div = document.createElement('div');
                 div.className = 'script-segment';
+                if (highlightQuery && segment.text.toLowerCase().includes(highlightQuery.toLowerCase())) {
+                    div.classList.add('highlighted');
+                }
                 div.innerHTML = `
                     <div class="script-time">${startFormatted} - ${endFormatted}</div>
                     <div class="script-text">${segment.text}</div>
@@ -1100,6 +1116,18 @@
                 `;
                 container.appendChild(div);
             });
+
+            // Scroll to highlighted segment
+            if (highlightQuery) {
+                const highlighted = container.querySelector('.highlighted');
+                if (highlighted) {
+                    highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        }
+
+        function highlightMatchingSegment(query) {
+            renderScriptTimeline(query);
         }
 
         function showMessage(message, type) {
