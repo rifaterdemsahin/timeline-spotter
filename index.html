@@ -350,6 +350,16 @@
             border-left: 4px solid #dc3545;
         }
 
+        .result-group {
+            margin-bottom: 20px;
+        }
+
+        .result-group h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -487,13 +497,13 @@
 
         <!-- Actual Timeline -->
         <div class="section" id="actualTimelineSection" style="display: none;">
-            <h2>🎬 Actual Timeline (from Subtitles)</h2>
+            <h2>🎬 Actual Timeline (from Subtitles) <button onclick="toggleTimelineExpansion()" id="expandBtn">🔽 Expand</button></h2>
             <div class="timeline-controls">
                 <button onclick="selectAllEntries()">Select All</button>
                 <button onclick="deselectAllEntries()">Deselect All</button>
                 <button onclick="exportSelectedAsSRT()">Export Selected as SRT</button>
             </div>
-            <div class="timeline-table-container">
+            <div class="timeline-table-container" id="timelineContainer">
                 <table id="actualTimelineTable" class="timeline-table">
                     <thead>
                         <tr>
@@ -904,19 +914,37 @@
                 return;
             }
 
-            results.forEach((result, index) => {
-                const div = document.createElement('div');
-                div.className = 'result-item';
-                const timeCode = result.time || formatTime((result.position / 100) * timelineData.length);
-                div.innerHTML = `
-                    <strong>${result.query}</strong> found in <em>${result.source}</em><br>
-                    Estimated position: <strong>${result.position.toFixed(2)}%</strong>
-                    ${result.time ? `(${result.time})` : ''}<br>
-                    Confidence: ${result.confidence}
-                    ${result.text ? `<br><small>Context: "${result.text.substring(0, 100)}..."</small>` : ''}
-                    <br><button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
-                `;
-                container.appendChild(div);
+            // Group results by source
+            const groupedResults = {};
+            results.forEach(result => {
+                if (!groupedResults[result.source]) {
+                    groupedResults[result.source] = [];
+                }
+                groupedResults[result.source].push(result);
+            });
+
+            // Display grouped results
+            Object.keys(groupedResults).forEach(source => {
+                const sourceDiv = document.createElement('div');
+                sourceDiv.className = 'result-group';
+                sourceDiv.innerHTML = `<h3>${source} Results (${groupedResults[source].length})</h3>`;
+
+                groupedResults[source].forEach((result, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'result-item';
+                    const timeCode = result.time || formatTime((result.position / 100) * timelineData.length);
+                    div.innerHTML = `
+                        <strong>${result.query}</strong> found in <em>${result.source}</em><br>
+                        Estimated position: <strong>${result.position.toFixed(2)}%</strong>
+                        ${result.time ? `(${result.time})` : ''}<br>
+                        Confidence: ${result.confidence}
+                        ${result.text ? `<br><small>Context: "${result.text.substring(0, 100)}..."</small>` : ''}
+                        <br><button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
+                    `;
+                    sourceDiv.appendChild(div);
+                });
+
+                container.appendChild(sourceDiv);
             });
         }
 
@@ -1365,6 +1393,19 @@
             const secs = Math.floor(seconds % 60);
             const ms = Math.floor((seconds % 1) * 1000);
             return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')},${ms.toString().padStart(3, '0')}`;
+        }
+
+        function toggleTimelineExpansion() {
+            const container = document.getElementById('timelineContainer');
+            const btn = document.getElementById('expandBtn');
+
+            if (container.style.maxHeight === 'none' || !container.style.maxHeight) {
+                container.style.maxHeight = '400px';
+                btn.textContent = '🔽 Expand';
+            } else {
+                container.style.maxHeight = 'none';
+                btn.textContent = '🔼 Collapse';
+            }
         }
 
         function showMessage(message, type) {
