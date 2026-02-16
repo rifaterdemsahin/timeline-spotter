@@ -438,16 +438,6 @@
             <strong>ℹ️ How to use:</strong> Configure your timeline length, upload subtitles and artifacts, then use the search function to find optimal locations for your artifacts. All data is saved locally for persistence.
         </div>
 
-        <!-- Script Input Section -->
-        <div class="section">
-            <h2>Script & Notes</h2>
-            <label for="scriptInput">Enter your script or notes (saved locally):</label>
-            <textarea id="scriptInput" placeholder="Enter your video script, notes, or keywords here..."></textarea>
-            <button onclick="saveScript()">💾 Save Script</button>
-            <button onclick="loadScript()" class="secondary">📂 Load Script</button>
-            <button onclick="clearScript()" class="danger">🗑️ Clear Script</button>
-        </div>
-
         <!-- File Uploads -->
         <div class="section">
             <h2>📁 Upload Files</h2>
@@ -501,11 +491,7 @@
             </div>
         </div>
 
-        <!-- Script Timeline -->
-        <div class="section" id="scriptTimelineSection" style="display: none;">
-            <h2>📝 Script Timeline (Estimated)</h2>
-            <div id="scriptTimeline" class="script-timeline"></div>
-        </div>
+
 
         <!-- Data Management -->
         <div class="section">
@@ -550,45 +536,6 @@
             return items;
         }
 
-        // Script Management
-        function saveScript() {
-            const script = document.getElementById('scriptInput').value;
-            if (script.trim()) {
-                setStorageItem('timeline_script', script);
-                showMessage('Script saved successfully!', 'success');
-                renderScriptTimeline();
-            } else {
-                showMessage('Please enter some text before saving.', 'error');
-            }
-        }
-
-        function loadScript() {
-            const script = getStorageItem('timeline_script');
-            if (script) {
-                document.getElementById('scriptInput').value = script;
-                showMessage('Script loaded successfully!', 'success');
-                // Estimate timeline length from script if not already set
-                const savedLength = getStorageItem('timeline_length');
-                if (!savedLength) {
-                    const estimatedLength = estimateTimelineLength(script);
-                    timelineData.length = estimatedLength;
-                    setTimelineDropdowns(estimatedLength);
-                    setStorageItem('timeline_length', estimatedLength.toString());
-                }
-                renderScriptTimeline();
-            } else {
-                showMessage('No saved script found.', 'error');
-            }
-        }
-
-        function clearScript() {
-            document.getElementById('scriptInput').value = '';
-            removeStorageItem('timeline_script');
-            showMessage('Script cleared successfully!', 'success');
-        }
-
-
-
         // Timeline Management
         let timelineData = {
             length: 300,
@@ -596,21 +543,7 @@
             artifacts: []
         };
 
-        function estimateTimelineLength(script) {
-            if (!script) return 300; // default 5 minutes
-            const words = script.trim().split(/\s+/).length;
-            // Average speaking rate: 150 words per minute
-            const estimatedSeconds = (words / 150) * 60;
-            // Round to nearest 15 seconds, minimum 1 minute
-            return Math.max(60, Math.round(estimatedSeconds / 15) * 15);
-        }
 
-        function setTimelineDropdowns(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            document.getElementById('timelineMinutes').value = minutes;
-            document.getElementById('timelineSeconds').value = secs;
-        }
 
         function updateTimeline() {
             const minutes = parseInt(document.getElementById('timelineMinutes').value);
@@ -624,7 +557,6 @@
             setStorageItem('timeline_length', length.toString());
             setStorageItem('timeline_unit', unit);
 
-            renderScriptTimeline();
             showMessage('Timeline updated successfully!', 'success');
         }
 
@@ -686,7 +618,6 @@
                 setStorageItem('timeline_subtitles', JSON.stringify(subtitleData));
                 showMessage(`Subtitle file uploaded: ${subtitleData.length} entries parsed.`, 'success');
                 renderActualTimeline();
-                renderScriptTimeline();
                 // Show keywords section and extract keywords
                 document.getElementById('keywordsSection').style.display = 'block';
                 regenerateKeywords();
@@ -774,18 +705,7 @@
             const results = [];
             const script = document.getElementById('scriptInput').value.toLowerCase();
             
-            // Search in script
-            if (script.includes(query)) {
-                const position = (script.indexOf(query) / script.length) * 100;
-                results.push({
-                    source: 'Script',
-                    query: query,
-                    position: position,
-                    confidence: 'High'
-                });
-                // Highlight matching segment in script timeline
-                highlightMatchingSegment(query);
-            }
+
             
             // Search in subtitles
             subtitleData.forEach((sub, index) => {
@@ -1145,83 +1065,9 @@
             });
         }
 
-        function parseScriptIntoSegments(script) {
-            if (!script) return [];
 
-            // Split by double line breaks (paragraphs) or sentences
-            const paragraphs = script.split(/\n\s*\n/).filter(p => p.trim());
-            const segments = [];
 
-            paragraphs.forEach((paragraph, index) => {
-                // Split paragraph into sentences if it's long
-                const sentences = paragraph.split(/[.!?]+/).filter(s => s.trim());
-                sentences.forEach(sentence => {
-                    if (sentence.trim()) {
-                        segments.push({
-                            text: sentence.trim(),
-                            type: 'sentence'
-                        });
-                    }
-                });
-            });
 
-            return segments;
-        }
-
-        function renderScriptTimeline(highlightQuery = null) {
-            const script = document.getElementById('scriptInput').value;
-            const section = document.getElementById('scriptTimelineSection');
-            const container = document.getElementById('scriptTimeline');
-
-            if (!script || subtitleData.length > 0) {
-                section.style.display = 'none';
-                return;
-            }
-
-            const segments = parseScriptIntoSegments(script);
-            if (segments.length === 0) {
-                section.style.display = 'none';
-                return;
-            }
-
-            section.style.display = 'block';
-            container.innerHTML = '';
-
-            const totalLength = timelineData.length;
-            const segmentDuration = totalLength / segments.length;
-
-            segments.forEach((segment, index) => {
-                const startTime = index * segmentDuration;
-                const endTime = (index + 1) * segmentDuration;
-                const startFormatted = formatTime(startTime);
-                const endFormatted = formatTime(endTime);
-
-                const div = document.createElement('div');
-                div.className = 'script-segment';
-                if (highlightQuery && segment.text.toLowerCase().includes(highlightQuery.toLowerCase())) {
-                    div.classList.add('highlighted');
-                }
-                div.innerHTML = `
-                    <div class="script-time">${startFormatted} - ${endFormatted}</div>
-                    <div class="script-text">${segment.text}</div>
-                    <button class="script-copy-btn" onclick="copyToClipboard('${startFormatted}'); addToTimeline('${segment.text.substring(0, 20)}...', ${(startTime / totalLength) * 100}, '${startFormatted}')">📋 Copy Start</button>
-                    <button class="script-copy-btn" onclick="copyToClipboard('${endFormatted}'); addToTimeline('${segment.text.substring(0, 20)}...', ${(endTime / totalLength) * 100}, '${endFormatted}')">📋 Copy End</button>
-                `;
-                container.appendChild(div);
-            });
-
-            // Scroll to highlighted segment
-            if (highlightQuery) {
-                const highlighted = container.querySelector('.highlighted');
-                if (highlighted) {
-                    highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
-        }
-
-        function highlightMatchingSegment(query) {
-            renderScriptTimeline(query);
-        }
 
         function findInEstimatedTimeline(query) {
             if (document.getElementById('scriptTimelineSection').style.display !== 'none') {
@@ -1619,8 +1465,6 @@ end`;
         // Initialize on page load
         window.onload = function() {
             loadTimelineData();
-            loadScript();
-            renderScriptTimeline();
         };
     </script>
 </body>
