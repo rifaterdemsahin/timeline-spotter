@@ -1283,6 +1283,7 @@
                     <td class="actions-col">
                         <button onclick="copyToClipboard('${startFormatted}')">📋 Start</button>
                         <button onclick="copyToClipboard('${endFormatted}')">📋 End</button>
+                        <button onclick="copyLuaScript('${startFormatted}')">🐍 Lua</button>
                     </td>
                 `;
                 tbody.appendChild(row);
@@ -1393,6 +1394,28 @@
                 container.style.maxHeight = 'none';
                 btn.textContent = '🔼 Collapse';
             }
+        }
+
+        function copyLuaScript(timecode) {
+            const luaScript = `local resolve = Resolve()
+if resolve then
+    local projectManager = resolve:GetProjectManager()
+    local project = projectManager:GetCurrentProject()
+    if project then
+        local timeline = project:GetCurrentTimeline()
+        if timeline then
+            timeline:SetCurrentTimecode("${timecode}")
+            print("Jumped to timecode: ${timecode}")
+        else
+            print("No active timeline found")
+        end
+    else
+        print("No active project found")
+    end
+else
+    print("DaVinci Resolve not found")
+end`;
+            copyToClipboard(luaScript);
         }
 
         function showMessage(message, type) {
