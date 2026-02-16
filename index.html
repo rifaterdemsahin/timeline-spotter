@@ -740,6 +740,27 @@
 
 
 
+        // Build context from surrounding subtitle entries to get ~100+ words
+        function buildSubtitleContext(matchIndex) {
+            const allTexts = subtitleData.map(s => s.text);
+            // Start from the matched subtitle and expand outward until we have enough words
+            let combined = allTexts[matchIndex];
+            let left = matchIndex - 1;
+            let right = matchIndex + 1;
+
+            while (combined.split(/\s+/).length < BUFFER_SIZE && (left >= 0 || right < allTexts.length)) {
+                if (left >= 0) {
+                    combined = allTexts[left] + ' ' + combined;
+                    left--;
+                }
+                if (right < allTexts.length) {
+                    combined = combined + ' ' + allTexts[right];
+                    right++;
+                }
+            }
+            return combined;
+        }
+
         // Search Function
         function searchArtifacts() {
             const input = document.getElementById('searchQuery');
@@ -770,12 +791,14 @@
             subtitleData.forEach((sub, index) => {
                 if (sub.text.toLowerCase().includes(query)) {
                     const position = (sub.start / timelineData.length) * 100;
+                    // Build wide context by combining surrounding subtitle entries
+                    const contextText = buildSubtitleContext(index);
                     results.push({
                         source: 'Subtitle',
                         query: query,
                         position: Math.min(position, 100),
                         time: formatTime(sub.start),
-                        text: sub.text,
+                        text: contextText,
                         confidence: 'High'
                     });
                 }
