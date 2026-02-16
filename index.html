@@ -350,6 +350,36 @@
             border-left: 4px solid #dc3545;
         }
 
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast-notification.success {
+            background: #28a745;
+        }
+
+        .toast-notification.error {
+            background: #dc3545;
+        }
+
         .result-group {
             margin-bottom: 20px;
         }
@@ -433,6 +463,8 @@
 
         <div id="successMessage" class="success-message"></div>
         <div id="errorMessage" class="error-message"></div>
+
+        <div id="toastNotification" class="toast-notification"></div>
 
         <div class="info-box">
             <strong>ℹ️ How to use:</strong> Configure your timeline length, upload subtitles and artifacts, then use the search function to find optimal locations for your artifacts. All data is saved locally for persistence.
@@ -1063,7 +1095,7 @@
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                showMessage(`'${text}' copied to clipboard!`, 'success');
+                showToast('Time code copied to clipboard!', 'success');
             }).catch(err => {
                 // Fallback for older browsers
                 const textArea = document.createElement('textarea');
@@ -1072,8 +1104,18 @@
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
-                showMessage(`'${text}' copied to clipboard!`, 'success');
+                showToast('Time code copied to clipboard!', 'success');
             });
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toastNotification');
+            toast.textContent = message;
+            toast.className = `toast-notification ${type} show`;
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
 
 
