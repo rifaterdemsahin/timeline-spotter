@@ -291,6 +291,11 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
+        .timeline-table-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
         .timeline-table th {
             background: #667eea;
             color: white;
@@ -327,6 +332,22 @@
             margin-right: 5px;
             padding: 5px 8px;
             font-size: 0.8em;
+        }
+
+        .timeline-controls {
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .timeline-controls button {
+            padding: 8px 12px;
+            font-size: 0.9em;
+        }
+
+        .timeline-table tr.highlighted {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
         }
 
         .grid-2 {
@@ -467,17 +488,25 @@
         <!-- Actual Timeline -->
         <div class="section" id="actualTimelineSection" style="display: none;">
             <h2>🎬 Actual Timeline (from Subtitles)</h2>
-            <table id="actualTimelineTable" class="timeline-table">
-                <thead>
-                    <tr>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th>Text</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div class="timeline-controls">
+                <button onclick="selectAllEntries()">Select All</button>
+                <button onclick="deselectAllEntries()">Deselect All</button>
+                <button onclick="exportSelectedAsSRT()">Export Selected as SRT</button>
+            </div>
+            <div class="timeline-table-container">
+                <table id="actualTimelineTable" class="timeline-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAllCheckbox" onchange="toggleAllCheckboxes()"></th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Text</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Script Timeline -->
@@ -814,6 +843,11 @@
                     });
                 }
             });
+
+            // Highlight in actual timeline if subtitles exist
+            if (subtitleData.length > 0) {
+                renderActualTimeline(query);
+            }
             
             // Search in artifact list
             artifactList.forEach((artifact, index) => {
@@ -1195,7 +1229,9 @@
             renderScriptTimeline(query);
         }
 
-        function renderActualTimeline() {
+        let selectedEntries = [];
+
+        function renderActualTimeline(highlightQuery = null) {
             const section = document.getElementById('actualTimelineSection');
             const tbody = document.getElementById('actualTimelineTable').querySelector('tbody');
 
@@ -1207,12 +1243,24 @@
             section.style.display = 'block';
             tbody.innerHTML = '';
 
+            // Load selected entries from storage
+            const savedSelected = getStorageItem('selected_entries');
+            if (savedSelected) {
+                selectedEntries = JSON.parse(savedSelected);
+            }
+
             subtitleData.forEach((sub, index) => {
                 const startFormatted = formatTime(sub.start);
                 const endFormatted = formatTime(sub.end);
+                const isSelected = selectedEntries.includes(index);
+                const isHighlighted = highlightQuery && sub.text.toLowerCase().includes(highlightQuery.toLowerCase());
 
                 const row = document.createElement('tr');
+                if (isHighlighted) {
+                    row.classList.add('highlighted');
+                }
                 row.innerHTML = `
+                    <td><input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleEntrySelection(${index})"></td>
                     <td class="time-col">${startFormatted}</td>
                     <td class="time-col">${endFormatted}</td>
                     <td class="text-col">${sub.text}</td>
@@ -1224,6 +1272,99 @@
                 `;
                 tbody.appendChild(row);
             });
+
+            updateSelectAllCheckbox();
+        }
+
+        function toggleEntrySelection(index) {
+            if (selectedEntries.includes(index)) {
+                selectedEntries = selectedEntries.filter(i => i !== index);
+            } else {
+                selectedEntries.push(index);
+            }
+            setStorageItem('selected_entries', JSON.stringify(selectedEntries));
+            updateSelectAllCheckbox();
+        }
+
+        function toggleAllCheckboxes() {
+            const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+            const checkboxes = document.querySelectorAll('#actualTimelineTable tbody input[type="checkbox"]');
+
+            if (selectAllCheckbox.checked) {
+                selectedEntries = [];
+                checkboxes.forEach((cb, index) => {
+                    cb.checked = true;
+                    selectedEntries.push(index);
+                });
+            } else {
+                selectedEntries = [];
+                checkboxes.forEach(cb => cb.checked = false);
+            }
+            setStorageItem('selected_entries', JSON.stringify(selectedEntries));
+        }
+
+        function updateSelectAllCheckbox() {
+            const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+            const checkboxes = document.querySelectorAll('#actualTimelineTable tbody input[type="checkbox"]');
+            const checkedBoxes = document.querySelectorAll('#actualTimelineTable tbody input[type="checkbox"]:checked');
+
+            selectAllCheckbox.checked = checkboxes.length > 0 && checkedBoxes.length === checkboxes.length;
+            selectAllCheckbox.indeterminate = checkedBoxes.length > 0 && checkedBoxes.length < checkboxes.length;
+        }
+
+        function selectAllEntries() {
+            selectedEntries = [];
+            const checkboxes = document.querySelectorAll('#actualTimelineTable tbody input[type="checkbox"]');
+            checkboxes.forEach((cb, index) => {
+                cb.checked = true;
+                selectedEntries.push(index);
+            });
+            setStorageItem('selected_entries', JSON.stringify(selectedEntries));
+            updateSelectAllCheckbox();
+        }
+
+        function deselectAllEntries() {
+            selectedEntries = [];
+            const checkboxes = document.querySelectorAll('#actualTimelineTable tbody input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+            setStorageItem('selected_entries', JSON.stringify(selectedEntries));
+            updateSelectAllCheckbox();
+        }
+
+        function exportSelectedAsSRT() {
+            if (selectedEntries.length === 0) {
+                showMessage('No entries selected for export.', 'error');
+                return;
+            }
+
+            let srtContent = '';
+            selectedEntries.forEach((index, srtIndex) => {
+                const sub = subtitleData[index];
+                const startFormatted = formatTimeToSRT(sub.start);
+                const endFormatted = formatTimeToSRT(sub.end);
+
+                srtContent += `${srtIndex + 1}\n`;
+                srtContent += `${startFormatted} --> ${endFormatted}\n`;
+                srtContent += `${sub.text}\n\n`;
+            });
+
+            const blob = new Blob([srtContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'selected-subtitles.srt';
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showMessage(`Exported ${selectedEntries.length} selected entries as SRT.`, 'success');
+        }
+
+        function formatTimeToSRT(seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = Math.floor(seconds % 60);
+            const ms = Math.floor((seconds % 1) * 1000);
+            return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')},${ms.toString().padStart(3, '0')}`;
         }
 
         function showMessage(message, type) {
