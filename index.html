@@ -1400,96 +1400,101 @@ end`;
             copyToClipboard(luaScript);
         }
 
+        // Store context data for slider lookups
+        const contextDataStore = {};
+        const BUFFER_SIZE = 100;  // 100 words loaded around the search term
+        const VISIBLE_SIZE = 25;  // 25 words visible at a time in the textbox
+
         function getColoredContextWithSlider(text, query) {
-            const words = text.split(/\s+/);
+            const allWords = text.split(/\s+/);
             const queryLower = query.toLowerCase();
-            const queryWordIndex = words.findIndex(word => word.toLowerCase().includes(queryLower));
+            const queryWordIndex = allWords.findIndex(word => word.toLowerCase().includes(queryLower));
 
             if (queryWordIndex === -1) {
-                // Fallback to simple display
-                const limitedText = words.slice(0, 100).join(' ');
-                return `<div style="max-width: 400px; overflow-x: auto; white-space: nowrap; border: 1px solid #ddd; padding: 4px; border-radius: 4px; background: #f9f9f9;">${limitedText}${words.length > 100 ? '...' : ''}</div>`;
+                const limitedText = allWords.slice(0, VISIBLE_SIZE).join(' ');
+                return `<div style="width: 100%; border: 1px solid #ddd; padding: 8px; border-radius: 4px; background: #f9f9f9;">${limitedText}${allWords.length > VISIBLE_SIZE ? '...' : ''}</div>`;
             }
 
-            // Create unique ID for this context
             const contextId = 'context_' + Math.random().toString(36).substr(2, 9);
 
-            // Initial window: 50 words before, found word, 50 words after
-            let windowStart = Math.max(0, queryWordIndex - 50);
-            let windowEnd = Math.min(words.length, queryWordIndex + 51); // +1 for found word
-
-            const maxWindowSize = 100;
-            if (windowEnd - windowStart < maxWindowSize && words.length >= maxWindowSize) {
-                // Expand window if possible
-                const expandLeft = Math.min(windowStart, Math.floor((maxWindowSize - (windowEnd - windowStart)) / 2));
-                const expandRight = Math.min(words.length - windowEnd, maxWindowSize - (windowEnd - windowStart) - expandLeft);
-                windowStart -= expandLeft;
-                windowEnd += expandRight;
+            // Extract a 100-word buffer centered on the search term
+            let bufferStart = Math.max(0, queryWordIndex - Math.floor(BUFFER_SIZE / 2));
+            if (bufferStart + BUFFER_SIZE > allWords.length) {
+                bufferStart = Math.max(0, allWords.length - BUFFER_SIZE);
             }
+            const bufferEnd = Math.min(allWords.length, bufferStart + BUFFER_SIZE);
+            const bufferWords = allWords.slice(bufferStart, bufferEnd);
 
-            function updateDisplay() {
-                const windowWords = words.slice(windowStart, windowEnd);
-                let displayText = '';
+            // The query word index relative to the buffer
+            const queryInBuffer = queryWordIndex - bufferStart;
 
-                for (let i = 0; i < windowWords.length; i++) {
-                    const word = windowWords[i];
-                    const globalIndex = windowStart + i;
-                    if (globalIndex === queryWordIndex) {
-                        displayText += `<span style="background-color: yellow; font-weight: bold;">${word}</span> `;
-                    } else {
-                        displayText += word + ' ';
-                    }
-                }
+            // Slider controls which 25-word slice of the buffer is visible
+            // Start the slider so the search term is centered in the visible 25 words
+            const maxSlider = Math.max(0, bufferWords.length - VISIBLE_SIZE);
+            let initialSlider = Math.max(0, queryInBuffer - Math.floor(VISIBLE_SIZE / 2));
+            initialSlider = Math.min(initialSlider, maxSlider);
 
-                if (windowStart > 0) displayText = '... ' + displayText;
-                if (windowEnd < words.length) displayText = displayText.trim() + ' ...';
+            // Store data for the slider handler
+            contextDataStore[contextId] = { bufferWords, queryInBuffer, bufferStart, totalWords: allWords.length };
 
-                document.getElementById(contextId).innerHTML = displayText.trim();
-            }
+            // Build initial visible slice
+            const initialHtml = buildContextHtml(contextId, initialSlider);
 
-            // Create slider
-            const maxStart = Math.max(0, words.length - maxWindowSize);
             const sliderHtml = `
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
-                    <input type="range" min="0" max="${maxStart}" value="${windowStart}" style="flex: 1;" onchange="updateContextWindow('${contextId}', ${queryWordIndex}, this.value, '${text.replace(/'/g, "\\'")}', '${query.replace(/'/g, "\\'")}')">
-                    <span style="font-size: 0.8em; color: #666;">${windowStart + 1}-${windowEnd}/${words.length}</span>
+                    <span style="font-size: 0.75em; color: #999;">&#9664;</span>
+                    <input type="range" min="0" max="${maxSlider}" value="${initialSlider}" style="flex: 1; accent-color: #667eea;" oninput="updateContextWindow('${contextId}', this.value)">
+                    <span style="font-size: 0.75em; color: #999;">&#9654;</span>
+                    <span id="${contextId}_pos" style="font-size: 0.8em; color: #666; min-width: 100px; text-align: right;">words ${initialSlider + 1}-${Math.min(initialSlider + VISIBLE_SIZE, bufferWords.length)} / ${bufferWords.length}</span>
                 </div>
-                <div id="${contextId}" style="max-width: 400px; overflow-x: auto; white-space: nowrap; border: 1px solid #ddd; padding: 4px; border-radius: 4px; background: #f9f9f9; min-height: 20px;"></div>
+                <div id="${contextId}" style="width: 100%; border: 1px solid #ddd; padding: 10px; border-radius: 4px; background: #f9f9f9; min-height: 28px; font-size: 0.95em; line-height: 1.6; white-space: normal; word-wrap: break-word;">${initialHtml}</div>
             `;
-
-            // Initial display
-            setTimeout(() => updateDisplay(), 0);
 
             return sliderHtml;
         }
 
-        function updateContextWindow(contextId, queryWordIndex, newStart, text, query) {
-            const words = text.split(/\s+/);
-            let windowStart = parseInt(newStart);
-            let windowEnd = Math.min(words.length, windowStart + 100);
+        function buildContextHtml(contextId, sliderPos) {
+            const data = contextDataStore[contextId];
+            if (!data) return '';
+            const { bufferWords, queryInBuffer, bufferStart, totalWords } = data;
 
-            const windowWords = words.slice(windowStart, windowEnd);
+            const viewStart = parseInt(sliderPos);
+            const viewEnd = Math.min(bufferWords.length, viewStart + VISIBLE_SIZE);
+
             let displayText = '';
 
-            for (let i = 0; i < windowWords.length; i++) {
-                const word = windowWords[i];
-                const globalIndex = windowStart + i;
-                if (globalIndex === queryWordIndex) {
-                    displayText += `<span style="background-color: yellow; font-weight: bold;">${word}</span> `;
+            // Show "..." if there's more text before the visible window
+            if (bufferStart > 0 || viewStart > 0) displayText += '... ';
+
+            for (let i = viewStart; i < viewEnd; i++) {
+                const word = bufferWords[i];
+                if (i === queryInBuffer) {
+                    displayText += `<span style="background-color: #ffeb3b; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${word}</span> `;
                 } else {
                     displayText += word + ' ';
                 }
             }
 
-            if (windowStart > 0) displayText = '... ' + displayText;
-            if (windowEnd < words.length) displayText = displayText.trim() + ' ...';
+            // Show "..." if there's more text after the visible window
+            if (viewEnd < bufferWords.length || (bufferStart + bufferWords.length) < totalWords) {
+                displayText = displayText.trim() + ' ...';
+            }
 
-            document.getElementById(contextId).innerHTML = displayText.trim();
+            return displayText.trim();
+        }
 
-            // Update position indicator
-            const indicator = document.querySelector(`input[onchange*="updateContextWindow('${contextId}'"]`).nextElementSibling;
-            if (indicator) {
-                indicator.textContent = `${windowStart + 1}-${windowEnd}/${words.length}`;
+        function updateContextWindow(contextId, sliderPos) {
+            const data = contextDataStore[contextId];
+            if (!data) return;
+
+            const viewStart = parseInt(sliderPos);
+            const viewEnd = Math.min(data.bufferWords.length, viewStart + VISIBLE_SIZE);
+
+            document.getElementById(contextId).innerHTML = buildContextHtml(contextId, sliderPos);
+
+            const posEl = document.getElementById(contextId + '_pos');
+            if (posEl) {
+                posEl.textContent = `words ${viewStart + 1}-${viewEnd} / ${data.bufferWords.length}`;
             }
         }
 
