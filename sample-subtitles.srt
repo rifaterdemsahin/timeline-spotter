@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:03,000
+Welcome to our timeline spotter tutorial
+
+2
+00:00:03,500 --> 00:00:07,000
+Today we'll learn how to find artifacts in your video editor
+
+3
+00:00:07,500 --> 00:00:11,000
+Let's start with the intro logo and title card
+
+4
+00:00:11,500 --> 00:00:15,000
+The main content begins after the transition
+
+5
+00:00:30,000 --> 00:00:34,000
+Adding lower third text helps identify speakers
+
+6
+00:01:00,000 --> 00:01:04,000
+Background music should be synchronized with the visuals
+
+7
+00:02:00,000 --> 00:02:04,000
+Now let's add some b-roll footage for variety
+
+8
+00:03:30,000 --> 00:03:34,000
+Sound effects like whoosh can enhance transitions
+
+9
+00:04:30,000 --> 00:04:34,000
+Don't forget the call-to-action graphic
+
+10
+00:04:50,000 --> 00:04:55,000
+Finally, add the outro animation and end screen with subscribe button

@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Spotter - Artifact Location Finder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid #e9ecef;
+        }
+
+        .section h2 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+        }
+
+        .section h2::before {
+            content: "▶";
+            margin-right: 10px;
+            color: #667eea;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #495057;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Courier New', monospace;
+        }
+
+        input[type="file"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.secondary {
+            background: #6c757d;
+        }
+
+        button.danger {
+            background: #dc3545;
+        }
+
+        .timeline-container {
+            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 2px solid #dee2e6;
+        }
+
+        .timeline {
+            position: relative;
+            height: 100px;
+            background: linear-gradient(to right, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px solid #dee2e6;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            bottom: 0;
+            width: 3px;
+            height: 100%;
+            background: rgba(102, 126, 234, 0.3);
+        }
+
+        .artifact-marker {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .artifact-marker:hover {
+            transform: translateY(-50%) scale(1.3);
+        }
+
+        .artifact-label {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #667eea;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            display: none;
+        }
+
+        .artifact-marker:hover .artifact-label {
+            display: block;
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .result-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .result-item strong {
+            color: #667eea;
+        }
+
+        .cookie-list {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .cookie-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 5px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .cookie-item button {
+            padding: 5px 10px;
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #f5c6cb;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Timeline Spotter</h1>
+        <p class="subtitle">Find location for your artifacts on a non-linear video editor</p>
+
+        <div id="successMessage" class="success-message"></div>
+        <div id="errorMessage" class="error-message"></div>
+
+        <div class="info-box">
+            <strong>ℹ️ How to use:</strong> Configure your timeline length, upload subtitles and artifacts, then use the search function to find optimal locations for your artifacts. All data is saved in cookies for persistence.
+        </div>
+
+        <!-- Script Input Section -->
+        <div class="section">
+            <h2>Script & Notes</h2>
+            <label for="scriptInput">Enter your script or notes (saved in cookies):</label>
+            <textarea id="scriptInput" placeholder="Enter your video script, notes, or keywords here..."></textarea>
+            <button onclick="saveScript()">💾 Save Script</button>
+            <button onclick="loadScript()" class="secondary">📂 Load Script</button>
+        </div>
+
+        <!-- Timeline Configuration -->
+        <div class="section">
+            <h2>Timeline Configuration</h2>
+            <div class="grid-2">
+                <div>
+                    <label for="timelineLength">Timeline Length (seconds):</label>
+                    <input type="number" id="timelineLength" value="300" min="1" placeholder="e.g., 300">
+                </div>
+                <div>
+                    <label for="timelineUnit">Time Unit:</label>
+                    <select id="timelineUnit">
+                        <option value="seconds">Seconds</option>
+                        <option value="frames">Frames (30fps)</option>
+                        <option value="timecode">Timecode</option>
+                    </select>
+                </div>
+            </div>
+            <button onclick="updateTimeline()">🔄 Update Timeline</button>
+        </div>
+
+        <!-- File Uploads -->
+        <div class="section">
+            <h2>Upload Files</h2>
+            <label for="subtitleFile">Upload Subtitle File (.srt, .vtt):</label>
+            <input type="file" id="subtitleFile" accept=".srt,.vtt,.txt" onchange="handleSubtitleUpload(event)">
+            
+            <label for="artifactFile">Upload Artifact List (.txt, .json, .csv):</label>
+            <input type="file" id="artifactFile" accept=".txt,.json,.csv" onchange="handleArtifactUpload(event)">
+        </div>
+
+        <!-- Search Function -->
+        <div class="section">
+            <h2>Search Artifacts</h2>
+            <label for="searchQuery">Search for artifact locations:</label>
+            <input type="text" id="searchQuery" placeholder="e.g., intro, transition, logo, music cue">
+            <button onclick="searchArtifacts()">🔍 Find Locations</button>
+            <button onclick="placeAllArtifacts()" class="secondary">📍 Place All on Timeline</button>
+            
+            <div id="searchResults" class="results"></div>
+        </div>
+
+        <!-- Timeline Visualization -->
+        <div class="section">
+            <h2>Timeline Preview</h2>
+            <div class="timeline-container">
+                <div id="timelineInfo" style="margin-bottom: 10px; color: #666;"></div>
+                <div id="timeline" class="timeline"></div>
+                <div id="artifactList" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+
+        <!-- Cookie Management -->
+        <div class="section">
+            <h2>Cookie Management</h2>
+            <button onclick="viewCookies()">👁️ View All Cookies</button>
+            <button onclick="clearAllCookies()" class="danger">🗑️ Clear All Cookies</button>
+            <button onclick="exportData()" class="secondary">💾 Export Data</button>
+            <button onclick="importData()" class="secondary">📂 Import Data</button>
+            
+            <div id="cookieList" class="cookie-list" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Management Functions
+        function setCookie(name, value, days = 365) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) {
+                    return decodeURIComponent(c.substring(nameEQ.length, c.length));
+                }
+            }
+            return null;
+        }
+
+        function deleteCookie(name) {
+            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+
+        function getAllCookies() {
+            const cookies = {};
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                const eqPos = c.indexOf('=');
+                if (eqPos > 0) {
+                    const name = c.substring(0, eqPos);
+                    const value = decodeURIComponent(c.substring(eqPos + 1));
+                    cookies[name] = value;
+                }
+            }
+            return cookies;
+        }
+
+        // Script Management
+        function saveScript() {
+            const script = document.getElementById('scriptInput').value;
+            if (script.trim()) {
+                setCookie('timeline_script', script);
+                showMessage('Script saved successfully!', 'success');
+            } else {
+                showMessage('Please enter some text before saving.', 'error');
+            }
+        }
+
+        function loadScript() {
+            const script = getCookie('timeline_script');
+            if (script) {
+                document.getElementById('scriptInput').value = script;
+                showMessage('Script loaded successfully!', 'success');
+            } else {
+                showMessage('No saved script found.', 'error');
+            }
+        }
+
+        // Timeline Management
+        let timelineData = {
+            length: 300,
+            unit: 'seconds',
+            artifacts: []
+        };
+
+        function updateTimeline() {
+            const length = parseInt(document.getElementById('timelineLength').value);
+            const unit = document.getElementById('timelineUnit').value;
+            
+            timelineData.length = length;
+            timelineData.unit = unit;
+            
+            setCookie('timeline_length', length);
+            setCookie('timeline_unit', unit);
+            
+            renderTimeline();
+            showMessage('Timeline updated successfully!', 'success');
+        }
+
+        function renderTimeline() {
+            const timeline = document.getElementById('timeline');
+            const info = document.getElementById('timelineInfo');
+            
+            timeline.innerHTML = '';
+            
+            // Add time markers
+            for (let i = 0; i <= 10; i++) {
+                const marker = document.createElement('div');
+                marker.className = 'timeline-marker';
+                marker.style.left = (i * 10) + '%';
+                timeline.appendChild(marker);
+            }
+            
+            // Display timeline info
+            const duration = formatDuration(timelineData.length, timelineData.unit);
+            info.textContent = `Timeline: 0 to ${duration}`;
+            
+            // Render artifacts
+            timelineData.artifacts.forEach((artifact, index) => {
+                const marker = document.createElement('div');
+                marker.className = 'artifact-marker';
+                marker.style.left = artifact.position + '%';
+                marker.style.background = artifact.color || '#667eea';
+                marker.innerHTML = `<div class="artifact-label">${artifact.name} (${artifact.time})</div>`;
+                marker.onclick = () => showArtifactDetails(artifact);
+                timeline.appendChild(marker);
+            });
+            
+            updateArtifactList();
+        }
+
+        function formatDuration(value, unit) {
+            if (unit === 'seconds') {
+                const mins = Math.floor(value / 60);
+                const secs = value % 60;
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            } else if (unit === 'frames') {
+                return `${value} frames`;
+            } else {
+                return value;
+            }
+        }
+
+        // Subtitle Processing
+        let subtitleData = [];
+
+        function handleSubtitleUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                subtitleData = parseSubtitles(content);
+                setCookie('timeline_subtitles', JSON.stringify(subtitleData));
+                showMessage(`Subtitle file uploaded: ${subtitleData.length} entries parsed.`, 'success');
+            };
+            reader.readAsText(file);
+        }
+
+        function parseSubtitles(content) {
+            const lines = content.split('\n');
+            const subtitles = [];
+            let currentSubtitle = {};
+            
+            for (let line of lines) {
+                line = line.trim();
+                
+                // Time code line (e.g., 00:00:01,000 --> 00:00:04,000)
+                if (line.includes('-->')) {
+                    const [start, end] = line.split('-->').map(t => t.trim());
+                    currentSubtitle.start = parseTimecode(start);
+                    currentSubtitle.end = parseTimecode(end);
+                }
+                // Text content
+                else if (line && !line.match(/^\d+$/) && currentSubtitle.start !== undefined) {
+                    if (!currentSubtitle.text) {
+                        currentSubtitle.text = line;
+                    } else {
+                        currentSubtitle.text += ' ' + line;
+                    }
+                }
+                // Empty line - end of subtitle block
+                else if (line === '' && currentSubtitle.text) {
+                    subtitles.push({...currentSubtitle});
+                    currentSubtitle = {};
+                }
+            }
+            
+            return subtitles;
+        }
+
+        function parseTimecode(timecode) {
+            // Parse formats like 00:00:01,000 or 00:00:01.000
+            const parts = timecode.replace(',', '.').split(':');
+            const hours = parseInt(parts[0]) || 0;
+            const minutes = parseInt(parts[1]) || 0;
+            const seconds = parseFloat(parts[2]) || 0;
+            return hours * 3600 + minutes * 60 + seconds;
+        }
+
+        // Artifact Management
+        let artifactList = [];
+
+        function handleArtifactUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                
+                if (file.name.endsWith('.json')) {
+                    artifactList = JSON.parse(content);
+                } else if (file.name.endsWith('.csv')) {
+                    artifactList = parseCSV(content);
+                } else {
+                    // Plain text - one artifact per line
+                    artifactList = content.split('\n')
+                        .filter(line => line.trim())
+                        .map(line => ({ name: line.trim() }));
+                }
+                
+                setCookie('timeline_artifacts', JSON.stringify(artifactList));
+                showMessage(`Artifact list uploaded: ${artifactList.length} artifacts loaded.`, 'success');
+            };
+            reader.readAsText(file);
+        }
+
+        function parseCSV(content) {
+            const lines = content.split('\n');
+            const result = [];
+            
+            for (let i = 1; i < lines.length; i++) { // Skip header
+                const line = lines[i].trim();
+                if (line) {
+                    const parts = line.split(',');
+                    result.push({
+                        name: parts[0]?.trim(),
+                        type: parts[1]?.trim(),
+                        keywords: parts[2]?.trim()
+                    });
+                }
+            }
+            
+            return result;
+        }
+
+        // Search Function
+        function searchArtifacts() {
+            const query = document.getElementById('searchQuery').value.toLowerCase();
+            if (!query) {
+                showMessage('Please enter a search query.', 'error');
+                return;
+            }
+            
+            const results = [];
+            const script = document.getElementById('scriptInput').value.toLowerCase();
+            
+            // Search in script
+            if (script.includes(query)) {
+                const position = (script.indexOf(query) / script.length) * 100;
+                results.push({
+                    source: 'Script',
+                    query: query,
+                    position: position,
+                    confidence: 'High'
+                });
+            }
+            
+            // Search in subtitles
+            subtitleData.forEach((sub, index) => {
+                if (sub.text.toLowerCase().includes(query)) {
+                    const position = (sub.start / timelineData.length) * 100;
+                    results.push({
+                        source: 'Subtitle',
+                        query: query,
+                        position: Math.min(position, 100),
+                        time: formatTime(sub.start),
+                        text: sub.text,
+                        confidence: 'High'
+                    });
+                }
+            });
+            
+            // Search in artifact list
+            artifactList.forEach((artifact, index) => {
+                if (artifact.name?.toLowerCase().includes(query) || 
+                    artifact.keywords?.toLowerCase().includes(query)) {
+                    const estimatedPosition = estimateArtifactPosition(artifact);
+                    results.push({
+                        source: 'Artifact List',
+                        query: query,
+                        position: estimatedPosition,
+                        name: artifact.name,
+                        confidence: 'Medium'
+                    });
+                }
+            });
+            
+            // Display results
+            displaySearchResults(results);
+            
+            if (results.length === 0) {
+                showMessage('No matches found for your search.', 'error');
+            } else {
+                showMessage(`Found ${results.length} potential locations.`, 'success');
+            }
+        }
+
+        function estimateArtifactPosition(artifact) {
+            // Simple heuristic: estimate based on name patterns
+            const name = artifact.name.toLowerCase();
+            
+            if (name.includes('intro') || name.includes('opening')) return 5;
+            if (name.includes('outro') || name.includes('ending') || name.includes('credits')) return 95;
+            if (name.includes('middle') || name.includes('center')) return 50;
+            if (name.includes('transition')) return 30 + Math.random() * 40;
+            
+            // Default: distribute evenly
+            return Math.random() * 100;
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            const ms = Math.floor((seconds % 1) * 1000);
+            return `${mins}:${secs.toString().padStart(2, '0')}.${ms.toString().padStart(3, '0')}`;
+        }
+
+        function displaySearchResults(results) {
+            const container = document.getElementById('searchResults');
+            container.innerHTML = '';
+            
+            if (results.length === 0) {
+                container.innerHTML = '<p style="color: #666;">No results found.</p>';
+                return;
+            }
+            
+            results.forEach((result, index) => {
+                const div = document.createElement('div');
+                div.className = 'result-item';
+                div.innerHTML = `
+                    <strong>${result.query}</strong> found in <em>${result.source}</em><br>
+                    Estimated position: <strong>${result.position.toFixed(2)}%</strong> 
+                    ${result.time ? `(${result.time})` : ''}<br>
+                    Confidence: ${result.confidence}
+                    ${result.text ? `<br><small>Context: "${result.text.substring(0, 100)}..."</small>` : ''}
+                    <br><button onclick="addToTimeline('${result.query}', ${result.position}, '${result.time || ''}')">Add to Timeline</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function addToTimeline(name, position, time) {
+            const artifact = {
+                name: name,
+                position: Math.min(Math.max(position, 0), 100),
+                time: time || formatTime((position / 100) * timelineData.length),
+                color: getRandomColor()
+            };
+            
+            timelineData.artifacts.push(artifact);
+            saveTimelineData();
+            renderTimeline();
+            showMessage(`"${name}" added to timeline at ${position.toFixed(2)}%`, 'success');
+        }
+
+        function placeAllArtifacts() {
+            if (artifactList.length === 0) {
+                showMessage('No artifacts to place. Please upload an artifact list first.', 'error');
+                return;
+            }
+            
+            timelineData.artifacts = [];
+            
+            artifactList.forEach((artifact, index) => {
+                const position = estimateArtifactPosition(artifact);
+                const time = (position / 100) * timelineData.length;
+                
+                timelineData.artifacts.push({
+                    name: artifact.name,
+                    position: position,
+                    time: formatTime(time),
+                    color: getRandomColor()
+                });
+            });
+            
+            saveTimelineData();
+            renderTimeline();
+            showMessage(`Placed ${artifactList.length} artifacts on timeline.`, 'success');
+        }
+
+        function getRandomColor() {
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b', '#fa709a'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function showArtifactDetails(artifact) {
+            alert(`Artifact: ${artifact.name}\nPosition: ${artifact.position.toFixed(2)}%\nTime: ${artifact.time}`);
+        }
+
+        function updateArtifactList() {
+            const container = document.getElementById('artifactList');
+            if (timelineData.artifacts.length === 0) {
+                container.innerHTML = '<p style="color: #666;">No artifacts placed on timeline yet.</p>';
+                return;
+            }
+            
+            let html = '<strong>Artifacts on Timeline:</strong><br>';
+            timelineData.artifacts.forEach((artifact, index) => {
+                html += `
+                    <div style="display: inline-block; margin: 5px; padding: 5px 10px; background: ${artifact.color}; color: white; border-radius: 5px; font-size: 0.9em;">
+                        ${artifact.name} @ ${artifact.position.toFixed(1)}%
+                        <button onclick="removeArtifact(${index})" style="margin-left: 5px; padding: 2px 6px; font-size: 0.8em;">×</button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function removeArtifact(index) {
+            timelineData.artifacts.splice(index, 1);
+            saveTimelineData();
+            renderTimeline();
+            showMessage('Artifact removed from timeline.', 'success');
+        }
+
+        function saveTimelineData() {
+            setCookie('timeline_data', JSON.stringify(timelineData));
+        }
+
+        function loadTimelineData() {
+            const data = getCookie('timeline_data');
+            if (data) {
+                timelineData = JSON.parse(data);
+            }
+            
+            const length = getCookie('timeline_length');
+            const unit = getCookie('timeline_unit');
+            
+            if (length) {
+                timelineData.length = parseInt(length);
+                document.getElementById('timelineLength').value = length;
+            }
+            
+            if (unit) {
+                timelineData.unit = unit;
+                document.getElementById('timelineUnit').value = unit;
+            }
+            
+            const subtitles = getCookie('timeline_subtitles');
+            if (subtitles) {
+                subtitleData = JSON.parse(subtitles);
+            }
+            
+            const artifacts = getCookie('timeline_artifacts');
+            if (artifacts) {
+                artifactList = JSON.parse(artifacts);
+            }
+        }
+
+        // Cookie Management UI
+        function viewCookies() {
+            const container = document.getElementById('cookieList');
+            const cookies = getAllCookies();
+            
+            if (Object.keys(cookies).length === 0) {
+                container.innerHTML = '<p style="color: #666;">No cookies found.</p>';
+            } else {
+                let html = '<h3>Stored Cookies:</h3>';
+                for (let [name, value] of Object.entries(cookies)) {
+                    const displayValue = value.length > 50 ? value.substring(0, 50) + '...' : value;
+                    html += `
+                        <div class="cookie-item">
+                            <span><strong>${name}:</strong> ${displayValue}</span>
+                            <button onclick="clearCookie('${name}')" class="danger">Delete</button>
+                        </div>
+                    `;
+                }
+                container.innerHTML = html;
+            }
+            
+            container.style.display = 'block';
+        }
+
+        function clearCookie(name) {
+            deleteCookie(name);
+            showMessage(`Cookie "${name}" deleted successfully.`, 'success');
+            viewCookies();
+        }
+
+        function clearAllCookies() {
+            if (!confirm('Are you sure you want to delete all cookies? This will remove all saved data.')) {
+                return;
+            }
+            
+            const cookies = getAllCookies();
+            for (let name in cookies) {
+                deleteCookie(name);
+            }
+            
+            document.getElementById('cookieList').style.display = 'none';
+            document.getElementById('scriptInput').value = '';
+            timelineData.artifacts = [];
+            renderTimeline();
+            
+            showMessage('All cookies cleared successfully.', 'success');
+        }
+
+        function exportData() {
+            const data = {
+                script: getCookie('timeline_script'),
+                timeline: timelineData,
+                subtitles: subtitleData,
+                artifacts: artifactList
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'timeline-spotter-data.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showMessage('Data exported successfully.', 'success');
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    try {
+                        const data = JSON.parse(event.target.result);
+                        
+                        if (data.script) {
+                            setCookie('timeline_script', data.script);
+                            document.getElementById('scriptInput').value = data.script;
+                        }
+                        
+                        if (data.timeline) {
+                            timelineData = data.timeline;
+                            saveTimelineData();
+                        }
+                        
+                        if (data.subtitles) {
+                            subtitleData = data.subtitles;
+                            setCookie('timeline_subtitles', JSON.stringify(subtitleData));
+                        }
+                        
+                        if (data.artifacts) {
+                            artifactList = data.artifacts;
+                            setCookie('timeline_artifacts', JSON.stringify(artifactList));
+                        }
+                        
+                        renderTimeline();
+                        showMessage('Data imported successfully!', 'success');
+                    } catch (error) {
+                        showMessage('Error importing data: ' + error.message, 'error');
+                    }
+                };
+                
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        }
+
+        function showMessage(message, type) {
+            const successDiv = document.getElementById('successMessage');
+            const errorDiv = document.getElementById('errorMessage');
+            
+            successDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+            
+            if (type === 'success') {
+                successDiv.textContent = message;
+                successDiv.style.display = 'block';
+                setTimeout(() => successDiv.style.display = 'none', 5000);
+            } else {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                setTimeout(() => errorDiv.style.display = 'none', 5000);
+            }
+        }
+
+        // Initialize on page load
+        window.onload = function() {
+            loadTimelineData();
+            renderTimeline();
+            loadScript();
+        };
+    </script>
+</body>
+</html>
