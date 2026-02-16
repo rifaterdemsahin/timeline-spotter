@@ -942,6 +942,8 @@
                         Confidence: ${result.confidence}
                         ${result.text ? `<br><small>Context: "${result.text.substring(0, 100)}..."</small>` : ''}
                         <br><button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
+                        <button onclick="findInEstimatedTimeline('${result.query}')">🔍 Estimated</button>
+                        <button onclick="findInActualTimeline('${result.query}')">🎬 Actual</button>
                     `;
                     sourceDiv.appendChild(div);
                 });
@@ -1257,6 +1259,33 @@
 
         function highlightMatchingSegment(query) {
             renderScriptTimeline(query);
+        }
+
+        function findInEstimatedTimeline(query) {
+            if (document.getElementById('scriptTimelineSection').style.display !== 'none') {
+                renderScriptTimeline(query);
+                const section = document.getElementById('scriptTimelineSection');
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                showMessage('Estimated timeline not available (subtitles loaded).', 'error');
+            }
+        }
+
+        function findInActualTimeline(query) {
+            if (document.getElementById('actualTimelineSection').style.display !== 'none') {
+                renderActualTimeline(query);
+                const section = document.getElementById('actualTimelineSection');
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Also scroll to the highlighted row
+                setTimeout(() => {
+                    const highlighted = document.querySelector('.timeline-table tr.highlighted');
+                    if (highlighted) {
+                        highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 100);
+            } else {
+                showMessage('Actual timeline not available (no subtitles loaded).', 'error');
+            }
         }
 
         let selectedEntries = [];
