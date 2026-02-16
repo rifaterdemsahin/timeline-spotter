@@ -935,6 +935,8 @@
                     const div = document.createElement('div');
                     div.className = 'result-item';
                     const timeCode = result.time || formatTime((result.position / 100) * timelineData.length);
+                    const isScriptResult = result.source === 'Script';
+                    const isSubtitleResult = result.source === 'Subtitle';
                     div.innerHTML = `
                         <strong>${result.query}</strong> found in <em>${result.source}</em><br>
                         Estimated position: <strong>${result.position.toFixed(2)}%</strong>
@@ -942,8 +944,8 @@
                         Confidence: ${result.confidence}
                         ${result.text ? `<br><small>Context: "${result.text.substring(0, 100)}..."</small>` : ''}
                         <br><button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
-                        <button onclick="findInEstimatedTimeline('${result.query}')">🔍 Estimated</button>
-                        <button onclick="findInActualTimeline('${result.query}')">🎬 Actual</button>
+                        ${isScriptResult ? `<button onclick="findInEstimatedTimeline('${result.query}')">🔍 Estimated</button>` : ''}
+                        ${isSubtitleResult ? `<button onclick="findInActualTimeline('${result.query}')">🎬 Actual</button>` : ''}
                     `;
                     sourceDiv.appendChild(div);
                 });
