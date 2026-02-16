@@ -1429,20 +1429,16 @@ end`;
         }
 
         function getColoredContext(text, query) {
-            const words = text.split(/\s+/);
             const queryLower = query.toLowerCase();
-            const queryIndex = words.findIndex(word => word.toLowerCase().includes(queryLower));
+            const queryIndex = text.toLowerCase().indexOf(queryLower);
 
             if (queryIndex === -1) return text;
 
-            const start = Math.max(0, queryIndex - 16);
-            const end = Math.min(words.length, queryIndex + 17); // +1 for the query word, +16 after
+            const before = text.substring(0, queryIndex);
+            const found = text.substring(queryIndex, queryIndex + query.length);
+            const after = text.substring(queryIndex + query.length);
 
-            const beforeWords = words.slice(start, queryIndex);
-            const queryWord = words[queryIndex];
-            const afterWords = words.slice(queryIndex + 1, end);
-
-            return `<span style="color: green;">${beforeWords.join(' ')}</span> ${queryWord} <span style="color: red;">${afterWords.join(' ')}</span>`;
+            return `${before}<span style="background-color: yellow; font-weight: bold;">${found}</span>${after}`;
         }
 
         function showMessage(message, type) {
