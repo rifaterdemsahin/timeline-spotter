@@ -1,13 +1,480 @@
-name,type,keywords
-Intro Logo,graphic,intro opening logo branding
-Opening Title Card,text,intro title opening
-Background Music,audio,music soundtrack background
-Main Transition,effect,transition wipe fade
-Lower Third Text,text,lower-third name subtitle
-Call-to-Action Graphic,graphic,cta call-to-action button
-B-Roll Footage,video,b-roll supplemental footage
-Sound Effect - Whoosh,audio,sound-effect whoosh transition
-Outro Animation,graphic,outro ending closing
-End Screen,graphic,end-screen outro closing
-Subscribe Button,graphic,subscribe button cta
-Social Media Icons,graphic,social-media icons links
+File_Path,File_Type,Bin_Category,Purpose_Rationale,Format,Priority_Score
+01_Video_Footage/A-Roll/Replay 2026-02-09-06-59.mp4,Video,Video - A-Roll,Primary on-camera footage or main video content for the project,.mp4,5
+01_Video_Footage/Screen_Capture/screencapture10+Replay 2026-02-09-19-56.mp4,Video,Video - Screen Capture,Screen recording demonstration #102026020919564 - essential B-roll footage showing software/process,.mp4,5
+01_Video_Footage/Screen_Capture/screencapture2_feb2.mov,Video,Video - Screen Capture,Screen recording demonstration #2 - essential B-roll footage showing software/process,.mov,5
+01_Video_Footage/Screen_Capture/screencapture2_feb2_v2.mov,Video,Video - Screen Capture,Screen recording demonstration #2 - essential B-roll footage showing software/process,.mov,5
+01_Video_Footage/Screen_Capture/screencapture3_feb2_Replay 2026-02-09-17-48.mp4,Video,Video - Screen Capture,Screen recording demonstration #3 - essential B-roll footage showing software/process,.mp4,5
+01_Video_Footage/Screen_Capture/screencapture3_feb2_s3.mov,Video,Video - Screen Capture,Screen recording demonstration #3 - essential B-roll footage showing software/process,.mov,5
+01_Video_Footage/Screen_Capture/screencapture4_feb2_Replay 2026-02-09-18-01.mp4,Video,Video - Screen Capture,Screen recording demonstration #4 - essential B-roll footage showing software/process,.mp4,5
+01_Video_Footage/Screen_Capture/screencapture5_feb2_Replay 2026-02-09-18-08.mp4,Video,Video - Screen Capture,Screen recording demonstration #5 - essential B-roll footage showing software/process,.mp4,5
+01_Video_Footage/Screen_Capture/screencapture6_feb2_Replay 2026-02-09-18-18.mp4,Video,Video - Screen Capture,Screen recording demonstration #6 - essential B-roll footage showing software/process,.mp4,5
+01_Video_Footage/Screen_Capture/screencapture7_feb2_Replay 2026-02-09-18-26.mp4,Video,Video - Screen Capture,Screen recording demonstration #7 - essential B-roll footage showing software/process,.mp4,5
+01_Video_Footage/Screen_Capture/screencapture8_feb2_Replay 2026-02-09-18-31.mp4,Video,Video - Screen Capture,Screen recording demonstration #8 - essential B-roll footage showing software/process,.mp4,5
+01_Video_Footage/Screen_Capture/screencapture9_Replay 2026-02-09-19-39.mp4,Video,Video - Screen Capture,Screen recording demonstration #9 - essential B-roll footage showing software/process,.mp4,5
+04_Text/Subtitles/source_subtitle.srt,Subtitle,Text - Subtitles,Source subtitle file - primary subtitle track for video accessibility,.srt,5
+02_Audio/Music/ambient_digital_space.wav,Audio,Audio - Music,Ambient background music track for creating atmospheric tone during specific scenes,.wav,4
+02_Audio/Music/ambient_futuristic_city.wav,Audio,Audio - Music,Ambient background music track for creating atmospheric tone during specific scenes,.wav,4
+02_Audio/Music/ambient_tech_office.wav,Audio,Audio - Music,Ambient background music track for creating atmospheric tone during specific scenes,.wav,4
+02_Audio/Music/sfx_error_beep.wav,Audio,Audio - Music,Sound effect: error beep - for transitions and UI feedback,.wav,4
+02_Audio/Music/sfx_impact_hit.wav,Audio,Audio - Music,Sound effect: impact hit - for transitions and UI feedback,.wav,4
+02_Audio/Music/sfx_riser_buildup.wav,Audio,Audio - Music,Sound effect: riser buildup - for transitions and UI feedback,.wav,4
+02_Audio/Music/sfx_success_chime.wav,Audio,Audio - Music,Sound effect: success chime - for transitions and UI feedback,.wav,4
+02_Audio/Music/sfx_tech_beep.wav,Audio,Audio - Music,Sound effect: tech beep - for transitions and UI feedback,.wav,4
+02_Audio/Music/sfx_typing_sequence.wav,Audio,Audio - Music,Sound effect: typing sequence - for transitions and UI feedback,.wav,4
+02_Audio/Music/sfx_ui_click.wav,Audio,Audio - Music,Sound effect: ui click - for transitions and UI feedback,.wav,4
+02_Audio/Music/sfx_whoosh_transition.wav,Audio,Audio - Music,Sound effect: whoosh transition - for transitions and UI feedback,.wav,4
+02_Audio/Music/track_01_opening_theme.wav,Audio,Audio - Music,Main music track #01 - Opening Theme,.wav,4
+02_Audio/Music/track_02_transformation.wav,Audio,Audio - Music,Main music track #02 - Transformation,.wav,4
+02_Audio/Music/track_03_innovation.wav,Audio,Audio - Music,Main music track #03 - Innovation,.wav,4
+02_Audio/Music/track_04_tech_ecosystem.wav,Audio,Audio - Music,Main music track #04 - Tech Ecosystem,.wav,4
+02_Audio/Music/track_05_the_feast.wav,Audio,Audio - Music,Main music track #05 - The Feast,.wav,4
+05_PreProduction/Scripts_EDL/source_edl.md,Document,PreProduction - Scripts/EDL,Edit Decision List (EDL) markdown - defines cut order and timing,.md,4
+05_PreProduction/Scripts_EDL/source_transcript.md,Document,PreProduction - Scripts/EDL,Full transcript of video narration/dialogue,.md,4
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/CICDPipelineAnimation.mp4,Video,Animation - Video Output,CI/CD pipeline animation - visualizes deployment workflow,.mp4,4
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/GitCloneAnimation.mp4,Video,Animation - Video Output,Git clone workflow animation - demonstrates version control process,.mp4,4
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/LLMFeatureCardsAnimation.mp4,Video,Animation - Video Output,LLM feature comparison cards animation - shows AI model capabilities,.mp4,4
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/NumberCounterAnimation.mp4,Video,Animation - Video Output,Animated number counter - displays counting/statistics animation,.mp4,4
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/SpeedMultiplierAnimation.mp4,Video,Animation - Video Output,Speed multiplier animation - visualizes performance improvements,.mp4,4
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/StaticVsDynamicAnimation.mp4,Video,Animation - Video Output,Static vs Dynamic comparison animation - illustrates workflow differences,.mp4,4
+03_Graphics/Lower_Thirds/000_3d_ai_brain_feast_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Ai Brain Feast 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/000_3d_automation_gear_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Automation Gear 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/000_3d_compass_pivot_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Compass Pivot 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/000_3d_free_tier_toolbox_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Free Tier Toolbox 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/000_3d_futuristic_city_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Futuristic City 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/000_3d_golden_microphone_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Golden Microphone 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/000_3d_internet_kill_switch_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Internet Kill Switch 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/000_3d_laptop_terminal_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Laptop Terminal 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/000_3d_mercury_liquid_figure_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Mercury Liquid Figure 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/000_3d_rocket_cicd_20260213_v1_texture.png,Image,Graphics - Lower Thirds,3D rendered object: Rocket Cicd 20260213 V1 - visual metaphor for video segment,.png,3
+03_Graphics/Lower_Thirds/001_anime_frame_1_opening_the_heavy_mic_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 1 opening the heavy mic 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/002_anime_frame_2_the_pivot_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 2 the pivot 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/003_anime_frame_3_statues_vs_mercury_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 3 statues vs mercury 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/004_anime_frame_4_the_clone_lab_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 4 the clone lab 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/005_anime_frame_5_the_evolution_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 5 the evolution 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/006_anime_frame_6_the_nursery_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 6 the nursery 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/007_anime_frame_7_the_crystal_ball_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 7 the crystal ball 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/008_anime_frame_8_the_engine_room_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 8 the engine room 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/009_anime_frame_9_the_digital_feast_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 9 the digital feast 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/010_anime_frame_10_the_power_station_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 10 the power station 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/011_anime_frame_11_the_tool_shed_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 11 the tool shed 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/012_anime_frame_12_the_balcony_20260213_v1.png,Image,Graphics - Lower Thirds,Anime-style illustration frame # - 12 the balcony 20260213 v1,.png,3
+03_Graphics/Lower_Thirds/bg_01_heavy_mic_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 01: heavy mic 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_02_pivot_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 02: pivot 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_03a_statues_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 03a: statues 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_03b_mercury_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 03b: mercury 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_04_clone_lab_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 04: clone lab 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_05_evolution_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 05: evolution 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_06_nursery_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 06: nursery 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_07_crystal_ball_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 07: crystal ball 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_08_engine_room_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 08: engine room 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_09_digital_feast_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 09: digital feast 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_10_power_station_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 10: power station 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_11_tool_shed_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 11: tool shed 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/bg_12_balcony_20260213_203750.png,Image,Graphics - Lower Thirds,Background image for scene 12: balcony 20260213 203750,.png,3
+03_Graphics/Lower_Thirds/chapter_01_introduction.png,Image,Graphics - Lower Thirds,Chapter marker #01: Introduction,.png,3
+03_Graphics/Lower_Thirds/chapter_02_background.png,Image,Graphics - Lower Thirds,Chapter marker #02: Background,.png,3
+03_Graphics/Lower_Thirds/chapter_03_core_concepts.png,Image,Graphics - Lower Thirds,Chapter marker #03: Core Concepts,.png,3
+03_Graphics/Lower_Thirds/chapter_04_workflow_architecture.png,Image,Graphics - Lower Thirds,Chapter marker #04: Workflow Architecture,.png,3
+03_Graphics/Lower_Thirds/chapter_05_implementation.png,Image,Graphics - Lower Thirds,Chapter marker #05: Implementation,.png,3
+03_Graphics/Lower_Thirds/chapter_06_automation_strategies.png,Image,Graphics - Lower Thirds,Chapter marker #06: Automation Strategies,.png,3
+03_Graphics/Lower_Thirds/chapter_07_integration.png,Image,Graphics - Lower Thirds,Chapter marker #07: Integration,.png,3
+03_Graphics/Lower_Thirds/chapter_08_monitoring_and_analytics.png,Image,Graphics - Lower Thirds,Chapter marker #08: Monitoring And Analytics,.png,3
+03_Graphics/Lower_Thirds/chapter_09_scaling_challenges.png,Image,Graphics - Lower Thirds,Chapter marker #09: Scaling Challenges,.png,3
+03_Graphics/Lower_Thirds/chapter_10_future_directions.png,Image,Graphics - Lower Thirds,Chapter marker #10: Future Directions,.png,3
+03_Graphics/Lower_Thirds/chapter_11_case_studies.png,Image,Graphics - Lower Thirds,Chapter marker #11: Case Studies,.png,3
+03_Graphics/Lower_Thirds/chapter_12_advanced_topics.png,Image,Graphics - Lower Thirds,Chapter marker #12: Advanced Topics,.png,3
+03_Graphics/Lower_Thirds/chapter_13_best_practices.png,Image,Graphics - Lower Thirds,Chapter marker #13: Best Practices,.png,3
+03_Graphics/Lower_Thirds/chapter_14_troubleshooting.png,Image,Graphics - Lower Thirds,Chapter marker #14: Troubleshooting,.png,3
+03_Graphics/Lower_Thirds/chapter_15_conclusion.png,Image,Graphics - Lower Thirds,Chapter marker #15: Conclusion,.png,3
+03_Graphics/Lower_Thirds/dg_01_golden_mic_hierarchy_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #01: golden mic hierarchy 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_02_240_workflow_architecture_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #02: 240 workflow architecture 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_03_static_vs_dynamic_flow_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #03: static vs dynamic flow 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_04_git_clone_sequence_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #04: git clone sequence 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_05_tool_evolution_timeline_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #05: tool evolution timeline 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_06_internet_kill_switch_flow_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #06: internet kill switch flow 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_07_tech_platform_comparison_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #07: tech platform comparison 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_08_speed_benchmark_chart_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #08: speed benchmark chart 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_09_llm_comparison_matrix_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #09: llm comparison matrix 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_10_n8n_automation_flow_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #10: n8n automation flow 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_11_cicd_pipeline_diagram_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #11: cicd pipeline diagram 20260213 211013,.png,3
+03_Graphics/Lower_Thirds/dg_12_journey_roadmap_20260213_211013.png,Image,Graphics - Lower Thirds,Diagram/graphic #12: journey roadmap 20260213 211013,.png,3
+05_PreProduction/Scripts_EDL/README.md,Document,PreProduction - Scripts/EDL,Documentation explaining preproduction workflow and file organization,.md,3
+05_PreProduction/Scripts_EDL/source_broll.md,Document,PreProduction - Scripts/EDL,B-roll shot list defining supplementary footage needs,.md,3
+05_PreProduction/Scripts_EDL/source_graphics.md,Document,PreProduction - Scripts/EDL,Graphics requirements and specifications document,.md,3
+05_PreProduction/Scripts_EDL/source_music.md,Document,PreProduction - Scripts/EDL,Music cue sheet defining audio track placement and timing,.md,3
+05_PreProduction/Scripts_EDL/source_shotlist.md,Document,PreProduction - Scripts/EDL,Shot list defining each camera angle and scene,.md,3
+05_PreProduction/Scripts_EDL/source_storyboard.md,Document,PreProduction - Scripts/EDL,Storyboard describing visual flow and composition,.md,3
+02_Audio/Music/000_music_cta_energy_beatoven_fal_v1.mp3,Audio,Audio - Music,AI-generated energetic music for call-to-action segments,.mp3,2
+02_Audio/Music/000_music_cta_energy_beatoven_fal_v1.wav,Audio,Audio - Music,AI-generated energetic music for call-to-action segments,.wav,2
+02_Audio/Music/000_music_screen_recording_stable_fal_v1.mp3,Audio,Audio - Music,AI-generated stable background music for screen recording segments,.mp3,2
+02_Audio/Music/000_music_screen_recording_stable_fal_v1.wav,Audio,Audio - Music,AI-generated stable background music for screen recording segments,.wav,2
+02_Audio/Music/000_music_tech_innovation_stable_fal_v1.mp3,Audio,Audio - Music,AI-generated tech/innovation themed background music,.mp3,2
+02_Audio/Music/000_music_tech_innovation_stable_fal_v1.wav,Audio,Audio - Music,AI-generated tech/innovation themed background music,.wav,2
+02_Audio/Sound_Effects/freesound_721948_Creative_Background_loop_ver3.mp3,Audio,Audio - Sound Effects,Freesound.org sourced sound effect or background music loop,.mp3,2
+02_Audio/Sound_Effects/freesound_743366_Blissful_Tranquility.mp3,Audio,Audio - Sound Effects,Freesound.org sourced sound effect or background music loop,.mp3,2
+02_Audio/Sound_Effects/freesound_794254_Venture_At_Night_ambient_music_loop.mp3,Audio,Audio - Sound Effects,Freesound.org sourced sound effect or background music loop,.mp3,2
+02_Audio/Sound_Effects/track01_match1_621849_Slow_building_synth_Riser_Uplifterwav.mp3,Audio,Audio - Sound Effects,Music match option #1 for track segment 01 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track01_match2_320920_bass_and_cello2WAV.mp3,Audio,Audio - Sound Effects,Music match option #2 for track segment 01 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track01_match3_621289_Orchestral_Score_1_Mastered_WITH_Stereo_Imagingwav.mp3,Audio,Audio - Sound Effects,Music match option #3 for track segment 01 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track02_match1_792393_Intergalactic_V_10_Karthik_Subramany.mp3,Audio,Audio - Sound Effects,Music match option #1 for track segment 02 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track02_match2_721948_Creative_Background_loop_ver3.mp3,Audio,Audio - Sound Effects,Music match option #2 for track segment 02 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track02_match3_569920_Atmospheric_Ambient_Pad_128bpmmp3.mp3,Audio,Audio - Sound Effects,Music match option #3 for track segment 02 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track03_match1_785656_Trailer_Cinematic_1_min.mp3,Audio,Audio - Sound Effects,Music match option #1 for track segment 03 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track03_match2_712587_Paganini_Allegretto_Scherzando_Sonata_No_8_II_MS_8.mp3,Audio,Audio - Sound Effects,Music match option #2 for track segment 03 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track03_match3_789404_Dark_Moody_Rhythmic_Orchestral_Ambient_Music_Obsid.mp3,Audio,Audio - Sound Effects,Music match option #3 for track segment 03 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track04_match1_725595_Tech_Presentations_short_ver.mp3,Audio,Audio - Sound Effects,Music match option #1 for track segment 04 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track04_match2_725594_Tech_Presentations_Media_Corporate_loop_ver2.mp3,Audio,Audio - Sound Effects,Music match option #2 for track segment 04 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track04_match3_731656_Pure_Inspiration_loop_ver2.mp3,Audio,Audio - Sound Effects,Music match option #3 for track segment 04 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track05_match1_607942_Retro_arcade_music_3.mp3,Audio,Audio - Sound Effects,Music match option #1 for track segment 05 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track05_match2_682201_Spooky_Synthwave.mp3,Audio,Audio - Sound Effects,Music match option #2 for track segment 05 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track05_match3_696408_Adventure_theme_9.mp3,Audio,Audio - Sound Effects,Music match option #3 for track segment 05 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track06_match1_368770_8_Bit_Bass_Leadwav.mp3,Audio,Audio - Sound Effects,Music match option #1 for track segment 06 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track06_match1_608667_House_loops_103_simple_mix_down_tempowav.mp3,Audio,Audio - Sound Effects,Music match option #1 for track segment 06 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track06_match2_658342_lush_remix_of_smethngs_freesound658110flac.mp3,Audio,Audio - Sound Effects,Music match option #2 for track segment 06 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track06_match2_744212_Digital_Arpeggio.mp3,Audio,Audio - Sound Effects,Music match option #2 for track segment 06 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track06_match3_704532_Chip_Dance_Tune_128bpm.mp3,Audio,Audio - Sound Effects,Music match option #3 for track segment 06 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track07_match1_792393_Intergalactic_V_10_Karthik_Subramany.mp3,Audio,Audio - Sound Effects,Music match option #1 for track segment 07 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track07_match2_704532_Chip_Dance_Tune_128bpm.mp3,Audio,Audio - Sound Effects,Music match option #2 for track segment 07 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track07_match3_721948_Creative_Background_loop_ver3.mp3,Audio,Audio - Sound Effects,Music match option #3 for track segment 07 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track08_match1_621846_Orchestral_Score_Viola_Solowav.mp3,Audio,Audio - Sound Effects,Music match option #1 for track segment 08 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track08_match2_621849_Slow_building_synth_Riser_Uplifterwav.mp3,Audio,Audio - Sound Effects,Music match option #2 for track segment 08 - alternative background music choice,.mp3,2
+02_Audio/Sound_Effects/track08_match3_773418_The_Leading_Edge_orchestral_climax_anthem.mp3,Audio,Audio - Sound Effects,Music match option #3 for track segment 08 - alternative background music choice,.mp3,2
+03_Graphics/Animations/Replay 2026-02-09-20-04.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/The Statue Hall - Dynamic vs Static Rules Replay 2026-02-09-17-22.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/aroll_Replay 2026-02-09-06-59.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/screencapture10+Replay 2026-02-09-19-56.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/screencapture2_feb2.mov,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mov,2
+03_Graphics/Animations/screencapture2_feb2_v2.mov,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mov,2
+03_Graphics/Animations/screencapture3_feb2_Replay 2026-02-09-17-48.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/screencapture3_feb2_s3.mov,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mov,2
+03_Graphics/Animations/screencapture4_feb2_Replay 2026-02-09-18-01.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/screencapture5_feb2_Replay 2026-02-09-18-08.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/screencapture6_feb2_Replay 2026-02-09-18-18.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/screencapture7_feb2_Replay 2026-02-09-18-26.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/screencapture8_feb2_Replay 2026-02-09-18-31.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Animations/screencapture9_Replay 2026-02-09-19-39.mp4,Video,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.mp4,2
+03_Graphics/Logos_Icons/feb 2 _memory_palace.jpg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpg,2
+03_Graphics/Lower_Thirds/000_icon_anthropic_logo_v1.png,Image,Graphics - Lower Thirds,Company/platform logo: Anthropic - for brand identification,.png,2
+03_Graphics/Lower_Thirds/000_icon_cursor_ai_logo_v1.png,Image,Graphics - Lower Thirds,Company/platform logo: Cursor Ai - for brand identification,.png,2
+03_Graphics/Lower_Thirds/000_icon_deepseek_logo_v1.png,Image,Graphics - Lower Thirds,Company/platform logo: Deepseek - for brand identification,.png,2
+03_Graphics/Lower_Thirds/000_icon_family_shield_v1.png,Image,Graphics - Lower Thirds,Company/platform logo: Family Shield - for brand identification,.png,2
+03_Graphics/Lower_Thirds/000_icon_github_logo_v1.png,Image,Graphics - Lower Thirds,Company/platform logo: Github - for brand identification,.png,2
+03_Graphics/Lower_Thirds/000_icon_google_gemini_logo_v1.png,Image,Graphics - Lower Thirds,Company/platform logo: Google Gemini - for brand identification,.png,2
+03_Graphics/Lower_Thirds/000_icon_n8n_logo_v1.png,Image,Graphics - Lower Thirds,Company/platform logo: N8N - for brand identification,.png,2
+03_Graphics/Lower_Thirds/000_icon_openai_logo_v1.png,Image,Graphics - Lower Thirds,Company/platform logo: Openai - for brand identification,.png,2
+03_Graphics/Lower_Thirds/000_icon_vscode_logo_v1.png,Image,Graphics - Lower Thirds,Company/platform logo: Vscode - for brand identification,.png,2
+03_Graphics/Lower_Thirds/001_thumbnail_delivery_pilot_transformation_v1.png,Image,Graphics - Lower Thirds,Video thumbnail graphic for social media/YouTube,.png,2
+03_Graphics/Lower_Thirds/002_thumbnail_static_vs_dynamic_ai_v1.png,Image,Graphics - Lower Thirds,Video thumbnail graphic for social media/YouTube,.png,2
+03_Graphics/Lower_Thirds/003_thumbnail_zero_capital_ai_startup_v1.png,Image,Graphics - Lower Thirds,Video thumbnail graphic for social media/YouTube,.png,2
+03_Graphics/Lower_Thirds/004_thumbnail_llm_digital_feast_v1.png,Image,Graphics - Lower Thirds,Video thumbnail graphic for social media/YouTube,.png,2
+03_Graphics/Lower_Thirds/005_thumbnail_internet_kill_switch_parenting_v1.png,Image,Graphics - Lower Thirds,Video thumbnail graphic for social media/YouTube,.png,2
+03_Graphics/Lower_Thirds/10__the_power_station_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/11__the_tool_shed_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/12__the_balcony_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/1__opening_-_the_heavy_mic_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/2__the_pivot_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/3__statues_vs._mercury_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/4__the_clone_lab_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/5__the_evolution_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/7__the_crystal_ball_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/8__the_engine_room_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/9__the_digital_feast_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/anthropic_logo_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/cursor_ai_logo_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/deepseek_logo_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/diagram_MM_01_scene_1_-_the_heavy_mic.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/diagram_MM_02_scene_2_-_the_pivot.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/diagram_MM_03_scene_3_-_statues_vs_mercury.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/diagram_MM_04_scene_4_-_the_clone_lab.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/diagram_MM_05_scene_5_-_the_free_tier_journey.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/diagram_MM_06_scene_6_-_internet_kill_switch.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/diagram_MM_07_scene_7_-_the_llm_feast.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/diagram_MM_08_scene_8_-_bespoke_logic_n8n.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/diagram_MM_09_scene_9_-_success_metrics_cicd.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/diagram_MM_10_scene_10_-_conclusion_call_to_action.jpeg,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.jpeg,2
+03_Graphics/Lower_Thirds/family_shield_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_100_tablets_number_visual_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_240_workflows_stat_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_240_workflows_stat_20260213_201904.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_37+_commits_counter_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_breaking_chains_animation_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_cloning_yourself_metaphor_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_command_highlights_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_consistency_=_magic_shield_quote_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_family-friendly_badge_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_github_pages_preview_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_internet_kill_switch_label_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_llm_feature_cards_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_n8n_workflow_diagram_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_speed_comparison_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_speed_multiplier_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_split_screen_labels_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+"03_Graphics/Lower_Thirds/gfx_step_1,_2,_3_process_overlay_20260213_200448.png",Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_tech_company_logos_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_the_pivot_title_card_20260213_200448.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/gfx_the_pivot_title_card_20260213_201904.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/github_logo_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/google_gemini_logo_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_01_240_workflows_stat_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_02_pivot_title_card_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_03_static_vs_dynamic_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_04_breaking_chains_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_05_clone_steps_checklist_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_06_tool_comparison_table_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_07_cloning_flowchart_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_08_3d_printer_progress_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_09_consistency_quote_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_10_family_friendly_badge_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_11_tech_logos_layout_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_12_speed_1000x_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_13_speed_comparison_bars_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_14_llm_claude_card_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_15_llm_chatgpt_card_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_16_llm_deepseek_card_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_17_llm_gemini_card_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_18_100_tablets_stat_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_19_n8n_workflow_diagram_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_20_internet_kill_switch_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_21_37_commits_counter_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_22_cicd_pipeline_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_23_success_metrics_dashboard_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_24_call_to_action_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/ig_25_zero_capital_quote_20260213_205312.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_01_agentic_era.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_02_mcp.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_03_skills_gap.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_04_bounded_contexts.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_05_para_method.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_06_state_management.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_07_deliverpilot.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_08_bottom_up.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_09_n8n_workflows.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/lt_10_ai_transformation.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_01_heavy_mic_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_02_the_pivot_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_03_statues_vs_mercury_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_04_clone_lab_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_05_evolution_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_06_nursery_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_07_crystal_ball_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_08_engine_room_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_09_digital_feast_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_10_power_station_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_11_tool_shed_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/mp_12_balcony_20260213_204227.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/n8n_logo_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/openai_logo_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+03_Graphics/Lower_Thirds/vscode_logo_20260213_192335.png,Image,Graphics - Lower Thirds,"Graphic element for lower thirds, titles, or visual enhancement",.png,2
+04_Text/Subtitles/tuesday_3_blue memory palace green aroll background red screen captire.srt,Subtitle,Text - Subtitles,Subtitle file with timing and text for video accessibility and engagement,.srt,2
+05_PreProduction/Scripts_EDL/source_chapter_markers.txt,Document,PreProduction - Scripts/EDL,Text file for planning or reference,.txt,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/01_golden_mic_intro.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/02_pivot_decision.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/03_zombie_snails.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/04_statues_vs_mercury.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/05_breaking_chains.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/06_clone_lab.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/07_free_tier_tools.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/08_internet_kill_switch.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/09_llm_feast.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/10_claude_card.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/11_chatgpt_card.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/12_deepseek_card.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/13_gemini_card.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/14_n8n_bespoke.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/15_success_metrics.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/16_drone_city_finale.mp4,Video,PostProduction - General,Supporting file for video project,.mp4,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/source_broll.md,Document,PostProduction - General,Supporting file for video project,.md,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/source_chapter_markers.txt,Document,PostProduction - General,Supporting file for video project,.txt,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/source_edl.md,Document,PostProduction - General,Supporting file for video project,.md,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/source_graphics.md,Document,PostProduction - General,Supporting file for video project,.md,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/source_music.md,Document,PostProduction - General,Supporting file for video project,.md,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/source_shotlist.md,Document,PostProduction - General,Supporting file for video project,.md,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/source_storyboard.md,Document,PostProduction - General,Supporting file for video project,.md,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/source_subtitle.srt,Subtitle,PostProduction - General,Supporting file for video project,.srt,2
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/source_transcript.md,Document,PostProduction - General,Supporting file for video project,.md,2
+05_PreProduction/Scripts_EDL/assets_config.json,Data,PreProduction - Scripts/EDL,Configuration file defining asset paths and metadata,.json,1
+05_PreProduction/Scripts_EDL/batch_generation_data.yaml,Data,PreProduction - Scripts/EDL,YAML configuration file for batch asset generation,.yaml,1
+05_PreProduction/Scripts_EDL/icons.json,Data,PreProduction - Scripts/EDL,JSON data for icon/logo asset management,.json,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/2b7ffb3c38a5a6e0.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/2b7ffb3c38a5a6e0.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/31d3165490bf3404.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/31d3165490bf3404.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/5683d89f396abe50.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/5683d89f396abe50.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/66e1bc57a83e0f07.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/66e1bc57a83e0f07.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/6ecf9f51170c1a70.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/6ecf9f51170c1a70.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/810c550cdbbf29da.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/810c550cdbbf29da.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/8de07035cb22c903.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/8de07035cb22c903.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/b330e3953bf029d7.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/b330e3953bf029d7.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/b47c9feb1c667bc8.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/b47c9feb1c667bc8.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/d994363fa45e89a1.svg,Image,Animation - TeX Source,Rendered TeX/LaTeX SVG for mathematical notation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/Tex/d994363fa45e89a1.tex,TeX,Animation - TeX Source,LaTeX source file for mathematical notation in animations (intermediate file),.tex,1
+06_PostProduction_Assets/Manim_Animations/output/texts/058097de0909e3bf.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/07a8c0cf356def8a.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/088e04fd821d64cc.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/0c5addf081daead1.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/172bcbe967ef4a52.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/1815c741995f3a81.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/1a5dad4af45b2c2f.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/2549bd8f1ea4b5f0.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/2e1e594bc1491a0d.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/320c772a235b0892.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/3dfc72ea1790e4b5.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/42702975ac03f4cd.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/46913886e1d11b65.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/52791390dce9451b.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/563215b4d895f7f1.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/5b264feffe5fc031.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/5da714815b992f15.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/6032e096e105956f.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/621294cb198702f5.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/68bcbaf6f395b64b.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/6adee17db845b4f9.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/6d2853e926b670f2.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/73a348195216747d.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/7fb1399a550e5849.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/847e659c6231dc7d.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/8579c5b2b25e0bc6.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/86e81d48a285e1bc.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/874869042b9362e7.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/875fa16b53d9ec83.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/8d7349666d51bec2.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/90b6bc07983bc5fe.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/92bece4729609672.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/a128e6beb725023f.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/a16399e579ef2a31.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/a931333064876759.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/b3d632ce1ef362c9.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/b41e2753f8659e62.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/b5832196b450dc52.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/bcba6ff745c84b96.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/c56b3791b7177929.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/cfcca4e43428a333.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/d25eda5c0eb94183.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/d3c0cac90642d482.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/d594786fc137e98a.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/da3b6537483ff72a.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/de8bdb75254f281a.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/e09864f92383aa14.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/e14b51aa876df791.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/e62e9cdf8d24e55b.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/ea8d2c78885c6ff8.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/ec555e68e6c4a8e2.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/efa2703108dd92b7.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/f1702962ee979bc7.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/f266dc9ac5bf4388.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/f8f6dcc1f8a055a1.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/fc107ce8c9c52d40.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/texts/ff1e9d051d5b050f.svg,Image,Animation - Text SVG,Manim text SVG - rendered text element for animation (intermediate file),.svg,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_1054257222_2509320359.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_1116041325_1632504767.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_1186446417_1366580102.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_1324832880_2519351926.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_1627474136_497923805.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_1781673550_1591711137.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_1826461060_2393297764.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_1857776244_1706626574.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_1938705968_950013137.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_197685869_879403992.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_2379108166_1898459749.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_2574473371_911312425.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_2803572557_4276738401.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_2849952550_2247694196.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_2860008713_561345666.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_2872842549_2204881241.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_296790433_1838573224.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_3155806760_3850880308.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_3679735833_2613259000.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_3769970643_3842475919.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_3907006663_2557712093.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_4155631700_3468850301.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_468976444_2728232725.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_522607726_153480670.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_56733459_1942132654.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_890959710_1436837048.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2135761390_95173422_743215257.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/2257293077_1570964339_223132457.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/CICDPipelineAnimation/partial_movie_file_list.txt,Document,Animation - Video Output,Supporting file for video project,.txt,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_1039846521_3386860130.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_1234055825_226480482.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_1454890097_226480482.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_1621289092_1804452822.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_2143655727_3386860130.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_2156968291_2397884206.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_2574473371_2447329671.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_2574473371_2489436525.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_2574473371_3345209849.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_2574473371_4246448772.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_2713665479_2314419925.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_310540274_4049270757.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_3249205344_2314419925.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_3347830085_295263563.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_3418213664_865969465.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_3743755494_326600115.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_3811746007_326600115.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_478638254_901228315.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2135761390_566900916_353945316.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/2257293077_837484536_223132457.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/GitCloneAnimation/partial_movie_file_list.txt,Document,Animation - Video Output,Supporting file for video project,.txt,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_1229137040_952119393.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_1729751744_2442750855.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_2024044153_2364168167.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_2574473371_3096464965.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_2872842549_4163007270.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_3809934424_551329250.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_3894395825_133058938.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_4079250704_2405861226.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_4079250704_2422805060.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_4079250704_2715584804.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2135761390_4079250704_491978693.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/2257293077_2802244026_223132457.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/LLMFeatureCardsAnimation/partial_movie_file_list.txt,Document,Animation - Video Output,Supporting file for video project,.txt,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_1452416041_211205057.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_1670838123_1868181505.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_2352233977_2251836503.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_2393029995_3464938573.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_2574473371_1837377972.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_2605886059_3419465859.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_2665485926_2498612793.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_2872842549_3831030090.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_3543690605_1955538083.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_3584996326_4091238208.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_633519608_1969388766.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2135761390_767126161_4001042778.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/2257293077_3432706115_223132457.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/NumberCounterAnimation/partial_movie_file_list.txt,Document,Animation - Video Output,Supporting file for video project,.txt,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/2135761390_1890293216_1008792939.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/2135761390_2150769875_3121806256.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/2135761390_2257304318_2584113847.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/2135761390_2574473371_734836593.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/2135761390_2696719225_2129100273.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/2135761390_310540274_178824715.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/2135761390_4109824579_1834385374.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/2135761390_934255641_2086460885.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/2257293077_1896914037_223132457.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/SpeedMultiplierAnimation/partial_movie_file_list.txt,Document,Animation - Video Output,Supporting file for video project,.txt,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_1206904118_76427946.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_1432596116_4064387621.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_1530825377_85346777.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_1688176962_3239714117.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_1704566161_1947975527.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_2095820897_453590800.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_2574473371_1375008711.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_2574473371_1863274668.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_2723450874_3847646405.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_3905090294_537805784.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2135761390_773992818_3313420109.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/2257293077_928420319_223132457.mp4,Video,Animation - Video Output,Partial render file from Manim animation - intermediate rendering artifact,.mp4,1
+06_PostProduction_Assets/Manim_Animations/output/videos/video_animations/1080p60/partial_movie_files/StaticVsDynamicAnimation/partial_movie_file_list.txt,Document,Animation - Video Output,Supporting file for video project,.txt,1
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/README.md,Document,PostProduction - General,Supporting file for video project,.md,1
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/assets_config.json,Data,PostProduction - General,Supporting file for video project,.json,1
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/batch_generation_data.yaml,Data,PostProduction - General,Supporting file for video project,.yaml,1
+06_PostProduction_Assets/Remotion_Animations/2025-14-02/input/input/icons.json,Data,PostProduction - General,Supporting file for video project,.json,1
+PROJECT_STRUCTURE.md,Document,Root - Documentation,Project documentation - explains folder structure and organization,.md,1
+Text to speech button

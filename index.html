@@ -238,6 +238,27 @@
             margin: 0;
         }
 
+        .markdown-preview {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            max-height: 500px;
+            overflow-y: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        .markdown-preview h1 { font-size: 1.6em; color: #333; border-bottom: 2px solid #667eea; padding-bottom: 8px; margin-bottom: 15px; }
+        .markdown-preview h2 { font-size: 1.3em; color: #495057; margin-top: 20px; margin-bottom: 10px; }
+        .markdown-preview table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        .markdown-preview th, .markdown-preview td { border: 1px solid #dee2e6; padding: 8px 12px; text-align: left; }
+        .markdown-preview th { background: #667eea; color: white; }
+        .markdown-preview tr:nth-child(even) { background: #f8f9fa; }
+        .markdown-preview code { background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        .markdown-preview hr { border: none; border-top: 1px solid #dee2e6; margin: 15px 0; }
+
         .script-timeline {
             max-height: 400px;
             overflow-y: auto;
@@ -526,6 +547,13 @@
 
 
 
+        <!-- Markdown Script Generator -->
+        <div class="section" id="markdownSection" style="display: none;">
+            <h2>📜 Markdown Script</h2>
+            <button onclick="generateMarkdownScript()">📝 Generate, Save & Download Script</button>
+            <div id="markdownPreview" class="markdown-preview" style="display: none;"></div>
+        </div>
+
         <!-- Data Management -->
         <div class="section">
             <h2>Data Management</h2>
@@ -653,6 +681,7 @@
                 renderActualTimeline();
                 // Show keywords section and extract keywords
                 document.getElementById('keywordsSection').style.display = 'block';
+                document.getElementById('markdownSection').style.display = 'block';
                 regenerateKeywords();
             };
             reader.readAsText(file);
@@ -973,6 +1002,7 @@
                 subtitleData = JSON.parse(subtitles);
                 renderActualTimeline();
                 document.getElementById('keywordsSection').style.display = 'block';
+                document.getElementById('markdownSection').style.display = 'block';
             }
             loadKeywords();
 
@@ -1331,6 +1361,7 @@ end`;
                     showMessage(`Sample SRT loaded: ${subtitleData.length} entries parsed.`, 'success');
                     renderActualTimeline();
                     document.getElementById('keywordsSection').style.display = 'block';
+                    document.getElementById('markdownSection').style.display = 'block';
                     regenerateKeywords();
                 })
                 .catch(error => {
@@ -1531,9 +1562,104 @@ end`;
             }
         }
 
+        // Markdown Script Generator
+        function generateMarkdownScript() {
+            if (subtitleData.length === 0) {
+                showMessage('No subtitles loaded to generate a script from.', 'error');
+                return;
+            }
+
+            const totalDuration = subtitleData.length > 0 ? subtitleData[subtitleData.length - 1].end : 0;
+            const now = new Date().toISOString().split('T')[0];
+
+            let md = `# Video Script\n\n`;
+            md += `**Generated:** ${now}  \n`;
+            md += `**Total Entries:** ${subtitleData.length}  \n`;
+            md += `**Duration:** ${formatTime(totalDuration)}  \n\n`;
+            md += `---\n\n`;
+            md += `## Timeline\n\n`;
+            md += `| # | Start | End | Text |\n`;
+            md += `|---|-------|-----|------|\n`;
+
+            subtitleData.forEach((sub, index) => {
+                const startF = formatTime(sub.start);
+                const endF = formatTime(sub.end);
+                const text = sub.text.replace(/\|/g, '\\|');
+                md += `| ${index + 1} | ${startF} | ${endF} | ${text} |\n`;
+            });
+
+            md += `\n---\n\n`;
+
+            if (keywords.length > 0) {
+                md += `## Keywords\n\n`;
+                md += keywords.slice(0, 30).map(k => `\`${k}\``).join(', ') + '\n\n';
+            }
+
+            // Save to localStorage
+            setStorageItem('generated_markdown_script', md);
+            showMessage('Markdown script generated and saved!', 'success');
+
+            // Download as .md file
+            const blob = new Blob([md], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'video-script.md';
+            a.click();
+            URL.revokeObjectURL(url);
+
+            // Show preview
+            showMarkdownPreview(md);
+        }
+
+        function showMarkdownPreview(md) {
+            const preview = document.getElementById('markdownPreview');
+            preview.style.display = 'block';
+
+            // Simple markdown to HTML conversion
+            let html = md;
+            // Headers
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+            // Bold
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            // Inline code
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            // Horizontal rules
+            html = html.replace(/^---$/gm, '<hr>');
+            // Line breaks
+            html = html.replace(/  \n/g, '<br>');
+
+            // Tables
+            html = html.replace(/^(\|.+\|)\n(\|[-| :]+\|)\n((?:\|.+\|\n?)*)/gm, function(match, header, separator, body) {
+                const headers = header.split('|').filter(c => c.trim()).map(c => `<th>${c.trim()}</th>`).join('');
+                const rows = body.trim().split('\n').map(row => {
+                    const cells = row.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('');
+                    return `<tr>${cells}</tr>`;
+                }).join('');
+                return `<table><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table>`;
+            });
+
+            // Remaining newlines to <br>
+            html = html.replace(/\n/g, '<br>');
+
+            preview.innerHTML = html;
+            document.getElementById('markdownSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function loadMarkdownScript() {
+            const saved = getStorageItem('generated_markdown_script');
+            if (saved) {
+                document.getElementById('markdownSection').style.display = 'block';
+                showMarkdownPreview(saved);
+            }
+        }
+
         // Initialize on page load
         window.onload = function() {
             loadTimelineData();
+            loadMarkdownScript();
         };
     </script>
 </body>
