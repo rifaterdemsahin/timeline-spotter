@@ -910,7 +910,7 @@
                         ${contextHtml}
                         <br><button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
                         ${isScriptResult ? `<button onclick="findInEstimatedTimeline('${result.query}')">🔍 Estimated</button>` : ''}
-                        ${isSubtitleResult ? `<button onclick="findInActualTimeline('${result.query}')">🎬 Actual</button>` : ''}
+                        ${isSubtitleResult ? `<button onclick="findInActualTimeline('${result.query}')">🎬 Actual</button><button onclick="copyLuaScript('${timeCode}')">🐍 Lua</button>` : ''}
                     `;
                     sourceDiv.appendChild(div);
                 });
@@ -1435,8 +1435,8 @@ end`;
 
             if (queryIndex === -1) return text;
 
-            const start = Math.max(0, queryIndex - 8);
-            const end = Math.min(words.length, queryIndex + 9); // +1 for the query word, +8 after
+            const start = Math.max(0, queryIndex - 16);
+            const end = Math.min(words.length, queryIndex + 17); // +1 for the query word, +16 after
 
             const beforeWords = words.slice(start, queryIndex);
             const queryWord = words[queryIndex];
