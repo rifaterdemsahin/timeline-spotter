@@ -442,12 +442,22 @@
 
         <!-- Search Function -->
         <div class="section">
-            <h2>Search Artifacts</h2>
+            <h2>🔍 Search Artifacts</h2>
             <label for="searchQuery">Search for artifact locations:</label>
-            <input type="text" id="searchQuery" placeholder="e.g., intro, transition, logo, music cue">
+            <input type="text" id="searchQuery" placeholder="e.g., intro, transition, logo, music cue" autocomplete="off" list="keywordsList">
+            <datalist id="keywordsList"></datalist>
             <button onclick="searchArtifacts()">🔍 Find Locations</button>
-            
+
             <div id="searchResults" class="results"></div>
+        </div>
+
+        <!-- Keywords -->
+        <div class="section" id="keywordsSection" style="display: none;">
+            <h2>📝 Keywords from Subtitles</h2>
+            <label for="keywordsTextarea">Editable keyword list (one per line):</label>
+            <textarea id="keywordsTextarea" placeholder="Keywords will be extracted from subtitles..." rows="10"></textarea>
+            <button onclick="updateKeywords()">💾 Save Keywords</button>
+            <button onclick="regenerateKeywords()">🔄 Regenerate from Subtitles</button>
         </div>
 
         <!-- Actual Timeline -->
@@ -678,6 +688,9 @@
                 showMessage(`Subtitle file uploaded: ${subtitleData.length} entries parsed.`, 'success');
                 renderActualTimeline();
                 renderScriptTimeline();
+                // Show keywords section and extract keywords
+                document.getElementById('keywordsSection').style.display = 'block';
+                regenerateKeywords();
             };
             reader.readAsText(file);
         }
@@ -1016,7 +1029,9 @@
             if (subtitles) {
                 subtitleData = JSON.parse(subtitles);
                 renderActualTimeline();
+                document.getElementById('keywordsSection').style.display = 'block';
             }
+            loadKeywords();
 
             const artifacts = getStorageItem('timeline_artifacts');
             if (artifacts) {
@@ -1439,6 +1454,69 @@ end`;
             const after = text.substring(queryIndex + query.length);
 
             return `${before}<span style="background-color: yellow; font-weight: bold;">${found}</span>${after}`;
+        }
+
+        let keywords = [];
+
+        function extractKeywordsFromSubtitles() {
+            const wordMap = new Map();
+
+            subtitleData.forEach(sub => {
+                const words = sub.text.toLowerCase().match(/\b\w+\b/g) || [];
+                words.forEach(word => {
+                    if (word.length > 2) { // Skip very short words
+                        wordMap.set(word, (wordMap.get(word) || 0) + 1);
+                    }
+                });
+            });
+
+            // Sort by frequency, take top keywords
+            const sortedWords = Array.from(wordMap.entries())
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 100) // Top 100 most frequent
+                .map(([word]) => word);
+
+            return sortedWords;
+        }
+
+        function displayKeywords() {
+            const textarea = document.getElementById('keywordsTextarea');
+            textarea.value = keywords.join('\n');
+
+            // Update datalist for autocomplete
+            const datalist = document.getElementById('keywordsList');
+            datalist.innerHTML = '';
+            keywords.forEach(keyword => {
+                const option = document.createElement('option');
+                option.value = keyword;
+                datalist.appendChild(option);
+            });
+        }
+
+        function updateKeywords() {
+            const textarea = document.getElementById('keywordsTextarea');
+            keywords = textarea.value.split('\n').map(k => k.trim()).filter(k => k);
+            setStorageItem('custom_keywords', JSON.stringify(keywords));
+            showMessage('Keywords updated successfully!', 'success');
+        }
+
+        function regenerateKeywords() {
+            if (subtitleData.length === 0) {
+                showMessage('No subtitles loaded to extract keywords from.', 'error');
+                return;
+            }
+            keywords = extractKeywordsFromSubtitles();
+            displayKeywords();
+            setStorageItem('custom_keywords', JSON.stringify(keywords));
+            showMessage('Keywords regenerated from subtitles!', 'success');
+        }
+
+        function loadKeywords() {
+            const saved = getStorageItem('custom_keywords');
+            if (saved) {
+                keywords = JSON.parse(saved);
+                displayKeywords();
+            }
         }
 
         function showMessage(message, type) {
