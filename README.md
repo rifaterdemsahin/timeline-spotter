@@ -1,6 +1,7 @@
 # 🎬 Timeline Spotter
 
 Find location for your artifacts on a non-linear video editor with intelligent search and estimation.
+> https://rifaterdemsahin.github.io/timeline-spotter/
 
 ## Features
 
