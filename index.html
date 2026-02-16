@@ -892,12 +892,22 @@
                     const timeCode = result.time || formatTime((result.position / 100) * timelineData.length);
                     const isScriptResult = result.source === 'Script';
                     const isSubtitleResult = result.source === 'Subtitle';
+
+                    let contextHtml = '';
+                    if (result.text) {
+                        if (isSubtitleResult) {
+                            contextHtml = `<br>Context: ${getColoredContext(result.text, result.query)}`;
+                        } else {
+                            contextHtml = `<br><small>Context: "${result.text.substring(0, 100)}..."</small>`;
+                        }
+                    }
+
                     div.innerHTML = `
                         <strong>${result.query}</strong> found in <em>${result.source}</em><br>
                         Estimated position: <strong>${result.position.toFixed(2)}%</strong>
                         ${result.time ? `(${result.time})` : ''}<br>
                         Confidence: ${result.confidence}
-                        ${result.text ? `<br><small>Context: "${result.text.substring(0, 100)}..."</small>` : ''}
+                        ${contextHtml}
                         <br><button onclick="copyToClipboard('${timeCode}')">📋 Copy Time Code</button>
                         ${isScriptResult ? `<button onclick="findInEstimatedTimeline('${result.query}')">🔍 Estimated</button>` : ''}
                         ${isSubtitleResult ? `<button onclick="findInActualTimeline('${result.query}')">🎬 Actual</button>` : ''}
@@ -1416,6 +1426,23 @@ else
     print("DaVinci Resolve not found")
 end`;
             copyToClipboard(luaScript);
+        }
+
+        function getColoredContext(text, query) {
+            const words = text.split(/\s+/);
+            const queryLower = query.toLowerCase();
+            const queryIndex = words.findIndex(word => word.toLowerCase().includes(queryLower));
+
+            if (queryIndex === -1) return text;
+
+            const start = Math.max(0, queryIndex - 8);
+            const end = Math.min(words.length, queryIndex + 9); // +1 for the query word, +8 after
+
+            const beforeWords = words.slice(start, queryIndex);
+            const queryWord = words[queryIndex];
+            const afterWords = words.slice(queryIndex + 1, end);
+
+            return `<span style="color: green;">${beforeWords.join(' ')}</span> ${queryWord} <span style="color: red;">${afterWords.join(' ')}</span>`;
         }
 
         function showMessage(message, type) {
