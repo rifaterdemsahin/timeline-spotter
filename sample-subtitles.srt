@@ -1,39 +1,2808 @@
 1
-00:00:00,000 --> 00:00:03,000
-Welcome to our timeline spotter tutorial
+01:00:00,016 --> 01:00:11,466
+ (Upbeat Music)
 
 2
-00:00:03,500 --> 00:00:07,000
-Today we'll learn how to find artifacts in your video editor
+01:03:00,933 --> 01:03:01,650
+ for us.
 
 3
-00:00:07,500 --> 00:00:11,000
-Let's start with the intro logo and title card
+01:03:01,650 --> 01:03:03,599
+ The standard tool is the free tier.
 
 4
-00:00:11,500 --> 00:00:15,000
-The main content begins after the transition
+01:03:04,050 --> 01:03:06,349
+ If you don't want to spend any money, you
 
 5
-00:00:30,000 --> 00:00:34,000
-Adding lower third text helps identify speakers
+01:03:06,349 --> 01:03:08,033
+ are going to use the free tier.
 
 6
-00:01:00,000 --> 00:01:04,000
-Background music should be synchronized with the visuals
+01:03:08,033 --> 01:03:09,300
+ The next is the tooling.
 
 7
-00:02:00,000 --> 00:02:04,000
-Now let's add some b-roll footage for variety
+01:03:09,300 --> 01:03:11,383
+ If you don't want to use any money, use
 
 8
-00:03:30,000 --> 00:03:34,000
-Sound effects like whoosh can enhance transitions
+01:03:11,383 --> 01:03:14,416
+ the standard kit and you will be able to
 
 9
-00:04:30,000 --> 00:04:34,000
-Don't forget the call-to-action graphic
+01:03:14,416 --> 01:03:15,366
+ use the Visual Studio
 
 10
-00:04:50,000 --> 00:04:55,000
-Finally, add the outro animation and end screen with subscribe button
+01:03:15,366 --> 01:03:16,833
+ and the GitHub for free.
+
+11
+01:03:17,183 --> 01:03:19,766
+ This is the way to go for the starters.
+
+12
+01:03:20,066 --> 01:03:22,449
+ Then if you want to have a pair pilot,
+
+13
+01:03:22,716 --> 01:03:24,433
+ you can definitely use the GitHub
+
+14
+01:03:24,433 --> 01:03:26,949
+ co-pilot to be able to do your job.
+
+15
+01:03:27,183 --> 01:03:29,150
+ But if you want something on your local
+
+16
+01:03:29,150 --> 01:03:32,033
+ that is going to run with the agents on
+
+17
+01:03:32,033 --> 01:03:34,550
+ your local, then using something like a
+
+18
+01:03:34,550 --> 01:03:36,266
+ cursor AI makes more sense.
+
+19
+01:03:36,833 --> 01:03:38,516
+ Think about this like an evolution.
+
+20
+01:03:39,000 --> 01:03:41,733
+ I use three of them and I will be able to
+
+21
+01:03:41,733 --> 01:03:43,033
+ swap between each other.
+
+22
+01:03:43,216 --> 01:03:45,550
+ The visual, a machine that is 3D printing
+
+23
+01:03:45,800 --> 01:03:48,216
+ in an identical copy of the host.
+
+24
+01:03:48,216 --> 01:03:49,566
+ The foundation is the
+
+25
+01:03:49,566 --> 01:03:51,116
+ reusable delivery pilot.
+
+26
+01:03:51,550 --> 01:03:53,750
+ I'm creating the repositories, I'm
+
+27
+01:03:53,750 --> 01:03:56,449
+ cloning myself and you learn how to clone
+
+28
+01:03:56,449 --> 01:03:57,650
+ yourself in the future.
+
+29
+01:03:58,349 --> 01:04:00,666
+ By being able to learn how to clone
+
+30
+01:04:00,666 --> 01:04:02,250
+ yourself, you are going to
+
+31
+01:04:02,250 --> 01:04:03,816
+ move between the AI providers.
+
+32
+01:04:04,199 --> 01:04:07,150
+ I will show you how to glue this in a
+
+33
+01:04:07,150 --> 01:04:08,383
+ free environment and
+
+34
+01:04:08,383 --> 01:04:10,133
+ also show this how to
+
+35
+01:04:10,133 --> 01:04:13,333
+ The host is holding a massive golden
+
+36
+01:04:13,333 --> 01:04:17,466
+ microphone that is too heavy to carry.
+
+37
+01:04:17,466 --> 01:04:19,516
+ People so close to me are struggling
+
+38
+01:04:19,516 --> 01:04:22,883
+ right now and yet I'm talking about the
+
+39
+01:04:22,883 --> 01:04:24,250
+ engineering concepts of
+
+40
+01:04:24,250 --> 01:04:26,833
+ building 240 workflows.
+
+41
+01:04:26,833 --> 01:04:28,266
+ I'm just scaring people off.
+
+42
+01:04:28,550 --> 01:04:30,750
+ Last week, I made a decision.
+
+43
+01:04:31,133 --> 01:04:33,316
+ I'm going to pivot, building tools with
+
+44
+01:04:33,316 --> 01:04:35,833
+ no code and no technical background.
+
+45
+01:04:36,199 --> 01:04:39,066
+ So you can become a delivery pilot and
+
+46
+01:04:39,066 --> 01:04:39,983
+ make sure you are
+
+47
+01:04:39,983 --> 01:04:42,166
+ transforming in the AIH.
+
+48
+01:04:42,166 --> 01:04:44,599
+ Everybody will get their jet pack on and
+
+49
+01:04:44,599 --> 01:04:45,883
+ they are gonna look ahead.
+
+50
+01:04:45,883 --> 01:04:47,833
+ I'm talking with someone, a friend of
+
+51
+01:04:47,833 --> 01:04:50,000
+ mine who escaped from the war.
+
+52
+01:04:50,783 --> 01:04:53,883
+ Think about this like a giant glass that
+
+53
+01:04:53,883 --> 01:04:56,683
+ she's outside and there's no code tools
+
+54
+01:04:56,683 --> 01:04:58,233
+ for her to survive
+
+55
+01:04:58,433 --> 01:05:00,333
+ this billion dollar war.
+
+56
+01:05:00,333 --> 01:05:02,733
+ I'm unlikely to get this golden
+
+57
+01:05:02,733 --> 01:05:05,949
+ microphone anyway from the engineers in
+
+58
+01:05:05,949 --> 01:05:07,849
+ the enterprises that I work for.
+
+59
+01:05:08,116 --> 01:05:11,099
+ They are moving like zombie snails in a
+
+60
+01:05:11,099 --> 01:05:14,266
+ 10 year race to be able to get there for
+
+61
+01:05:14,266 --> 01:05:15,516
+ the AI transformation.
+
+62
+01:05:16,300 --> 01:05:17,166
+ There's a massive
+
+63
+01:05:17,166 --> 01:05:20,183
+ resistance, but we are closing the gap.
+
+64
+01:05:20,250 --> 01:05:23,066
+ I want everybody to be able to use the
+
+65
+01:05:23,066 --> 01:05:26,133
+ simulations, do their checklist, clone
+
+66
+01:05:26,133 --> 01:05:28,766
+ the repos, fork them and create their
+
+67
+01:05:28,766 --> 01:05:31,116
+ bespoke applications using the AI.
+
+68
+01:05:31,116 --> 01:05:32,199
+ The scene, the statue
+
+69
+01:05:32,199 --> 01:05:33,900
+ hall, the screen capture,
+
+70
+01:05:34,466 --> 01:05:35,616
+ static rules.
+
+71
+01:05:35,616 --> 01:05:38,849
+ A visual, a row of a frozen statues,
+
+72
+01:05:39,316 --> 01:05:41,633
+ static versus a character
+
+73
+01:05:41,633 --> 01:05:43,883
+ made out of liquid mercury,
+
+74
+01:05:43,883 --> 01:05:45,900
+ changing shapes like the terminator.
+
+75
+01:05:45,916 --> 01:05:46,699
+ It's dynamic.
+
+76
+01:05:46,816 --> 01:05:48,916
+ The static rules are easily broken.
+
+77
+01:05:49,116 --> 01:05:50,783
+ If you look at these rules you are going
+
+78
+01:05:50,783 --> 01:05:53,250
+ to see that they are hard-coded, rigid
+
+79
+01:05:53,250 --> 01:05:55,716
+ and can easily break at day
+
+80
+01:05:55,716 --> 01:05:57,333
+ one when the things change.
+
+81
+01:05:58,016 --> 01:06:00,816
+ dynamic rules is like liquid mercury
+
+82
+01:06:01,316 --> 01:06:03,250
+ rather than stone statues.
+
+83
+01:06:03,933 --> 01:06:06,716
+ This is our key in the age of AI, I
+
+84
+01:06:06,716 --> 01:06:08,933
+ expect everybody to be able to create
+
+85
+01:06:08,933 --> 01:06:10,099
+ their own applications.
+
+86
+01:06:10,833 --> 01:06:12,933
+ We build these bespoke apps using
+
+87
+01:06:12,933 --> 01:06:16,033
+ anti-gravity, using cloth so everybody
+
+88
+01:06:16,033 --> 01:06:17,900
+ can scout their own reality.
+
+89
+01:06:17,933 --> 01:06:19,483
+ You are not just bonded with
+
+90
+01:06:19,483 --> 01:06:20,866
+ the schools, the old system.
+
+91
+01:06:21,333 --> 01:06:23,900
+ We want the power that becomes our heavy
+
+92
+01:06:23,900 --> 01:06:27,016
+ iron chain that is difficult to escape,
+
+93
+01:06:27,016 --> 01:06:29,933
+ the school system, the things that we
+
+94
+01:06:29,933 --> 01:06:30,949
+ learned in the past.
+
+95
+01:06:30,949 --> 01:06:32,300
+ They are right now obsolete.
+
+96
+01:06:32,300 --> 01:06:34,400
+ We are going to break our chains and we
+
+97
+01:06:34,400 --> 01:06:36,683
+ will be able to build our own solutions.
+
+98
+01:06:36,683 --> 01:06:39,366
+ The scene, the clone lab, the screen
+
+99
+01:06:39,366 --> 01:06:41,699
+ capture, terminal git clone demo.
+
+100
+01:06:41,716 --> 01:06:41,733
+ The
+
+101
+01:06:45,050 --> 01:06:47,516
+ So getting GitHub repositories to your
+
+102
+01:06:47,516 --> 01:06:50,366
+ local powerhouse is the key for us to be
+
+103
+01:06:50,366 --> 01:06:52,400
+ able to run these agents.
+
+104
+01:06:52,416 --> 01:06:54,650
+ What we are going to do it is the magic
+
+105
+01:06:54,650 --> 01:06:56,150
+ of the delivery pilot
+
+106
+01:06:56,150 --> 01:06:57,650
+ template is the key.
+
+107
+01:06:57,650 --> 01:06:59,983
+ First of all, we are going to clone that
+
+108
+01:06:59,983 --> 01:07:02,316
+ repository to an empty folder.
+
+109
+01:07:02,733 --> 01:07:04,866
+ Once we have the clone repository, we are
+
+110
+01:07:04,866 --> 01:07:07,250
+ going to use the agent to be able to
+
+111
+01:07:07,250 --> 01:07:08,383
+ execute the commands.
+
+112
+01:07:08,383 --> 01:07:09,783
+ Then we are going to have
+
+113
+01:07:09,783 --> 01:07:11,300
+ the tooling system for us.
+
+114
+01:07:11,333 --> 01:07:14,483
+ We are going to see we could either use a
+
+115
+01:07:14,483 --> 01:07:16,099
+ standard tool or we could
+
+116
+01:07:16,099 --> 01:07:18,933
+ definitely use other tools for us.
+
+117
+01:07:18,933 --> 01:07:20,883
+ The standard tool is the free tier.
+
+118
+01:07:21,333 --> 01:07:23,633
+ If you don't want to spend any money, you
+
+119
+01:07:23,633 --> 01:07:25,316
+ are going to use the free tier.
+
+120
+01:07:25,316 --> 01:07:26,566
+ The next is the tooling.
+
+121
+01:07:26,566 --> 01:07:28,683
+ If you don't want to use any money, use
+
+122
+01:07:28,683 --> 01:07:31,699
+ the standard kit and you will be able to
+
+123
+01:07:31,699 --> 01:07:32,650
+ use the Visual Studio
+
+124
+01:07:32,650 --> 01:07:34,116
+ and the GitHub for free.
+
+125
+01:07:34,483 --> 01:07:37,050
+ This is the way to go for the starters.
+
+126
+01:07:37,349 --> 01:07:39,733
+ Then if you want to have a pair pilot,
+
+127
+01:07:40,000 --> 01:07:41,716
+ you can definitely use the GitHub
+
+128
+01:07:41,716 --> 01:07:44,233
+ co-pilot to be able to do your job.
+
+129
+01:07:44,483 --> 01:07:46,433
+ But if you want something on your local
+
+130
+01:07:46,433 --> 01:07:49,316
+ that is going to run with the agents on
+
+131
+01:07:49,316 --> 01:07:51,833
+ your local, then using something like a
+
+132
+01:07:51,833 --> 01:07:53,550
+ cursor AI makes more sense.
+
+133
+01:07:54,116 --> 01:07:55,800
+ Think about this like an evolution.
+
+134
+01:07:56,266 --> 01:07:59,016
+ I use three of them and I will be able to
+
+135
+01:07:59,016 --> 01:08:00,316
+ swap between each other.
+
+136
+01:08:00,500 --> 01:08:02,833
+ The visual, a machine that is 3D printing
+
+137
+01:08:03,066 --> 01:08:05,500
+ in an identical copy of the host.
+
+138
+01:08:05,500 --> 01:08:06,849
+ The foundation is the
+
+139
+01:08:06,849 --> 01:08:08,383
+ reusable delivery pilot.
+
+140
+01:08:08,833 --> 01:08:11,033
+ I'm creating the repositories, I'm
+
+141
+01:08:11,033 --> 01:08:13,733
+ cloning myself and you learn how to clone
+
+142
+01:08:13,733 --> 01:08:14,933
+ yourself in the future.
+
+143
+01:08:15,633 --> 01:08:17,949
+ By being able to learn how to clone
+
+144
+01:08:17,949 --> 01:08:19,533
+ yourself, you are going to
+
+145
+01:08:19,533 --> 01:08:21,100
+ move between the AI providers.
+
+146
+01:08:21,500 --> 01:08:24,433
+ I will show you how to glue this in a
+
+147
+01:08:24,433 --> 01:08:27,216
+ free environment and also show this how
+
+148
+01:08:27,216 --> 01:08:29,533
+ to be able to do this with the agents.
+
+149
+01:08:30,149 --> 01:08:32,816
+ This is like the giant floating islands.
+
+150
+01:08:32,816 --> 01:08:34,433
+ You are going to be able to
+
+151
+01:08:34,433 --> 01:08:36,500
+ move from one to the other.
+
+152
+01:08:36,866 --> 01:08:39,116
+ So you are going to learn how to operate
+
+153
+01:08:39,116 --> 01:08:41,750
+ it on your local and how to operate in an
+
+154
+01:08:41,750 --> 01:08:43,016
+ enterprise environment
+
+155
+01:08:43,533 --> 01:08:45,033
+ when it is time for the
+
+156
+01:08:46,133 --> 01:08:47,766
+ and the internet kill switch.
+
+157
+01:08:48,033 --> 01:08:49,949
+ This is the master part that we are going
+
+158
+01:08:49,949 --> 01:08:53,500
+ to be able to deploy our website by
+
+159
+01:08:53,500 --> 01:08:55,466
+ understanding the GitHub actions.
+
+160
+01:08:55,649 --> 01:08:58,100
+ good part of the GitHub actions is every
+
+161
+01:08:58,100 --> 01:09:00,233
+ change that we do, we will be able to
+
+162
+01:09:00,233 --> 01:09:02,250
+ deploy this using a CI
+
+163
+01:09:02,250 --> 01:09:03,483
+ CD pipeline as a web page.
+
+164
+01:09:03,516 --> 01:09:07,333
+ And we will be able to see the live
+
+165
+01:09:07,333 --> 01:09:09,533
+ execution type and the
+
+166
+01:09:09,533 --> 01:09:11,333
+ live website in our system.
+
+167
+01:09:11,683 --> 01:09:13,300
+ So we can see all of our
+
+168
+01:09:13,300 --> 01:09:15,483
+ changes at once very easily.
+
+169
+01:09:15,949 --> 01:09:18,883
+ We have two thousand three minutes, that
+
+170
+01:09:18,883 --> 01:09:21,500
+ is the key for us, that we can deploy
+
+171
+01:09:21,500 --> 01:09:23,233
+ these minutes to web pages.
+
+172
+01:09:23,683 --> 01:09:25,916
+ If you go to an enterprise, you are going
+
+173
+01:09:25,916 --> 01:09:27,966
+ to see that there will be self runners
+
+174
+01:09:27,966 --> 01:09:29,383
+ happening in the
+
+175
+01:09:29,383 --> 01:09:31,183
+ background that is going to work
+
+176
+01:09:31,183 --> 01:09:34,500
+ Or you can go to alternatives and buy the
+
+177
+01:09:34,500 --> 01:09:37,266
+ enterprise solutions to be able to deploy
+
+178
+01:09:37,266 --> 01:09:38,699
+ with optimized speed.
+
+179
+01:09:39,016 --> 01:09:41,100
+ Because this is going to be slow but
+
+180
+01:09:41,100 --> 01:09:42,316
+ useful for you to be
+
+181
+01:09:42,316 --> 01:09:43,566
+ able to do your changes.
+
+182
+01:09:44,133 --> 01:09:46,399
+ You can go to the enterprise, get GitHub
+
+183
+01:09:46,399 --> 01:09:49,166
+ co-pilot and get more minutes.
+
+184
+01:09:49,633 --> 01:09:52,100
+ Or you can get your own bugs to be able
+
+185
+01:09:52,100 --> 01:09:53,566
+ to do everything yourself.
+
+186
+01:09:53,899 --> 01:09:55,250
+ So this is going to give
+
+187
+01:09:55,250 --> 01:09:56,500
+ you much more flexibility.
+
+188
+01:09:56,883 --> 01:09:59,466
+ But always start from the GitHub actions.
+
+189
+01:09:59,766 --> 01:10:00,383
+ transformation.
+
+190
+01:10:00,383 --> 01:10:02,500
+ The scene, the nursery host arrow.
+
+191
+01:10:02,550 --> 01:10:04,649
+ A visual, a giant GitHub logo
+
+192
+01:10:04,649 --> 01:10:07,149
+ acting as a baby's nightlight.
+
+193
+01:10:07,149 --> 01:10:09,750
+ If you are a mom or a dad putting kids to
+
+194
+01:10:09,750 --> 01:10:10,766
+ bed, like myself,
+
+195
+01:10:11,333 --> 01:10:13,583
+ consistency is your magic shield.
+
+196
+01:10:13,583 --> 01:10:15,466
+ Today, we are going to build something
+
+197
+01:10:15,466 --> 01:10:17,033
+ that I'm using in my flat.
+
+198
+01:10:17,466 --> 01:10:19,783
+ This workflow is a giant red
+
+199
+01:10:19,783 --> 01:10:21,216
+ off lever for the internet.
+
+200
+01:10:22,016 --> 01:10:24,500
+ It lives and breathes inside GitHub.
+
+201
+01:10:25,033 --> 01:10:26,116
+ It turns the internet
+
+202
+01:10:26,116 --> 01:10:27,933
+ on and off in the flat.
+
+203
+01:10:28,449 --> 01:10:30,366
+ We are going to add special features,
+
+204
+01:10:30,833 --> 01:10:32,966
+ bespoke features for us to be able to
+
+205
+01:10:32,966 --> 01:10:35,966
+ turn only one kid's internet, turn the
+
+206
+01:10:35,966 --> 01:10:37,383
+ other kid's internet on.
+
+207
+01:10:37,383 --> 01:10:38,833
+ So we might start a fight,
+
+208
+01:10:39,116 --> 01:10:40,716
+ but we know what we are doing.
+
+209
+01:10:40,716 --> 01:10:42,816
+ We are going to give this to the mom so
+
+210
+01:10:42,816 --> 01:10:44,883
+ the mom can do the
+
+211
+01:10:44,883 --> 01:10:46,383
+ updates that she wants.
+
+212
+01:10:46,383 --> 01:10:48,449
+ The screen capture, Google MSFT.
+
+213
+01:10:48,533 --> 01:10:51,533
+ A visual, a Google and a Microsoft logo
+
+214
+01:10:51,533 --> 01:10:54,633
+ colored head and holding an Alexa speaker
+
+215
+01:10:54,633 --> 01:10:56,216
+ like a crystal ball.
+
+216
+01:10:56,233 --> 01:10:58,433
+ I saw a colleague from my Microsoft days.
+
+217
+01:10:58,733 --> 01:11:00,949
+ He mentioned, "Why don't you use a Google
+
+218
+01:11:00,949 --> 01:11:03,100
+ skills or Alexa skills?
+
+219
+01:11:03,466 --> 01:11:04,149
+ They will always
+
+220
+01:11:04,149 --> 01:11:05,133
+ speak in the background."
+
+221
+01:11:05,133 --> 01:11:07,050
+ These are the skills that you are going
+
+222
+01:11:07,050 --> 01:11:09,266
+ to find out in your own use cases.
+
+223
+01:11:09,883 --> 01:11:10,616
+ The delivery pilot
+
+224
+01:11:10,616 --> 01:11:12,233
+ framework, the simulations
+
+225
+01:11:12,233 --> 01:11:12,733
+ and the
+
+226
+01:11:12,783 --> 01:11:14,833
+ If you try to come up with the solutions
+
+227
+01:11:14,833 --> 01:11:17,949
+ yourself, such as using the Google Play,
+
+228
+01:11:17,949 --> 01:11:19,666
+ you are going to see that this is going
+
+229
+01:11:19,666 --> 01:11:22,399
+ to be a walled garden for you, which
+
+230
+01:11:22,399 --> 01:11:25,083
+ means you are going to be locked in to
+
+231
+01:11:25,083 --> 01:11:26,233
+ the system while you
+
+232
+01:11:26,233 --> 01:11:27,399
+ are trying to use it.
+
+233
+01:11:27,833 --> 01:11:30,366
+ There's all these skills that is already
+
+234
+01:11:30,366 --> 01:11:32,000
+ designed and you are going
+
+235
+01:11:32,000 --> 01:11:33,416
+ to have the privacy text.
+
+236
+01:11:34,216 --> 01:11:35,149
+ You are going to share
+
+237
+01:11:35,149 --> 01:11:36,449
+ your data to the Google.
+
+238
+01:11:38,399 --> 01:11:40,533
+ Learning tools like Ozur is going to
+
+239
+01:11:40,533 --> 01:11:42,649
+ bring you overhead because you have to
+
+240
+01:11:42,649 --> 01:11:46,000
+ learn tools like Ozur and there's going
+
+241
+01:11:46,000 --> 01:11:48,000
+ to be lots of points that you have to
+
+242
+01:11:48,000 --> 01:11:50,333
+ learn to be able to run it and it might
+
+243
+01:11:50,333 --> 01:11:51,816
+ not be very straight forward
+
+244
+01:11:51,816 --> 01:11:53,233
+ in your home lab environment.
+
+245
+01:11:54,000 --> 01:11:55,800
+ And you are going to go through all these
+
+246
+01:11:55,800 --> 01:11:57,050
+ constraints and the
+
+247
+01:11:57,050 --> 01:11:58,583
+ costs and the friction
+
+248
+01:11:58,583 --> 01:11:59,266
+ of your waste.
+
+249
+01:11:59,699 --> 01:12:01,466
+ You are going to see that there is lots
+
+250
+01:12:01,466 --> 01:12:03,699
+ of hardware that's going to get not used
+
+251
+01:12:03,699 --> 01:12:06,750
+ and you want to have a privacy and you
+
+252
+01:12:06,750 --> 01:12:09,383
+ want to be able to use something that you
+
+253
+01:12:09,383 --> 01:12:12,116
+ own instead of you are renting it from
+
+254
+01:12:12,116 --> 01:12:13,966
+ somebody else and you are going to have
+
+255
+01:12:13,966 --> 01:12:15,949
+ an infinite control on the
+
+256
+01:12:15,949 --> 01:12:17,300
+ structure that you created.
+
+257
+01:12:22,399 --> 01:12:24,066
+ delivery structure is
+
+258
+01:12:24,066 --> 01:12:26,166
+ for you to figure out.
+
+259
+01:12:26,416 --> 01:12:27,616
+ I'm creating the structure.
+
+260
+01:12:28,266 --> 01:12:30,266
+ I'm showing you how I am doing it.
+
+261
+01:12:30,616 --> 01:12:32,899
+ Your responsibility is take the delivery
+
+262
+01:12:32,899 --> 01:12:35,266
+ pilot and go wherever you wanna go.
+
+263
+01:12:35,266 --> 01:12:36,633
+ The scene, the engine room,
+
+264
+01:12:37,016 --> 01:12:38,833
+ the host aero, the visual.
+
+265
+01:12:39,133 --> 01:12:40,733
+ Host is standing in front of a clock
+
+266
+01:12:41,216 --> 01:12:41,966
+ where the hands are
+
+267
+01:12:41,966 --> 01:12:43,866
+ spinning at 1000X speed.
+
+268
+01:12:43,866 --> 01:12:46,633
+ We are triggering an AI transformation or
+
+269
+01:12:46,633 --> 01:12:49,816
+ hands-on experience by building our own
+
+270
+01:12:49,816 --> 01:12:51,116
+ solutions using the
+
+271
+01:12:51,116 --> 01:12:52,216
+ artificial intelligence.
+
+272
+01:12:52,816 --> 01:12:53,883
+ We are in an ever
+
+273
+01:12:53,883 --> 01:12:55,433
+ spinning engine of learning.
+
+274
+01:12:55,699 --> 01:12:56,966
+ I started with the books.
+
+275
+01:12:57,333 --> 01:12:58,416
+ I read the basic.
+
+276
+01:12:59,033 --> 01:13:00,100
+ Right now we have the
+
+277
+01:13:00,100 --> 01:13:02,033
+ smartest operators in the room.
+
+278
+01:13:02,483 --> 01:13:04,933
+ All the books, all the videos are inside
+
+279
+01:13:04,933 --> 01:13:07,916
+ the AI agents waiting for you to be able
+
+280
+01:13:07,916 --> 01:13:09,316
+ to be turn your
+
+281
+01:13:09,316 --> 01:13:11,750
+ creativity into something gold.
+
+282
+01:13:11,750 --> 01:13:14,050
+ The scene, the kitchen table, the screen
+
+283
+01:13:14,050 --> 01:13:16,550
+ capture and the home network dashboard.
+
+284
+01:13:16,600 --> 01:13:18,766
+ The AI learning frontier, we are going to
+
+285
+01:13:18,766 --> 01:13:21,516
+ use all these large language models to
+
+286
+01:13:21,516 --> 01:13:23,016
+ knowledge acquisition.
+
+287
+01:13:23,383 --> 01:13:25,816
+ We are going to use the quote "Capture,
+
+288
+01:13:26,100 --> 01:13:28,433
+ organize, distill and express framework"
+
+289
+01:13:29,033 --> 01:13:32,066
+ and all the data will come as a capture
+
+290
+01:13:32,066 --> 01:13:33,816
+ for you while we are learning.
+
+291
+01:13:34,366 --> 01:13:36,666
+ So, you are going to see Claude solves
+
+292
+01:13:36,666 --> 01:13:37,750
+ most of the problems.
+
+293
+01:13:38,333 --> 01:13:39,516
+ Then there is the chat GPT.
+
+294
+01:13:39,783 --> 01:13:41,833
+ You can easily say why chat GPT is not
+
+295
+01:13:41,833 --> 01:13:44,250
+ the first because Claude's models are
+
+296
+01:13:44,250 --> 01:13:45,750
+ very very focused on it.
+
+297
+01:13:46,116 --> 01:13:47,233
+ Then my favorite, the
+
+298
+01:13:47,233 --> 01:13:48,550
+ free one, the deep seek.
+
+299
+01:13:49,033 --> 01:13:50,850
+ Any time that you need a large language
+
+300
+01:13:50,850 --> 01:13:52,833
+ model you know that it is there and it
+
+301
+01:13:52,833 --> 01:13:55,466
+ has lots of potential and if you want
+
+302
+01:13:55,466 --> 01:13:58,100
+ something versatile like the Gemini that
+
+303
+01:13:58,100 --> 01:14:00,600
+ you can use nano banana to create images
+
+304
+01:14:00,600 --> 01:14:03,600
+ you can do slides plus you can do the
+
+305
+01:14:03,600 --> 01:14:05,716
+ code as well on the Gemini
+
+306
+01:14:05,716 --> 01:14:08,100
+ and it is a big free tier as
+
+307
+01:14:08,399 --> 01:14:09,666
+ Why the Claude is good?
+
+308
+01:14:10,083 --> 01:14:11,616
+ Why we need to use the Claude?
+
+309
+01:14:11,850 --> 01:14:14,066
+ Because the reasoning layer is top notch
+
+310
+01:14:14,066 --> 01:14:18,466
+ with the Sonnet 3.5, right now 4.5 and
+
+311
+01:14:18,466 --> 01:14:22,216
+ 4.6 we see that it is able to solve the
+
+312
+01:14:22,216 --> 01:14:23,466
+ most complex problems.
+
+313
+01:14:23,466 --> 01:14:25,949
+ As we mentioned chat GPT is versatile.
+
+314
+01:14:26,399 --> 01:14:29,516
+ It is the leading tool in the AI space.
+
+315
+01:14:29,866 --> 01:14:31,199
+ We will be able to use it.
+
+316
+01:14:31,250 --> 01:14:34,000
+ I mostly use it as a search engine for
+
+317
+01:14:34,000 --> 01:14:35,350
+ myself and you can do
+
+318
+01:14:35,350 --> 01:14:36,916
+ this by a Chrome extension.
+
+319
+01:14:36,916 --> 01:14:39,149
+ The deep seek is the coding disruptor.
+
+320
+01:14:39,149 --> 01:14:40,750
+ You are going to see that this free
+
+321
+01:14:40,750 --> 01:14:43,399
+ structure that is going to help you a lot
+
+322
+01:14:43,399 --> 01:14:46,266
+ and you should be able to copy paste this
+
+323
+01:14:46,266 --> 01:14:49,516
+ code outside of the editors which you
+
+324
+01:14:49,516 --> 01:14:51,066
+ want to use it for free.
+
+325
+01:14:51,066 --> 01:14:53,649
+ The last but not the least the Gemini is
+
+326
+01:14:53,649 --> 01:14:56,316
+ the versatile platform which integrates
+
+327
+01:14:56,316 --> 01:14:58,866
+ with all these tools and you will be able
+
+328
+01:14:58,866 --> 01:15:01,283
+ to see the Google does not want to lose
+
+329
+01:15:01,283 --> 01:15:02,983
+ the search it will give you images.
+
+330
+01:15:03,383 --> 01:15:04,983
+ It is going to give you videos.
+
+331
+01:15:05,233 --> 01:15:07,100
+ It is going to give you a coding editor
+
+332
+01:15:07,100 --> 01:15:08,583
+ for them to be able to
+
+333
+01:15:08,583 --> 01:15:10,016
+ keep the search business.
+
+334
+01:15:10,016 --> 01:15:12,033
+ For you to be able to master the code in
+
+335
+01:15:12,033 --> 01:15:14,566
+ seconds what you need to do it is you
+
+336
+01:15:14,566 --> 01:15:16,833
+ need to be able to explain yourself in
+
+337
+01:15:16,833 --> 01:15:18,699
+ English very very easily.
+
+338
+01:15:18,933 --> 01:15:21,699
+ Understand the AI is generating it and
+
+339
+01:15:21,699 --> 01:15:23,899
+ you need to learn how to debug this
+
+340
+01:15:23,899 --> 01:15:26,149
+ yourself to be able to get better at
+
+341
+01:15:26,149 --> 01:15:28,000
+ So let's talk about the free tier.
+
+342
+01:15:28,000 --> 01:15:31,766
+ All of these free tiers have a use case.
+
+343
+01:15:32,216 --> 01:15:35,333
+ I start with the chat GPT when it gets
+
+344
+01:15:35,333 --> 01:15:37,000
+ finished I will go to deep seek.
+
+345
+01:15:37,000 --> 01:15:39,366
+ If that doesn't work I will go to Gemini
+
+346
+01:15:39,366 --> 01:15:42,233
+ and if I can't really solve something I
+
+347
+01:15:42,233 --> 01:15:44,649
+ might need to pay money for the cloud if
+
+348
+01:15:44,649 --> 01:15:46,833
+ my free subscription is ending.
+
+349
+01:15:46,833 --> 01:15:48,699
+ Also don't forget all of these have
+
+350
+01:15:48,699 --> 01:15:51,066
+ different skills and we are going to see
+
+351
+01:15:51,066 --> 01:15:53,199
+ with those different skills coding
+
+352
+01:15:53,199 --> 01:15:55,916
+ reasoning creativity and ecosystem there
+
+353
+01:15:55,916 --> 01:15:58,100
+ are different use cases for different
+
+354
+01:15:58,100 --> 01:15:59,899
+ types of large language models.
+
+355
+01:15:59,899 --> 01:16:01,583
+ So what you need to do it is you need to
+
+356
+01:16:01,583 --> 01:16:04,050
+ make sure you focus on learning and you
+
+357
+01:16:04,050 --> 01:16:06,750
+ set a path for yourself by using all
+
+358
+01:16:06,750 --> 01:16:09,949
+ these tools go to their website plus also
+
+359
+01:16:09,949 --> 01:16:11,250
+ use their mobile app
+
+360
+01:16:11,683 --> 01:16:14,583
+ A visual, a kitchen table flowing with
+
+361
+01:16:14,583 --> 01:16:16,683
+ 100 tablets like a
+
+362
+01:16:16,683 --> 01:16:18,199
+ digital food getting served.
+
+363
+01:16:18,866 --> 01:16:19,583
+ It's a feast.
+
+364
+01:16:19,583 --> 01:16:21,483
+ Why not turn YouTube into a hobby?
+
+365
+01:16:21,716 --> 01:16:21,800
+ This
+
+366
+01:16:21,949 --> 01:16:23,350
+ a family oriented week.
+
+367
+01:16:23,850 --> 01:16:25,533
+ Instead of serving food,
+
+368
+01:16:25,833 --> 01:16:27,133
+ today we are serving tablets.
+
+369
+01:16:27,733 --> 01:16:30,533
+ We are building these interfaces for our
+
+370
+01:16:30,533 --> 01:16:33,416
+ use cases to manage the access in our
+
+371
+01:16:33,416 --> 01:16:34,850
+ household, in your flat.
+
+372
+01:16:35,500 --> 01:16:39,016
+ So think of this as a digital gatekeeper
+
+373
+01:16:39,416 --> 01:16:41,316
+ and you are going to build it using
+
+374
+01:16:41,316 --> 01:16:44,199
+ cloth, using Gemini, using DeepSeek.
+
+375
+01:16:44,600 --> 01:16:46,516
+ You are going to be the one who is going
+
+376
+01:16:46,516 --> 01:16:48,833
+ to be in charge and you are going to have
+
+377
+01:16:48,833 --> 01:16:51,766
+ this pure creativity on your side.
+
+378
+01:16:51,766 --> 01:16:52,466
+ The scene, the power
+
+379
+01:16:52,466 --> 01:16:54,816
+ station, the power screen capture.
+
+380
+01:16:55,283 --> 01:16:56,866
+ We have the router table.
+
+381
+01:16:56,966 --> 01:16:59,300
+ A visual, a lightning bolt being caught
+
+382
+01:16:59,300 --> 01:17:01,050
+ in a small glass bottle.
+
+383
+01:17:01,050 --> 01:17:02,966
+ If I flip the switch and track the
+
+384
+01:17:02,966 --> 01:17:04,583
+ lighting, I lose the
+
+385
+01:17:04,583 --> 01:17:06,050
+ target light instantly.
+
+386
+01:17:06,050 --> 01:17:08,466
+ So join me, learn the flow
+
+387
+01:17:08,466 --> 01:17:10,149
+ with the speed of the waterfall
+
+388
+01:17:10,149 --> 01:17:12,816
+ and the clarity of the diamond.
+
+389
+01:17:12,816 --> 01:17:14,366
+ This is your key moment.
+
+390
+01:17:14,916 --> 01:17:17,116
+ You are going to see that you will be
+
+391
+01:17:17,116 --> 01:17:20,016
+ able to capture everything that you do if
+
+392
+01:17:20,016 --> 01:17:22,949
+ you get your hands on and turn this on.
+
+393
+01:17:22,949 --> 01:17:25,699
+ The scene, the tool shed screen, the
+
+394
+01:17:25,699 --> 01:17:28,800
+ capture, the GitHub and the tool demo.
+
+395
+01:17:28,800 --> 01:17:32,766
+ Visual, all visual toolbox where the
+
+396
+01:17:32,766 --> 01:17:34,233
+ tools are literally
+
+397
+01:17:34,233 --> 01:17:35,699
+ vibrating with energy.
+
+398
+01:17:35,699 --> 01:17:37,600
+ Let's look at what I'm doing with the
+
+399
+01:17:37,600 --> 01:17:39,166
+ Internet Access Manager.
+
+400
+01:17:39,383 --> 01:17:41,583
+ I'm trying to create it with my delivery
+
+401
+01:17:41,583 --> 01:17:44,366
+ pilot framework, so I can have a
+
+402
+01:17:44,366 --> 01:17:47,033
+ framework on top of the system that I'm
+
+403
+01:17:47,033 --> 01:17:48,916
+ going to build, because this is going to
+
+404
+01:17:48,916 --> 01:17:51,483
+ be a bespoke solution for myself.
+
+405
+01:17:51,483 --> 01:17:53,949
+ If we look down to this, we are going to
+
+406
+01:17:53,949 --> 01:17:56,666
+ see that this is generated in an 8N, and
+
+407
+01:17:56,666 --> 01:17:58,366
+ I have all these different types of
+
+408
+01:17:58,366 --> 01:18:00,733
+ triggers to be able to turn on the
+
+409
+01:18:00,733 --> 01:18:03,316
+ Internet and turn off the Internet, and I
+
+410
+01:18:03,316 --> 01:18:06,149
+ have a logic that follows up and sends a
+
+411
+01:18:06,149 --> 01:18:08,533
+ telegram message and then email at the
+
+412
+01:18:08,533 --> 01:18:10,916
+ end, so I know that the Internet is on.
+
+413
+01:18:11,149 --> 01:18:12,750
+ This is my logic, this is
+
+414
+01:18:12,750 --> 01:18:14,649
+ my bespoke implementation.
+
+415
+01:18:14,649 --> 01:18:17,500
+ This is working behind my own system in
+
+416
+01:18:17,500 --> 01:18:19,883
+ the background where I ran
+
+417
+01:18:19,883 --> 01:18:22,516
+ an edge router in the back.
+
+418
+01:18:22,516 --> 01:18:24,583
+ Everybody will have a different router,
+
+419
+01:18:24,583 --> 01:18:25,566
+ so they are going to
+
+420
+01:18:25,566 --> 01:18:27,399
+ program this in a different way.
+
+421
+01:18:27,399 --> 01:18:29,966
+ main thing that I'm doing is I have the
+
+422
+01:18:29,966 --> 01:18:32,733
+ MAC addresses, and I'm going to add a
+
+423
+01:18:32,733 --> 01:18:35,866
+ drop rule on here to be able to drop the
+
+424
+01:18:35,866 --> 01:18:37,300
+ traffic that I don't want
+
+425
+01:18:37,300 --> 01:18:39,266
+ on here very, very easily.
+
+426
+01:18:39,283 --> 01:18:41,300
+ But you are going to realize I have all
+
+427
+01:18:41,300 --> 01:18:43,949
+ the MAC addresses mapped to all of the
+
+428
+01:18:43,949 --> 01:18:46,183
+ devices in the flat, so it is very
+
+429
+01:18:46,183 --> 01:18:48,733
+ straightforward for me to be able to
+
+430
+01:18:48,733 --> 01:18:50,399
+ start or stop a
+
+431
+01:18:50,399 --> 01:18:51,766
+ device getting the access.
+
+432
+01:18:51,933 --> 01:18:54,616
+ I have also created a user interface that
+
+433
+01:18:54,616 --> 01:18:57,366
+ I mentioned on GitHub using the GitHub
+
+434
+01:18:57,366 --> 01:19:00,149
+ Pages feature and deploying this on here,
+
+435
+01:19:00,649 --> 01:19:02,699
+ which one of the features is adding
+
+436
+01:19:02,699 --> 01:19:04,483
+ turning the Internet on, turning the
+
+437
+01:19:04,483 --> 01:19:07,183
+ Internet off, looking at the device list,
+
+438
+01:19:07,416 --> 01:19:09,016
+ because this is going to have the
+
+439
+01:19:09,016 --> 01:19:11,733
+ firewall policies, and I have all the
+
+440
+01:19:11,733 --> 01:19:13,733
+ implementation guide for myself.
+
+441
+01:19:14,316 --> 01:19:16,833
+ And this is for my wife to be able to use
+
+442
+01:19:16,833 --> 01:19:19,116
+ it, because I do not want to give my wife
+
+443
+01:19:19,116 --> 01:19:21,399
+ a complex solution where she has got
+
+444
+01:19:21,399 --> 01:19:23,216
+ issues turning on and
+
+445
+01:19:23,216 --> 01:19:24,383
+ turning off the Internet.
+
+446
+01:19:24,583 --> 01:19:26,883
+ Because this is an agentic system, as we
+
+447
+01:19:26,883 --> 01:19:29,016
+ see on here, we are going to see that
+
+448
+01:19:29,016 --> 01:19:31,750
+ most of the time this works automatically
+
+449
+01:19:31,750 --> 01:19:34,416
+ in the background, and new rules are
+
+450
+01:19:34,416 --> 01:19:36,083
+ coming up all the time.
+
+451
+01:19:36,283 --> 01:19:37,633
+ So the rules are dynamic,
+
+452
+01:19:37,949 --> 01:19:39,716
+ I can always extend them.
+
+453
+01:19:39,716 --> 01:19:42,033
+ Because this is an agentic system as we
+
+454
+01:19:42,033 --> 01:19:44,216
+ see on here, we are going to see that
+
+455
+01:19:44,216 --> 01:19:46,883
+ most of the time this works automatically
+
+456
+01:19:46,883 --> 01:19:49,583
+ in the background and new rules are
+
+457
+01:19:49,583 --> 01:19:51,383
+ coming up all the time.
+
+458
+01:19:51,383 --> 01:19:52,300
+ So the rules are
+
+459
+01:19:52,300 --> 01:19:54,416
+ dynamic, I can always extend
+
+460
+01:19:54,533 --> 01:19:55,916
+ There's two critical
+
+461
+01:19:55,916 --> 01:19:57,316
+ places that I can look.
+
+462
+01:19:57,350 --> 01:20:00,166
+ First of all, I can go to my commits in
+
+463
+01:20:00,166 --> 01:20:02,766
+ the GitHub repository, which is private,
+
+464
+01:20:03,050 --> 01:20:03,750
+ and see how many
+
+465
+01:20:03,750 --> 01:20:05,350
+ times I change the system.
+
+466
+01:20:05,350 --> 01:20:07,949
+ As we see on here, this has been changed
+
+467
+01:20:07,949 --> 01:20:10,833
+ more than 37 times, and I have different
+
+468
+01:20:10,833 --> 01:20:13,533
+ rules coming up on different times.
+
+469
+01:20:13,533 --> 01:20:14,766
+ As I said, this is going
+
+470
+01:20:14,766 --> 01:20:16,233
+ to evolve all the time.
+
+471
+01:20:16,666 --> 01:20:17,949
+ This is a bespoke solution.
+
+472
+01:20:18,266 --> 01:20:21,133
+ I will always change, update, and remove
+
+473
+01:20:21,133 --> 01:20:22,316
+ the existing features.
+
+474
+01:20:22,350 --> 01:20:24,533
+ While I'm adding new features, I will be
+
+475
+01:20:24,533 --> 01:20:27,566
+ able to see all my executions, and when
+
+476
+01:20:27,566 --> 01:20:29,283
+ did it work, and when did it
+
+477
+01:20:29,283 --> 01:20:31,133
+ not work very, very easily.
+
+478
+01:20:31,133 --> 01:20:32,683
+ As I have seen on
+
+479
+01:20:32,683 --> 01:20:34,333
+ here, something happened.
+
+480
+01:20:34,633 --> 01:20:36,300
+ I have updated the code base.
+
+481
+01:20:36,800 --> 01:20:37,699
+ For the last couple of
+
+482
+01:20:37,699 --> 01:20:39,133
+ days, it is not working.
+
+483
+01:20:39,133 --> 01:20:40,316
+ Normally, it was working.
+
+484
+01:20:40,866 --> 01:20:43,083
+ I should be able to go down into this
+
+485
+01:20:43,083 --> 01:20:45,800
+ system, and be able to see that it was
+
+486
+01:20:45,800 --> 01:20:48,300
+ working in the past very easily.
+
+487
+01:20:48,533 --> 01:20:50,649
+ I should be able to scroll down and see
+
+488
+01:20:50,649 --> 01:20:52,566
+ this was working on here.
+
+489
+01:20:52,566 --> 01:20:53,399
+ I deployed something
+
+490
+01:20:53,399 --> 01:20:55,683
+ and broke the system down.
+
+491
+01:20:55,683 --> 01:20:58,216
+ So I will be able to see how many times
+
+492
+01:20:58,216 --> 01:21:01,016
+ this has worked in the past, and what did
+
+493
+01:21:01,016 --> 01:21:02,566
+ I need to do to be able to
+
+494
+01:21:02,566 --> 01:21:04,883
+ make this work easier for myself.
+
+495
+01:21:05,233 --> 01:21:07,333
+ There are all these different use cases
+
+496
+01:21:07,333 --> 01:21:09,500
+ on here that I can add
+
+497
+01:21:09,500 --> 01:21:11,116
+ definitely onto the system.
+
+498
+01:21:11,466 --> 01:21:13,916
+ This is going to make my life much easier
+
+499
+01:21:13,916 --> 01:21:16,733
+ to be able to manage this system, such as
+
+500
+01:21:16,733 --> 01:21:19,899
+ I added a device control on here to be
+
+501
+01:21:19,899 --> 01:21:21,316
+ able to turn on and
+
+502
+01:21:21,316 --> 01:21:23,083
+ off a specific device.
+
+503
+01:21:23,116 --> 01:21:25,466
+ That's a new feature that I'm trying to
+
+504
+01:21:25,466 --> 01:21:26,383
+ add, but I have broken
+
+505
+01:21:26,383 --> 01:21:27,833
+ other parts of the system.
+
+506
+01:21:28,333 --> 01:21:30,633
+ I need to make sure I'm always looking at
+
+507
+01:21:30,633 --> 01:21:32,333
+ it and learning through this process.
+
+508
+01:21:32,850 --> 01:21:34,616
+ The main thing that you can do, I have
+
+509
+01:21:34,616 --> 01:21:36,750
+ shared this in other videos, you can
+
+510
+01:21:36,750 --> 01:21:39,216
+ definitely come into here and set an
+
+511
+01:21:39,216 --> 01:21:42,183
+ error workflow to make sure that if one
+
+512
+01:21:42,183 --> 01:21:44,800
+ of your workflows is failing, you will be
+
+513
+01:21:44,800 --> 01:21:46,283
+ able to get a direct message.
+
+514
+01:21:46,399 --> 01:21:47,516
+ Here is my niche update.
+
+515
+01:21:47,750 --> 01:21:49,300
+ I'm using the memory palaces.
+
+516
+01:21:49,933 --> 01:21:51,399
+ Let's transform all together.
+
+517
+01:21:51,966 --> 01:21:52,933
+ Grab your hammer.
+
+518
+01:21:53,149 --> 01:21:54,916
+ That is the gate that is
+
+519
+01:21:54,916 --> 01:21:57,116
+ vibrating and your compass.
+
+520
+01:21:57,116 --> 01:21:58,966
+ It could be your programmable router.
+
+521
+01:21:59,300 --> 01:22:00,366
+ In my case, it is.
+
+522
+01:22:00,899 --> 01:22:01,983
+ I'm using the NA10.
+
+523
+01:22:02,283 --> 01:22:03,333
+ I'm using my compute.
+
+524
+01:22:03,866 --> 01:22:05,683
+ In your case, it could be your laptop.
+
+525
+01:22:06,233 --> 01:22:08,116
+ Find the things that is your own
+
+526
+01:22:08,116 --> 01:22:09,533
+ environment in the
+
+527
+01:22:09,533 --> 01:22:10,899
+ delivery pilot structure.
+
+528
+01:22:11,416 --> 01:22:13,083
+ Build your bespoke solutions.
+
+529
+01:22:13,583 --> 01:22:14,883
+ Apps, what you love.
+
+530
+01:22:15,333 --> 01:22:17,133
+ Do what you wanna do.
+
+531
+01:22:17,633 --> 01:22:18,566
+ Focus on learning.
+
+532
+01:22:19,066 --> 01:22:20,600
+ Focus on self-learning for
+
+533
+01:22:20,600 --> 01:22:22,233
+ yourself, for your family.
+
+534
+01:22:22,233 --> 01:22:24,399
+ Let's look at the tool shed, a complete
+
+535
+01:22:24,399 --> 01:22:27,199
+ GitHub Toolbox for modern developers.
+
+536
+01:22:27,300 --> 01:22:29,733
+ The repository anatomy, mastering the
+
+537
+01:22:29,733 --> 01:22:31,566
+ structure of the professional base.
+
+538
+01:22:32,333 --> 01:22:35,233
+ Once I do the delivery pilot, I always
+
+539
+01:22:35,233 --> 01:22:36,416
+ start with the reel
+
+540
+01:22:36,416 --> 01:22:38,100
+ and end with the testing.
+
+541
+01:22:38,683 --> 01:22:39,583
+ And there's all these
+
+542
+01:22:39,583 --> 01:22:40,866
+ stages come in the middle.
+
+543
+01:22:40,983 --> 01:22:43,399
+ The structure to have an organized system
+
+544
+01:22:43,399 --> 01:22:45,883
+ is important to create a modular system
+
+545
+01:22:45,883 --> 01:22:48,399
+ where you can track your assets and you
+
+546
+01:22:48,399 --> 01:22:50,899
+ can separate your configuration and be
+
+547
+01:22:50,899 --> 01:22:55,283
+ able to do an X times N, meaning loss of
+
+548
+01:22:55,283 --> 01:22:56,883
+ repositories with the
+
+549
+01:22:56,883 --> 01:22:58,750
+ least amount of effort.
+
+550
+01:22:58,750 --> 01:23:00,283
+ While you are going to work on the
+
+551
+01:23:00,283 --> 01:23:01,866
+ repost, the main thing that you are going
+
+552
+01:23:01,866 --> 01:23:05,016
+ to get through is your ability to be able
+
+553
+01:23:05,016 --> 01:23:07,250
+ to write everything in a readme file.
+
+554
+01:23:07,533 --> 01:23:10,266
+ So this is the markdown format and you
+
+555
+01:23:10,266 --> 01:23:12,449
+ are going to have always an operational
+
+556
+01:23:12,449 --> 01:23:15,166
+ procedure for yourself how to use the
+
+557
+01:23:15,166 --> 01:23:17,866
+ repository in a hierarchical manner so
+
+558
+01:23:17,866 --> 01:23:19,466
+ you can read and then
+
+559
+01:23:19,466 --> 01:23:20,883
+ study your environment.
+
+560
+01:23:21,100 --> 01:23:24,149
+ issues tab and the pull requests are the
+
+561
+01:23:24,149 --> 01:23:27,183
+ critical parts on GitHub where you are
+
+562
+01:23:27,183 --> 01:23:29,083
+ going to work on one project, you are
+
+563
+01:23:29,083 --> 01:23:30,883
+ going to see there is lots of issues
+
+564
+01:23:30,883 --> 01:23:32,916
+ coming up and things that are changing
+
+565
+01:23:33,066 --> 01:23:35,683
+ and you have to be able to merge your
+
+566
+01:23:35,683 --> 01:23:38,516
+ branches to make sure that you have one
+
+567
+01:23:38,516 --> 01:23:41,483
+ trunk that is always green and make sure
+
+568
+01:23:41,483 --> 01:23:43,183
+ that you are always doing
+
+569
+01:23:43,183 --> 01:23:44,500
+ the continuous integration.
+
+570
+01:23:44,500 --> 01:23:45,133
+ The collaboration
+
+571
+01:23:45,133 --> 01:23:47,699
+ function is the fork mechanism.
+
+572
+01:23:48,100 --> 01:23:50,383
+ Once you fork a repository what is
+
+573
+01:23:50,383 --> 01:23:52,216
+ happening is you are getting all the code
+
+574
+01:23:52,216 --> 01:23:54,233
+ pieces and you see all the
+
+575
+01:23:54,233 --> 01:23:56,133
+ history coming up in the project.
+
+576
+01:23:56,516 --> 01:23:59,233
+ You will be upstream syncing and you will
+
+577
+01:23:59,233 --> 01:24:01,016
+ be able to open to contributions.
+
+578
+01:24:01,500 --> 01:24:02,933
+ You are going to create your
+
+579
+01:24:02,933 --> 01:24:04,916
+ own version of the program.
+
+580
+01:24:05,000 --> 01:24:07,050
+ If you look at the development cycle, you
+
+581
+01:24:07,050 --> 01:24:09,133
+ first clone the repo, you start
+
+582
+01:24:09,133 --> 01:24:11,500
+ customizing it, then you want to get
+
+583
+01:24:11,500 --> 01:24:13,316
+ certified, you want to be able to deploy,
+
+584
+01:24:13,716 --> 01:24:14,649
+ you want to be able to
+
+585
+01:24:14,649 --> 01:24:16,466
+ create your own program.
+
+586
+01:24:16,466 --> 01:24:17,866
+ Let's look at what is free.
+
+587
+01:24:18,100 --> 01:24:20,066
+ The GitHub part is completely free.
+
+588
+01:24:20,649 --> 01:24:22,733
+ Downloading Visual Studio is free, having
+
+589
+01:24:22,733 --> 01:24:25,466
+ a git repository is free and if you want
+
+590
+01:24:25,466 --> 01:24:27,766
+ to run environments, different programs,
+
+591
+01:24:28,233 --> 01:24:30,366
+ the docker is free for you.
+
+592
+01:24:30,449 --> 01:24:31,916
+ The main start is you
+
+593
+01:24:31,916 --> 01:24:34,300
+ start always with zero capital.
+
+594
+01:24:34,783 --> 01:24:36,883
+ Once you start with zero capital, you
+
+595
+01:24:36,883 --> 01:24:38,666
+ don't have monthly investment on the
+
+596
+01:24:38,666 --> 01:24:40,966
+ system, you are mostly putting the money
+
+597
+01:24:40,966 --> 01:24:42,366
+ into your journey
+
+598
+01:24:42,366 --> 01:24:44,483
+ which you need to focus on.
+
+599
+01:24:45,250 --> 01:24:47,533
+ If we compare the free versions, you get
+
+600
+01:24:47,533 --> 01:24:49,216
+ all the Visual Studio plugins.
+
+601
+01:24:49,733 --> 01:24:52,583
+ Once you go to paid IDs such as the
+
+602
+01:24:52,583 --> 01:24:55,966
+ JetBrains or use a GitHub co-pilot, you
+
+603
+01:24:55,966 --> 01:24:57,133
+ are going to spend more
+
+604
+01:24:57,133 --> 01:24:58,866
+ money to be able to do more.
+
+605
+01:24:58,883 --> 01:25:01,366
+ So these are going to come in once you
+
+606
+01:25:01,366 --> 01:25:04,033
+ want to do more of the stuff and you want
+
+607
+01:25:04,033 --> 01:25:07,066
+ to have dedicated timelines on here and
+
+608
+01:25:07,066 --> 01:25:08,616
+ advanced security features.
+
+609
+01:25:09,000 --> 01:25:11,716
+ But having private repos and being able
+
+610
+01:25:11,716 --> 01:25:14,449
+ to build this on GitHub is always free.
+
+611
+01:25:34,516 --> 01:25:36,866
+ The scene, the balcony, the host arrow.
+
+612
+01:25:36,866 --> 01:25:39,350
+ Host looking out over the futuristic city
+
+613
+01:25:39,483 --> 01:25:40,600
+ being built by the
+
+614
+01:25:40,600 --> 01:25:42,866
+ drones using the simulations.
+
+615
+01:25:42,866 --> 01:25:44,199
+ Every simulation
+
+616
+01:25:44,199 --> 01:25:45,800
+ starts with the assessment.
+
+617
+01:25:46,083 --> 01:25:47,916
+ Make sure that you take the assessment
+
+618
+01:25:47,916 --> 01:25:49,483
+ first, then go and watch
+
+619
+01:25:49,483 --> 01:25:51,050
+ the simulations video second.
+
+620
+01:25:51,300 --> 01:25:53,166
+ Once you launch the assessment, you are
+
+621
+01:25:53,166 --> 01:25:55,566
+ going to see all your skills gaps at
+
+622
+01:25:55,783 --> 01:25:58,250
+ start, so you need to understand where
+
+623
+01:25:58,250 --> 01:25:59,750
+ you are gapping the issues.
+
+624
+01:25:59,750 --> 01:26:02,399
+ You watch the video on the top and at the
+
+625
+01:26:02,399 --> 01:26:03,550
+ bottom there's a checklist.
+
+626
+01:26:03,783 --> 01:26:05,933
+ Make sure that you are checking network
+
+627
+01:26:05,933 --> 01:26:08,333
+ authentication profile resources.
+
+628
+01:26:08,616 --> 01:26:10,616
+ With every video you are going to get a
+
+629
+01:26:10,616 --> 01:26:11,500
+ different checklist.
+
+630
+01:26:12,133 --> 01:26:14,033
+ So this is vital for you to make sure
+
+631
+01:26:14,033 --> 01:26:15,966
+ that you are able to sync
+
+632
+01:26:15,966 --> 01:26:17,716
+ up with what is in the video.
+
+633
+01:26:17,716 --> 01:26:19,600
+ Once you complete your simulation
+
+634
+01:26:19,600 --> 01:26:22,149
+ running, meaning you are going to have a
+
+635
+01:26:22,149 --> 01:26:24,833
+ program that runs in the background, that
+
+636
+01:26:24,833 --> 01:26:26,166
+ is the clone of this
+
+637
+01:26:26,166 --> 01:26:28,750
+ application that you can turn it on.
+
+638
+01:26:28,750 --> 01:26:30,133
+ This is the vital stage
+
+639
+01:26:30,133 --> 01:26:32,000
+ for you to be able to turn
+
+640
+01:26:32,183 --> 01:26:33,983
+ Once you are able to do this, you are
+
+641
+01:26:33,983 --> 01:26:35,949
+ going to see that you will run this in
+
+642
+01:26:35,966 --> 01:26:38,500
+ different amounts on Windows, iOS,
+
+643
+01:26:38,800 --> 01:26:40,683
+ Android, on code spaces.
+
+644
+01:26:40,683 --> 01:26:41,516
+ Different environments
+
+645
+01:26:41,516 --> 01:26:43,316
+ is very, very important.
+
+646
+01:26:43,699 --> 01:26:46,350
+ And you are going to soon realize this is
+
+647
+01:26:46,350 --> 01:26:48,350
+ not only one device that you are going to
+
+648
+01:26:48,350 --> 01:26:50,600
+ run, you are going to run a mesh of
+
+649
+01:26:50,600 --> 01:26:52,300
+ devices and they are going to get
+
+650
+01:26:52,300 --> 01:26:53,600
+ connected to each other.
+
+651
+01:26:53,600 --> 01:26:55,616
+ The dashboards are very critical.
+
+652
+01:26:55,866 --> 01:26:58,083
+ I always encourage you to be able to
+
+653
+01:26:58,083 --> 01:27:00,733
+ deploy a website and make sure that you
+
+654
+01:27:00,733 --> 01:27:03,766
+ are doing it with the GitHub actions and
+
+655
+01:27:03,966 --> 01:27:05,866
+ iterate on this all the time.
+
+656
+01:27:06,116 --> 01:27:08,516
+ So this is going to give you the real
+
+657
+01:27:08,516 --> 01:27:11,050
+ feeling of what you really need to
+
+658
+01:27:11,333 --> 01:27:14,199
+ Such as in my case, the kids devices and
+
+659
+01:27:14,199 --> 01:27:16,750
+ I'm responding to their controls and this
+
+660
+01:27:16,750 --> 01:27:19,649
+ process is always going to change because
+
+661
+01:27:19,649 --> 01:27:21,033
+ I have kids, they are at
+
+662
+01:27:21,033 --> 01:27:23,266
+ three years old to nine years old.
+
+663
+01:27:23,699 --> 01:27:26,033
+ The use cases for three years old is very
+
+664
+01:27:26,033 --> 01:27:27,116
+ different than the use
+
+665
+01:27:27,116 --> 01:27:28,449
+ cases in nine year old.
+
+666
+01:27:28,733 --> 01:27:31,483
+ So I need to make sure I play the game by
+
+667
+01:27:31,483 --> 01:27:33,983
+ their rules and understand what are my
+
+668
+01:27:33,983 --> 01:27:35,750
+ requirements and what are my changes.
+
+669
+01:27:35,750 --> 01:27:38,483
+ Looking at the logs, the event streams on
+
+670
+01:27:38,483 --> 01:27:41,716
+ the GitHub or the NA10 is very critical
+
+671
+01:27:41,716 --> 01:27:43,800
+ for you to understand the automatic
+
+672
+01:27:43,800 --> 01:27:46,733
+ triggers and the audit trail is very,
+
+673
+01:27:46,733 --> 01:27:48,516
+ very important because at the end of
+
+674
+01:27:48,516 --> 01:27:50,383
+ today, you want to have a secure
+
+675
+01:27:50,383 --> 01:27:53,016
+ environment doing this and working like a
+
+676
+01:27:53,016 --> 01:27:55,566
+ clock for you is very, very critical.
+
+677
+01:27:55,566 --> 01:27:57,433
+ What will be your success metrics?
+
+678
+01:27:57,699 --> 01:27:58,883
+ You want to make sure that you are
+
+679
+01:27:58,883 --> 01:28:01,449
+ compliant, you have lots of accuracy.
+
+680
+01:28:01,750 --> 01:28:02,550
+ In the beginning, you
+
+681
+01:28:02,550 --> 01:28:04,000
+ might not start very current.
+
+682
+01:28:04,516 --> 01:28:05,933
+ In the beginning, you might have more
+
+683
+01:28:05,933 --> 01:28:07,966
+ latency because you are using free tools.
+
+684
+01:28:08,616 --> 01:28:10,550
+ And at the end of today, you want to have
+
+685
+01:28:10,550 --> 01:28:13,116
+ make sure you are learning through this
+
+686
+01:28:13,116 --> 01:28:14,266
+ process, which is the
+
+687
+01:28:14,266 --> 01:28:15,633
+ key for your self growth.
+
+688
+01:28:15,733 --> 01:28:17,250
+ Building your own, that is
+
+689
+01:28:17,250 --> 01:28:20,016
+ the maximum that you can go.
+
+690
+01:28:20,466 --> 01:28:22,833
+ To become a delivery pilot, what we want
+
+691
+01:28:22,833 --> 01:28:25,133
+ you is, we want you to be able to come
+
+692
+01:28:25,133 --> 01:28:27,883
+ out of this simulation and
+
+693
+01:28:27,883 --> 01:28:29,733
+ build your own local environment.
+
+694
+01:28:29,733 --> 01:28:32,199
+ So we start with cloning the repo first,
+
+695
+01:28:32,199 --> 01:28:34,000
+ then starting configuring.
+
+696
+01:28:34,666 --> 01:28:37,066
+ Make sure after you configure, you create
+
+697
+01:28:37,066 --> 01:28:38,016
+ your own environment.
+
+698
+01:28:38,233 --> 01:28:40,449
+ I have built these simulations for you.
+
+699
+01:28:41,083 --> 01:28:42,550
+ Build the future with me.
+
+700
+01:28:42,766 --> 01:28:43,699
+ Till next time.
+
+701
+01:28:44,083 --> 01:28:44,516
+ Love.
+
+702
+01:28:44,949 --> 01:28:45,483
+ Bye-bye, bye-bye.
+

@@ -443,6 +443,7 @@
             <h2>📁 Upload Files</h2>
             <label for="subtitleFile">🎬 Upload Subtitle File (.srt, .vtt):</label>
             <input type="file" id="subtitleFile" accept=".srt,.vtt,.txt" onchange="handleSubtitleUpload(event)">
+            <button onclick="loadSampleSRT()">📥 Load Sample SRT</button>
 
 
 
@@ -1277,6 +1278,22 @@ else
     print("DaVinci Resolve not found")
 end`;
             copyToClipboard(luaScript);
+        }
+
+        function loadSampleSRT() {
+            fetch('sample-subtitles.srt')
+                .then(response => response.text())
+                .then(content => {
+                    subtitleData = parseSubtitles(content);
+                    setStorageItem('timeline_subtitles', JSON.stringify(subtitleData));
+                    showMessage(`Sample SRT loaded: ${subtitleData.length} entries parsed.`, 'success');
+                    renderActualTimeline();
+                    document.getElementById('keywordsSection').style.display = 'block';
+                    regenerateKeywords();
+                })
+                .catch(error => {
+                    showMessage('Error loading sample SRT: ' + error.message, 'error');
+                });
         }
 
         // Store context data for slider lookups
