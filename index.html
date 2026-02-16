@@ -368,6 +368,14 @@
     </div>
 
     <script>
+        // Constants
+        const ARTIFACT_COLORS = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b', '#fa709a'];
+        const TRANSITION_MIN_POSITION = 30;
+        const TRANSITION_RANGE = 40;
+        const INTRO_POSITION = 5;
+        const OUTRO_POSITION = 95;
+        const MIDDLE_POSITION = 50;
+
         // Cookie Management Functions
         function setCookie(name, value, days = 365) {
             const date = new Date();
@@ -665,10 +673,10 @@
             // Simple heuristic: estimate based on name patterns
             const name = artifact.name.toLowerCase();
             
-            if (name.includes('intro') || name.includes('opening')) return 5;
-            if (name.includes('outro') || name.includes('ending') || name.includes('credits')) return 95;
-            if (name.includes('middle') || name.includes('center')) return 50;
-            if (name.includes('transition')) return 30 + Math.random() * 40;
+            if (name.includes('intro') || name.includes('opening')) return INTRO_POSITION;
+            if (name.includes('outro') || name.includes('ending') || name.includes('credits')) return OUTRO_POSITION;
+            if (name.includes('middle') || name.includes('center')) return MIDDLE_POSITION;
+            if (name.includes('transition')) return TRANSITION_MIN_POSITION + Math.random() * TRANSITION_RANGE;
             
             // Default: distribute evenly
             return Math.random() * 100;
@@ -745,8 +753,7 @@
         }
 
         function getRandomColor() {
-            const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b', '#fa709a'];
-            return colors[Math.floor(Math.random() * colors.length)];
+            return ARTIFACT_COLORS[Math.floor(Math.random() * ARTIFACT_COLORS.length)];
         }
 
         function showArtifactDetails(artifact) {
